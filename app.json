@@ -1,5 +1,5 @@
 {
-  "name": "govuk-rails-boilerplate",
+  "name": "childrens-social-care-placement",
   "scripts": {
     "postdeploy": "bundle exec rake db:migrate db:seed"
   },

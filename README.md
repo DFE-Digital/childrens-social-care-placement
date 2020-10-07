@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.org/DFE-Digital/govuk-rails-boilerplate.svg?branch=master)](https://travis-ci.com/DFE-Digital/govuk-rails-boilerplate)
-
-# GOV.UK Rails Boilerplate
+## ChildrensSocialCarePlacement
 
 ## Prerequisites
 
@@ -65,4 +63,4 @@ bundle exec scss-lint app/webpacker/styles
 
 Check the file `manifest.yml` for customisation of name (you may need to change it as there could be a conflict on that name), buildpacks and eventual services (PostgreSQL needs to be [set up](https://docs.cloud.service.gov.uk/deploying_services/postgresql/)).
 
-The app should be available at https://govuk-rails-boilerplate.london.cloudapps.digital
+The app should be available at https://childrens-social-care-placement.london.cloudapps.digital
