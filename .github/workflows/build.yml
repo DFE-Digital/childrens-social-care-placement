@@ -1,5 +1,5 @@
-name: "Build and Deploy"
-on: [push, :pull_request]
+name: Build and Deploy
+on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
