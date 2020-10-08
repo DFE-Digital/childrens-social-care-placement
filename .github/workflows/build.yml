@@ -40,5 +40,4 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: bundle exec rails db:prepare
       - run: bundle exec rails assets:precompile
-      - name: run rspec and linting
-      - run: bundle exec rake
+      - run: bundle exec rspec
