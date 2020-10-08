@@ -1,0 +1,43 @@
+name: Build and Deploy
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:11
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_HOST_AUTH_METHOD: trust
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: postgres://postgres:@localhost:5432/csc_test
+    steps:
+      - name: Clone project
+        uses: actions/checkout@v2
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+      - name: Check for cached bundler
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: bundle-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: bundle
+      - run: bundle install --jobs 4 --retry 3 --deployment
+      - uses: actions/setup-node@v1
+      - name: Check for cached node modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: yarn
+      - run: yarn install --frozen-lockfile
+      - run: bundle exec rails db:prepare
+      - run: bundle exec rails assets:precompile
+      - run: bundle exec rake
