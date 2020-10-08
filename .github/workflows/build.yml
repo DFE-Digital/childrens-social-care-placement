@@ -15,7 +15,7 @@ jobs:
           --health-retries 5
     env:
       RAILS_ENV: test
-      POSTGRES_PASSWORD: ""
+      POSTGRES_PASSWORD: postgres
       DATABASE_URL: postgres://postgres:@localhost:5432/csc_test
     steps:
       - name: Clone project
