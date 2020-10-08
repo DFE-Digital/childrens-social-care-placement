@@ -41,3 +41,4 @@ jobs:
       - run: bundle exec rails db:prepare
       - run: bundle exec rails assets:precompile
       - run: bundle exec rspec
+      - run: bundle exec rake
