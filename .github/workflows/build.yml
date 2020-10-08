@@ -1,5 +1,10 @@
 name: Test and Deploy
-on: [push, pull_request]
+on:
+  pull_request:
+    types: [assigned, opened, reopened, synchronize]
+  push:
+    branches:
+      - master
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -42,12 +47,14 @@ jobs:
       - run: bundle exec rails assets:precompile
       - run: bundle exec rake
   deploy:
+    if: github.ref == 'refs/heads/master'
     needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Clone project
         uses: actions/checkout@v2
-      - uses: citizen-of-planet-earth/cf-cli-action@master
+      - name: Deploy repo
+        uses: citizen-of-planet-earth/cf-cli-action@master
         with:
           cf_api: ${{ secrets.CF_API_ENDPOINT }}
           cf_username: ${{ secrets.CF_USERNAME }}
