@@ -46,7 +46,7 @@ jobs:
       runs-on: ubuntu-latest
         steps:
           - name: Login
-          - run: cf login -a {{ secrets.CF_API_ENDPOINT }} -o {{ secrets.CF_ORG }} -s {{ secrets.SPACE }} -u {{ secrets.CF_USERNAME }} -p {{ secrets.CF_PASSWORD }}
+          - run: cf login -a ${{ secrets.CF_API_ENDPOINT }} -o ${{ secrets.CF_ORG }} -s ${{ secrets.SPACE }} -u ${{ secrets.CF_USERNAME }} -p ${{ secrets.CF_PASSWORD }}
           - name: Push
           - run: cf push {{ secrets.APP_NAME }}
 
