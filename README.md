@@ -63,3 +63,8 @@ bundle exec scss-lint app/webpacker/styles
 Check the file `manifest.yml` for customisation of name (you may need to change it as there could be a conflict on that name), buildpacks and eventual services (PostgreSQL needs to be [set up](https://docs.cloud.service.gov.uk/deploying_services/postgresql/)).
 
 The app should be available at https://childrens-social-care-placement.london.cloudapps.digital
+
+## github workflow
+
+There is an open issue referenced here: https://www.pivotaltracker.com/n/projects/2196383/stories/173541786
+As a work around, .cfignore file is updated to include /node_modules/.cache/*
