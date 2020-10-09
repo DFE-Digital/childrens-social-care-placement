@@ -7,3 +7,5 @@
 log
 tmp
 storage
+
+/node_modules/.cache/*
