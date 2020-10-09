@@ -1,7 +1,7 @@
 .bundle
 .byebug_history
 .env
-
+.nvmrc
 .rvmrc
 
 log
