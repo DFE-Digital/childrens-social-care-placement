@@ -46,7 +46,6 @@ jobs:
       - run: bundle exec rails db:prepare
       - run: bundle exec rails assets:precompile
       - run: bundle exec rake
-
       - name: Deploy
         if: github.ref == 'refs/heads/master'
         uses: citizen-of-planet-earth/cf-cli-action@master
