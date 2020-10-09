@@ -35,7 +35,10 @@ jobs:
           key: bundle-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: bundle
       - run: bundle install --jobs 4 --retry 3 --deployment
-      - uses: actions/setup-node@v1
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.13.x'
       - name: Check for cached node modules
         uses: actions/cache@v1
         with:
