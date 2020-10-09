@@ -47,8 +47,14 @@ jobs:
       - run: bundle exec rails assets:precompile
       - run: bundle exec rake
 
-      - name: Deploy
-        if: github.ref == 'refs/heads/master'
+  deploy:
+    if: github.ref == 'refs/heads/master'
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone project
+        uses: actions/checkout@v2
+      - name: Deploy repo
         uses: citizen-of-planet-earth/cf-cli-action@master
         with:
           cf_api: ${{ secrets.CF_API_ENDPOINT }}
