@@ -35,14 +35,17 @@ jobs:
           key: bundle-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: bundle
       - run: bundle install --jobs 4 --retry 3 --deployment
-      - uses: actions/setup-node@v1
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.13.0
       - name: Check for cached node modules
         uses: actions/cache@v1
         with:
           path: node_modules
           key: yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: yarn
-      - run: yarn install
+      - run: yarn install --frozen-lockfile
       - run: bundle exec rails db:prepare
       - run: bundle exec rails assets:precompile
       - run: bundle exec rake
