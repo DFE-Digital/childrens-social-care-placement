@@ -42,7 +42,7 @@ jobs:
           path: node_modules
           key: yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: yarn
-      - run: yarn install --frozen-lockfile
+      - run: yarn install
       - run: bundle exec rails db:prepare
       - run: bundle exec rails assets:precompile
       - run: bundle exec rake
