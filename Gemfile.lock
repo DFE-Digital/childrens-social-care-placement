@@ -273,7 +273,6 @@ DEPENDENCIES
   scss_lint-govuk
   spring
   spring-watcher-listen (~> 2.0.0)
-  tzinfo-data
   web-console (>= 3.3.0)
   webdrivers (~> 4.4)
   webpacker
