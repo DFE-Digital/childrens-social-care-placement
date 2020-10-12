@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby File.read(".ruby-version").chomp
 
 # core
+gem "devise"
 gem "pg", ">= 0.18", "< 2.0"
 gem "rails", "~> 6.0.3"
 
@@ -31,7 +32,7 @@ group :development, :test do
   gem "capybara", "~> 3.33"
   gem "rspec-rails", "~> 4.0.1"
 
-  #setup
+  # setup
   gem "dotenv-rails"
 end
 
