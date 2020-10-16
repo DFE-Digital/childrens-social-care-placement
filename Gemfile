@@ -13,7 +13,8 @@ gem "bootsnap", ">= 1.1.0", require: false
 gem "foreman"
 gem "puma", "~> 5.0"
 
-# assets
+# frontend
+gem "govuk_design_system_formbuilder"
 gem "webpacker"
 
 # other
