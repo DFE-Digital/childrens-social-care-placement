@@ -1,0 +1,15 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= f.govuk_error_summary %>
+
+      <h1 class="govuk-heading-l">Forgot your password?</h1>
+
+      <%= f.govuk_email_field :email %>
+
+      <%= f.govuk_submit "Send me reset password instructions" %>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

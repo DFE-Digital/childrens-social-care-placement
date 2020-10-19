@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  root to: "pages#show", page: "home"
+
+  devise_for :users
+
+  resource :dashboard, only: :show, controller: :dashboard
+
   get "/pages/:page", to: "pages#show"
 
   get "/404", to: "errors#not_found", via: :all
