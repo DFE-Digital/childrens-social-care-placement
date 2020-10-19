@@ -56,7 +56,7 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :notify
   config.action_mailer.notify_settings = {
-    api_key: Settings.notify.api_key
+    api_key: Settings.notify.api_key,
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
