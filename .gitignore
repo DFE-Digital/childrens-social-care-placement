@@ -31,3 +31,7 @@ yarn-debug.log*
 *.log
 
 /spec/examples.txt
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
