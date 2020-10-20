@@ -4,7 +4,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby File.read(".ruby-version").chomp
 
 # core
+gem "config"
 gem "devise"
+gem "mail-notify"
 gem "pg", ">= 0.18", "< 2.0"
 gem "rails", "~> 6.0.3"
 

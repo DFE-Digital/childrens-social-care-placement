@@ -1,0 +1,3 @@
+notify: # no defaults, has to be set using ENVs
+  api_key:
+  view_template_id:
