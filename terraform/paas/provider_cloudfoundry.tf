@@ -35,13 +35,17 @@ resource "cloudfoundry_service_instance" "postgres" {
   service_plan = data.cloudfoundry_service.postgres.service_plans["medium-11"]
 }
 
-resource "cloudfoundry_domain" "default_domain" {
-  sub_domain = "childrens-social-care-placement-dev"
+data "cloudfoundry_domain" "default" {
   domain = "london.cloudapps.digital"
 }
 
+resource "cloudfoundry_domain" "dev_domain" {
+  sub_domain = "childrens-social-care-placement-dev"
+  domain = data.cloudfoundry_domain.default.domain
+}
+
 resource "cloudfoundry_route" "childrens-social-care-placement-dev" {
-  domain = cloudfoundry_domain.default_domain.id
+  domain = cloudfoundry_domain.dev_domain.domain
   space = data.cloudfoundry_space.placement-alpha-development.id
 }
 
@@ -63,6 +67,6 @@ resource "cloudfoundry_app" "childrens-social-care-placement" {
   path = "https://github.com/DFE-Digital/childrens-social-care-placement/archive/master.zip"
   buildpack = ""
   service_binding {
-    service_instance = cloudfoundry_service_instance.postgres.id
+    service_instance = data.cloudfoundry_service_instance.postgres.id
   }
 }
