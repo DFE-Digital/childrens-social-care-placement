@@ -36,7 +36,7 @@ resource "cloudfoundry_service_instance" "postgres" {
 }
 
 resource "cloudfoundry_domain" "default_domain" {
-  sub_domain = "childrens-social-care-placement"
+  sub_domain = "childrens-social-care-placement-dev"
   domain = "london.cloudapps.digital"
 }
 
@@ -46,13 +46,13 @@ resource "cloudfoundry_route" "childrens-social-care-placement-dev" {
 }
 
 resource "cloudfoundry_buildpack" "ruby" {
-  name = "ruby-buildpack"
+  name = "ruby_buildpack"
   path = "https://github.com/cloudfoundry/ruby-buildpack/archive/master.zip"
   position = "1"
 }
 
 resource "cloudfoundry_buildpack" "node" {
-  name = "nodejs-buildpack"
+  name = "nodejs_buildpack"
   path = "https://github.com/cloudfoundry/nodejs-buildpack/archive/master.zip"
   position = "2"
 }
