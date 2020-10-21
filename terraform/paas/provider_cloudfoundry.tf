@@ -29,10 +29,9 @@ data "cloudfoundry_service" "postgres" {
   name = "postgres"
 }
 
-resource "cloudfoundry_service_instance" "postgres" {
-  name = "development-db"
+data "cloudfoundry_service_instance" "postgres" {
+  name_or_id = "development-db"
   space = data.cloudfoundry_space.placement-alpha-development.id
-  service_plan = data.cloudfoundry_service.postgres.service_plans["medium-11"]
 }
 
 resource "cloudfoundry_domain" "dev_domain" {
@@ -63,6 +62,6 @@ resource "cloudfoundry_app" "childrens-social-care-placement" {
   path = "https://github.com/DFE-Digital/childrens-social-care-placement/archive/master.zip"
   buildpack = ""
   service_binding {
-    service_instance = cloudfoundry_service_instance.postgres.id
+    service_instance = data.cloudfoundry_service_instance.postgres.id
   }
 }
