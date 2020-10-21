@@ -51,17 +51,12 @@ jobs:
       - run: bundle exec rake
       - name: Deploy
         if: github.ref == 'refs/heads/master'
-        uses: hashicorp/setup-terraform@v1
+        uses: citizen-of-planet-earth/cf-cli-action@master
         with:
-          terraform_version: 0.13.4
-      - name: Terraform Init
-        run: |
-            cd terraform/paas && pwd
-            terraform init
-      - name: Terraform Plan
-        run: |
-            cd terraform/paas && pwd
-            terraform plan
-        env:
-            TF_VAR_user: "${{ secrets.CF_USERNAME }}"
-            TF_VAR_password: "${{ secrets.CF_PASSWORD }}"
+          cf_api: ${{ secrets.CF_API_ENDPOINT }}
+          cf_username: ${{ secrets.CF_USERNAME }}
+          cf_password: ${{ secrets.CF_PASSWORD}}
+          cf_org: ${{ secrets.CF_ORG }}
+          cf_space: ${{ secrets.SPACE }}
+          command: push ${{ secrets.APP_NAME }}
+
