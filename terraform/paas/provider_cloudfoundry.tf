@@ -19,7 +19,7 @@ data "cloudfoundry_org" "my_org" {
   // var.cf_org
 }
 
-resource "cloudfoundry_space" "placement-alpha-development" {
+data "cloudfoundry_space" "placement-alpha-development" {
   name = "placement-alpha-development"
   // var.space
   org = data.cloudfoundry_org.my_org.id
