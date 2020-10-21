@@ -54,21 +54,18 @@ jobs:
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: 0.13.4
-      - name: Terraform Init
-        run: |
-            cd terraform/paas && pwd
-            terraform init
-      - name: Terraform Plan
-        run: |
-            cd terraform/paas && pwd
-            terraform plan -out plan
-        env:
-            TF_VAR_user: "${{ secrets.CF_USERNAME }}"
-            TF_VAR_password: "${{ secrets.CF_PASSWORD }}"
-      - name: Terraform Apply
-        run: |
-            cd terraform/paas && pwd
-            terraform apply -auto-approve plan
-        env:
-            TF_VAR_user: "${{ secrets.CF_USERNAME }}"
-            TF_VAR_password: "${{ secrets.CF_PASSWORD }}"
+        - name: Terraform Init
+          run: |
+              cd terraform/paas && pwd
+              terraform init
+        - name: Terraform Plan
+          run: |
+              cd terraform/paas && pwd
+              terraform plan -out plan
+          env:
+              TF_VAR_user: "${{ secrets.CF_USERNAME }}"
+              TF_VAR_password: "${{ secrets.CF_PASSWORD }}"
+        - name: Terraform Apply
+          run: |
+              cd terraform/paas && pwd
+              terraform apply -auto-approve plan
