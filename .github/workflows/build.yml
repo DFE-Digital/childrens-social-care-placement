@@ -6,7 +6,7 @@ on:
     branches:
       - master
 jobs:
-  test_and_deploy:
+  test:
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -49,23 +49,32 @@ jobs:
       - run: bundle exec rails db:prepare
       - run: bundle exec rails assets:precompile
       - run: bundle exec rake
-      - name: Deploy
-        if: github.ref == 'refs/heads/master'
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs:
+         build
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      -name: Terraform
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: 0.13.4
-        - name: Terraform Init
-          run: |
-              cd terraform/paas && pwd
-              terraform init
-        - name: Terraform Plan
-          run: |
-              cd terraform/paas && pwd
-              terraform plan -out plan
-          env:
-              TF_VAR_user: "${{ secrets.CF_USERNAME }}"
-              TF_VAR_password: "${{ secrets.CF_PASSWORD }}"
-        - name: Terraform Apply
-          run: |
-              cd terraform/paas && pwd
-              terraform apply -auto-approve plan
+
+      - name: Terraform Init
+        run: |
+            cd terraform/paas && pwd
+            terraform init
+      - name: Terraform Plan
+        run: |
+            cd terraform/paas && pwd
+            terraform plan -out plan
+        env:
+            TF_VAR_user: "${{ secrets.CF_USERNAME }}"
+            TF_VAR_password: "${{ secrets.CF_PASSWORD }}"
+      - name: Terraform Apply
+        run: |
+            cd terraform/paas && pwd
+            terraform apply -auto-approve plan
