@@ -35,13 +35,9 @@ resource "cloudfoundry_service_instance" "postgres" {
   service_plan = data.cloudfoundry_service.postgres.service_plans["medium-11"]
 }
 
-data "cloudfoundry_domain" "default" {
-  domain = "london.cloudapps.digital"
-}
-
 resource "cloudfoundry_domain" "dev_domain" {
   sub_domain = "childrens-social-care-placement-dev"
-  domain = data.cloudfoundry_domain.default.domain
+  domain = "london.cloudapps.digital"
 }
 
 resource "cloudfoundry_route" "childrens-social-care-placement-dev" {
