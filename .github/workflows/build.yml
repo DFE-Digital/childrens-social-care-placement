@@ -58,7 +58,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      -name: Terraform
+
+      - name: Terraform
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: 0.13.4
