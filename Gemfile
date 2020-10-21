@@ -32,7 +32,6 @@ group :development, :test do
   gem "scss_lint-govuk"
 
   # testing
-  gem "capybara", "~> 3.33"
   gem "rspec-rails", "~> 4.0.1"
 
   # setup
@@ -50,5 +49,8 @@ group :development do
 end
 
 group :test do
+  gem "capybara", "~> 3.33"
+  gem "factory_bot_rails"
+  gem "shoulda-matchers", "~> 4.0"
   gem "webdrivers", "~> 4.4"
 end
