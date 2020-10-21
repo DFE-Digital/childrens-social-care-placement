@@ -32,7 +32,7 @@ data "cloudfoundry_service" "postgres" {
 resource "cloudfoundry_service_instance" "postgres" {
   name = "development-db"
   space = data.cloudfoundry_space.placement-alpha-development.id
-  service_plan = "medium-11"
+  service_plan = data.cloudfoundry_service.postgres.service_plans["medium-11"]
 }
 
 resource "cloudfoundry_domain" "default_domain" {
