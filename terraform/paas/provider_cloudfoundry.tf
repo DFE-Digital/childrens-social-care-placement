@@ -67,6 +67,6 @@ resource "cloudfoundry_app" "childrens-social-care-placement" {
   path = "https://github.com/DFE-Digital/childrens-social-care-placement/archive/master.zip"
   buildpack = ""
   service_binding {
-    service_instance = data.cloudfoundry_service_instance.postgres.id
+    service_instance = cloudfoundry_service_instance.postgres.id
   }
 }
