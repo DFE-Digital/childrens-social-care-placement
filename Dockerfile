@@ -19,6 +19,5 @@ COPY . .
 EXPOSE 3000
 
 RUN bundle exec rake assets:precompile
-RUN bundle exec rake webpacker:compile
 
 CMD bundle exec rails db:migrate && bundle exec rails server -b 0.0.0.0
