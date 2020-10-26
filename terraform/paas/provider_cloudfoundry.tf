@@ -35,13 +35,12 @@ resource "cloudfoundry_service_instance" "postgres" {
   service_plan = data.cloudfoundry_service.postgres.service_plans["medium-11"]
 }
 
-resource "cloudfoundry_domain" "dev_domain" {
-  sub_domain = "childrens-social-care-placement-dev"
-  domain = "london.cloudapps.digital"
+data "cloudfoundry_domain" "dev" {
+  name = "london.cloudapps.digital"
 }
 
-resource "cloudfoundry_route" "childrens-social-care-placement-dev" {
-  domain = cloudfoundry_domain.dev_domain.domain
+resource "cloudfoundry_route" "dev_route" {
+  domain = data.cloudfoundry_domain.dev.id
   space = data.cloudfoundry_space.placement-alpha-development.id
   hostname = "childrens-social-care-placement-dev"
 }
@@ -54,6 +53,7 @@ resource "cloudfoundry_app" "childrens-social-care-placement-dev" {
     service_instance = cloudfoundry_service_instance.postgres.id
   }
   routes {
-    route = cloudfoundry_route.childrens-social-care-placement-dev.id
+    route = cloudfoundry_route.dev_route.id
   }
+
 }
