@@ -53,5 +53,4 @@ resource "cloudfoundry_app" "childrens-social-care-placement-dev" {
   routes {
     route = cloudfoundry_route.dev_route.id
   }
-
 }
