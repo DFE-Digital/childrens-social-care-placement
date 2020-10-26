@@ -16,12 +16,10 @@ terraform {
 
 data "cloudfoundry_org" "my_org" {
   name = "dfe-childrens-social-care-services"
-  // var.cf_org
 }
 
 data "cloudfoundry_space" "placement-alpha-development" {
   name = "placement-alpha-development"
-  // var.space
   org = data.cloudfoundry_org.my_org.id
 }
 
