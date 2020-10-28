@@ -80,7 +80,7 @@ jobs:
           terraform init \
             -backend-config "bucket='${{ secrets.AWS_BUCKET_NAME }}'" \
             -backend-config "access_key='${{ secrets.AWS_ACCESS_KEY_ID }}'" \
-            -backend-config "secret_key='${{ secrets.AWS_SECRET_ACCESS_KEY }}"'
+            -backend-config "secret_key='${{ secrets.AWS_SECRET_ACCESS_KEY }}'"
       - name: Terraform Plan
         run: |
           cd terraform/paas && pwd
