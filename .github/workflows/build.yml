@@ -61,13 +61,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Get Short SHA
+        id: sha
+        run: |
+              echo ::set-output name=short::$(echo "${{ github.sha }}" | cut -c -7)
+              echo ::set-output name=image::${{ env.DOCKER_REPO }}:sha-$(echo "${{ github.sha }}" | cut -c -7)
+              echo ::set-output name=local::localhost:5000/${{ env.DOCKER_REPO }}:sha-$(echo "${{ github.sha }}" | cut -c -7)
+
       - name: Push to Docker Hub
         uses: docker/build-push-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: ${{ env.DOCKER_REPO }}
-          tag_with_ref: true
+          tag_with_ref: sha-${{ steps.sha.outputs.short }}
 
       - name: Terraform
         uses: hashicorp/setup-terraform@v1
@@ -81,10 +88,6 @@ jobs:
             -backend-config "bucket=${{ secrets.AWS_BUCKET_NAME }}" \
             -backend-config "access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" \
             -backend-config "secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
-        env:
-          TF_VAR_user: "${{ secrets.CF_USERNAME }}"
-          TF_VAR_password: "${{ secrets.CF_PASSWORD }}"
-          TF_VAR_csc_docker_repo: "${{ env.DOCKER_REPO }}"
       - name: Terraform Plan
         run: |
           cd terraform/paas && pwd
@@ -92,7 +95,7 @@ jobs:
         env:
           TF_VAR_user: "${{ secrets.CF_USERNAME }}"
           TF_VAR_password: "${{ secrets.CF_PASSWORD }}"
-          TF_VAR_csc_docker_repo: "${{ env.DOCKER_REPO }}"
+          TF_VAR_csc_docker_repo: "${{ env.DOCKER_REPO }}:sha-${{ steps.sha.outputs.short }}"
       - name: Terraform Apply
         run: |
           cd terraform/paas && pwd
@@ -100,4 +103,4 @@ jobs:
         env:
           TF_VAR_user: "${{ secrets.CF_USERNAME }}"
           TF_VAR_password: "${{ secrets.CF_PASSWORD }}"
-          TF_VAR_csc_docker_repo: "${{ env.DOCKER_REPO }}"
+          TF_VAR_csc_docker_repo: "${{ env.DOCKER_REPO }}:sha-${{ steps.sha.outputs.short }}"
