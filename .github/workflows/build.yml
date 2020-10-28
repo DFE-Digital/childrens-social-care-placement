@@ -81,6 +81,10 @@ jobs:
             -backend-config "bucket=${{ secrets.AWS_BUCKET_NAME }}" \
             -backend-config "access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" \
             -backend-config "secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+        env:
+          TF_VAR_user: "${{ secrets.CF_USERNAME }}"
+          TF_VAR_password: "${{ secrets.CF_PASSWORD }}"
+          TF_VAR_csc_docker_repo: "${{ env.DOCKER_REPO }}"
       - name: Terraform Plan
         run: |
           cd terraform/paas && pwd
