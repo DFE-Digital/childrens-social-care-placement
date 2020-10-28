@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :foster_parents, only: :show
   resource :dashboard, only: :show, controller: :dashboard
 
   get "/pages/:page", to: "pages#show"
