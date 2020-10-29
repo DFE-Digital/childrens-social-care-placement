@@ -1,8 +1,8 @@
 class ApplicationPolicy
-  attr_reader :user, :record
+  attr_reader :auth_context, :record
 
-  def initialize(user, record)
-    @user = user
+  def initialize(auth_context, record)
+    @auth_context = auth_context
     @record = record
   end
 
@@ -35,15 +35,15 @@ class ApplicationPolicy
   end
 
   class Scope
-    attr_reader :user, :scope
+    attr_reader :auth_context, :scope
 
-    def initialize(user, scope)
-      @user = user
+    def initialize(auth_context, scope)
+      @auth_context = auth_context
       @scope = scope
     end
 
     def resolve
-      scope.all
+      scope.none
     end
   end
 end
