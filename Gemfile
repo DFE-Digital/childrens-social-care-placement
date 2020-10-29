@@ -8,6 +8,7 @@ gem "config"
 gem "devise"
 gem "mail-notify"
 gem "pg", ">= 0.18", "< 2.0"
+gem "pundit"
 gem "rails", "~> 6.0.3"
 
 # runtime
