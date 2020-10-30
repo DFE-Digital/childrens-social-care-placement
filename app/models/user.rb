@@ -4,4 +4,6 @@ class User < ApplicationRecord
          :rememberable,
          :trackable,
          :validatable
+
+  has_one :foster_parent, inverse_of: :user
 end

@@ -10,4 +10,32 @@ $govuk-font-url-function: frontend-font-url;
 $govuk-image-url-function: frontend-image-url;
 
 @import "~govuk-frontend/govuk/all";
-@import "dfe_flash";
+
+
+// Custom styles, which should later be componentised
+// - flash messages for Devise
+.dfe-flash {
+  @include govuk-text-colour;
+  @include govuk-responsive-padding(4);
+  @include govuk-responsive-margin(8, "bottom");
+}
+
+.dfe-flash-alert {
+  border: $govuk-border-width solid $govuk-error-colour;
+}
+
+.dfe-flash-notice {
+  border: $govuk-border-width solid  govuk-colour("green");
+}
+
+// - grey panel to display records
+.govuk-panel--record {
+  text-align: left;
+  background-color: govuk-colour("light-grey");
+  margin-top: 15px;
+
+  .govuk-button {
+    @include govuk-responsive-margin(4, "top")
+  }
+}
+

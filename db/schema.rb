@@ -10,10 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_13_100648) do
+ActiveRecord::Schema.define(version: 2020_10_21_130928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "children", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "middle_name"
+    t.string "last_name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "diary_logs", force: :cascade do |t|
+    t.bigint "placement_id", null: false
+    t.text "note"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["placement_id"], name: "index_diary_logs_on_placement_id"
+  end
+
+  create_table "foster_parents", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "first_name", null: false
+    t.string "middle_name"
+    t.string "last_name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_foster_parents_on_user_id"
+  end
+
+  create_table "placements", force: :cascade do |t|
+    t.bigint "foster_parent_id", null: false
+    t.bigint "child_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["child_id"], name: "index_placements_on_child_id"
+    t.index ["foster_parent_id"], name: "index_placements_on_foster_parent_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
