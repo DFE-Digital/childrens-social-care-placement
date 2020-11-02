@@ -3,7 +3,8 @@ FROM ruby:2.7.1-alpine
 ENV RAILS_ENV=production \
     NODE_ENV=production \
     RAILS_SERVE_STATIC_FILES=true \
-    RAILS_LOG_TO_STDOUT=true
+    RAILS_LOG_TO_STDOUT=true \
+    SECRET_KEY_BASE=1
 
 WORKDIR /app
 
