@@ -68,3 +68,10 @@ The app should be available at https://childrens-social-care-placement.london.cl
 
 There is an open issue referenced here: https://www.pivotaltracker.com/n/projects/2196383/stories/173541786
 As a work around, .cfignore file is updated to include /node_modules/.cache/*
+
+## rails console on CloudFoundry
+
+1. SSH into the app as a Space Developer
+  `cf ssh <APP_NAME>`
+2. Enter the following:
+  `/usr/local/bin/bundle exec rails console`
