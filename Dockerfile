@@ -1,5 +1,7 @@
 FROM ruby:2.7.1-alpine
 
+WORKDIR /csc-app
+
 RUN apk add --update build-base postgresql-dev tzdata nodejs yarn
 
 RUN gem install bundler:2.1.4 --no-document
@@ -7,7 +9,6 @@ RUN gem install bundler:2.1.4 --no-document
 RUN cp /usr/share/zoneinfo/Europe/London /etc/localtime && \
   echo "Europe/London" > /etc/timezone
 
-WORKDIR /app
 COPY Gemfile* .ruby-version ./
 
 RUN bundle install --no-binstubs --retry=5 --jobs=4
