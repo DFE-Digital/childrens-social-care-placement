@@ -1,0 +1,26 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl">Children in your care</h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <% @placements.each do |placement| %>
+    <div class="govuk-grid-column-one-third">
+      <div class="govuk-panel govuk-panel--record">
+        <div class="govuk-panel__title">
+          <h3 class="govuk-heading-l">
+            <%= placement.child.first_name %>
+          </h3>
+        </div>
+        <div class="govuk-panel__body">
+          <button class="govuk-button" data-module="govuk-button">
+            Create a diary entry
+          </button>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>
+

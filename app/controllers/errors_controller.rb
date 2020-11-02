@@ -1,6 +1,9 @@
 class ErrorsController < ApplicationController
   layout "application"
 
+  skip_before_action :authenticate_user!
+  skip_after_action :verify_authorized
+
   def not_found
     respond_to do |format|
       format.html { render status: :not_found }
