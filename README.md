@@ -74,4 +74,5 @@ As a work around, .cfignore file is updated to include /node_modules/.cache/*
 1. SSH into the app as a Space Developer
   `cf ssh <APP_NAME>`
 2. Enter the following:
+  `cd /<WORKDIR>`
   `/usr/local/bin/bundle exec rails console`
