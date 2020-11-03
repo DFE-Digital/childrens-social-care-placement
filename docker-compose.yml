@@ -17,7 +17,4 @@ services:
       - db
     environment:
       DATABASE_URL: "postgres://postgres:password@db/postgres"
-      RAILS_ENV:  "production"
-      NODE_ENV: "production"
       SECRET_KEY_BASE: "eb03b287eea6d928a149711c4ac58c7eb19b1e2ca99b0fdfa14f86e3052e48de884c7e64dbe72c89dabfb475018968eaae22e7589bc68420fb1a8f642e06fe22"
-      RAILS_SERVE_STATIC_FILES: "true"

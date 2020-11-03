@@ -26,6 +26,6 @@ COPY . .
 
 EXPOSE 3000
 
-RUN RAILS_ENV=development bundle exec rake assets:precompile
+RUN SECRET_KEY_BASE=`bundle exec rake secret` bundle exec rake assets:precompile
 
 CMD bundle exec rails db:migrate && bundle exec rails server -b 0.0.0.0
