@@ -3,7 +3,7 @@ FROM ruby:2.7.1-alpine
 ENV RAILS_ENV=production \
     NODE_ENV=production \
     RAILS_SERVE_STATIC_FILES=true \
-    RAILS_LOG_TO_STDOUT=true
+    RAILS_LOG_TO_STDOUT=true \
 
 WORKDIR /app
 
@@ -26,6 +26,6 @@ COPY . .
 
 EXPOSE 3000
 
-RUN bundle exec rake assets:precompile
+RUN RAILS_MASTER_KEY=1 bundle exec rake assets:precompile
 
 CMD bundle exec rails db:migrate && bundle exec rails server -b 0.0.0.0
