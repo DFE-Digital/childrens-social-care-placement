@@ -26,6 +26,6 @@ COPY . .
 
 EXPOSE 3000
 
-RUN RAILS_MASTER_KEY=1 bundle exec rake assets:precompile
+RUN RAILS_ENV=development bundle exec rake assets:precompile
 
 CMD bundle exec rails db:migrate && bundle exec rails server -b 0.0.0.0
