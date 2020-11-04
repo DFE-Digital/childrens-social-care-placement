@@ -64,6 +64,14 @@ Check the file `manifest.yml` for customisation of name (you may need to change 
 
 The app should be available at https://childrens-social-care-placement.london.cloudapps.digital
 
+### Required environment variables
+
+As per the `config/settings.yml` file, there are few variables which need to be set in each environment:
+
+* `SETTINGS__HOST`: The actual full url of the app to be prepended to url routes.
+* `SETTINGS__NOTIFY__API_KEY`: API key to allow sending via Gov.uk Notify
+* `SETTINGS__NOTIFY__VIEW_TEMPLATE_ID`: Template ID from Gov.uk Notify which supports using Rails templates
+
 ## github workflow
 
 There is an open issue referenced here: https://www.pivotaltracker.com/n/projects/2196383/stories/173541786
