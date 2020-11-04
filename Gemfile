@@ -23,6 +23,9 @@ gem "webpacker"
 # other
 gem "canonical-rails"
 
+# fake data
+gem "faker", "~> 1.6", ">= 1.6.6"
+
 group :development, :test do
   # debug
   gem "byebug", platforms: %i[mri mingw x64_mingw]
