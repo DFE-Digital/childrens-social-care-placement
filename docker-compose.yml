@@ -6,6 +6,8 @@ services:
     image: postgres:11-alpine
     volumes:
       - dbdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: "password"
   web:
     build: .
     command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
@@ -16,3 +18,4 @@ services:
     environment:
       DATABASE_URL: "postgres://postgres:password@db/postgres"
       SECRET_KEY_BASE: "eb03b287eea6d928a149711c4ac58c7eb19b1e2ca99b0fdfa14f86e3052e48de884c7e64dbe72c89dabfb475018968eaae22e7589bc68420fb1a8f642e06fe22"
+      SETTINGS__HOST: "localhost:3000"
