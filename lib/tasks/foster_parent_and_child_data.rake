@@ -1,6 +1,6 @@
 desc "Generate fake foster parent and child data"
-task generate_foster_parent_and_child_data: :environment do
-  csv_file = Rails.root.join("fake_foster_parents.csv")
+task :generate_foster_parent_and_child_data, [:file_path] => :environment do |_t, args|
+  csv_file = Rails.root.join(args[:file_path])
   raise "csv file needs to be generated..." unless File.exist? csv_file
 
   require "csv"
