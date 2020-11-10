@@ -50,5 +50,16 @@ RSpec.feature "User can start using the system by signing in and being redirecte
 
       expect(page).to have_content("Welcome to Children Social Care Placement!")
     end
+
+    scenario "User it not signed in, clicks Start but provides incorrect sign in details" do
+      visit "/"
+
+      click_on "Start"
+      fill_in "Email", with: user.email
+      fill_in "Password", with: "wrong password"
+      click_on "Sign in"
+
+      expect(page).to have_content("Invalid Email or password.")
+    end
   end
 end
