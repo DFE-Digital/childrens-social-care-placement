@@ -23,7 +23,9 @@ gem "webpacker"
 
 # other
 gem "canonical-rails"
-gem "faker"
+
+# fake data
+gem "faker", "~> 1.6", ">= 1.6.6"
 
 group :development, :test do
   # debug
