@@ -5,7 +5,7 @@ task :generate_foster_parents_and_children_csv, %i[number_foster_parents file_pa
   options = { write_headers: true, headers: headers }
 
   CSV.open(args[:file_path], "wb", **options) do |csv|
-    FakeFosterParentAndChild.new(args[:number_foster_parents].to_i).call do |foster_parent|
+    FakeDataRow.new(args[:number_foster_parents].to_i).call do |foster_parent|
       csv << foster_parent.values
     end
   end

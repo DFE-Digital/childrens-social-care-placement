@@ -1,4 +1,4 @@
-class FakeUsersAndChildData
+class CreateUsersAndChildren
   def initialize(csv_row)
     @row = csv_row
   end

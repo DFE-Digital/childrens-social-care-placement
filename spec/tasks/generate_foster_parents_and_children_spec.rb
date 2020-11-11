@@ -4,7 +4,7 @@ require "csv"
 RSpec.describe "generate_foster_parent_and_child_data", type: :task do
   context "with vaild CSV row" do
     it "calls the FakeUsersAndChildData service" do
-      expect_any_instance_of(FakeUsersAndChildData).to receive(:call)
+      expect_any_instance_of(CreateUsersAndChildren).to receive(:call)
       task.invoke("spec/fixtures/valid_data.csv")
       task.reenable
     end

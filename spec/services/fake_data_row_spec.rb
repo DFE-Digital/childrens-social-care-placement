@@ -1,11 +1,11 @@
 require "rails_helper"
 
-RSpec.describe FakeFosterParentAndChild do
+RSpec.describe FakeDataRow do
   subject { described_class.new(2) }
 
   describe "#initialize" do
     it "creates an instance of the class" do
-      expect(subject).to be_an_instance_of(FakeFosterParentAndChild)
+      expect(subject).to be_an_instance_of(FakeDataRow)
     end
 
     it "sets the @number instance variable" do

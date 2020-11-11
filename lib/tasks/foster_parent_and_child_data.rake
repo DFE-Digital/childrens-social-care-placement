@@ -13,6 +13,6 @@ task :generate_foster_parent_and_child_data, [:file_path] => :environment do |_t
       puts "empty field at row #{index}"
       next
     end
-    FakeUsersAndChildData.new(row).call
+    CreateUsersAndChildren.new(row).call
   end
 end

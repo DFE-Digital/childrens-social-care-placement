@@ -1,4 +1,4 @@
-class FakeFosterParentAndChild
+class FakeDataRow
   def initialize(number_foster_parents)
     @number = number_foster_parents
   end

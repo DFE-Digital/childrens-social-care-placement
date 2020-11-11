@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe FakeUsersAndChildData do
+RSpec.describe CreateUsersAndChildren do
   let(:row) do
     {
       "first_name" => "Joe",
@@ -14,7 +14,7 @@ RSpec.describe FakeUsersAndChildData do
 
   describe "#initialize" do
     it "creates an instance of the class" do
-      expect(subject).to be_an_instance_of(FakeUsersAndChildData)
+      expect(subject).to be_an_instance_of(CreateUsersAndChildren)
     end
 
     it "sets the @row instance variable" do
