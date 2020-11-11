@@ -1,3 +1,6 @@
-notify: # no defaults, has to be set using ENVs
+# where the configuration is empty, it's expected that the environments
+# will always be required to set them using environment variables
+host:
+notify:
   api_key:
   view_template_id:

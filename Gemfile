@@ -17,11 +17,13 @@ gem "foreman"
 gem "puma", "~> 5.0"
 
 # frontend
+gem "govuk-components"
 gem "govuk_design_system_formbuilder"
 gem "webpacker"
 
 # other
 gem "canonical-rails"
+gem "faker"
 
 # fake data
 # gem "faker", "~> 1.6", ">= 1.6.6"
