@@ -22,6 +22,7 @@ gem "webpacker"
 
 # other
 gem "canonical-rails"
+gem "faker"
 
 group :development, :test do
   # debug
