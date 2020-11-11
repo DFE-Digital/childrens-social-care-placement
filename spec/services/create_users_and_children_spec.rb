@@ -12,16 +12,6 @@ RSpec.describe CreateUsersAndChildren do
   end
   subject { described_class.new(row) }
 
-  describe "#initialize" do
-    it "creates an instance of the class" do
-      expect(subject).to be_an_instance_of(CreateUsersAndChildren)
-    end
-
-    it "sets the @row instance variable" do
-      expect(subject.instance_variable_get("@row")).to eq(row)
-    end
-  end
-
   describe "#call" do
     it "creates a User, FosterParent and Child from valid data" do
       subject.call
