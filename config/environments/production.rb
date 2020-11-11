@@ -58,6 +58,7 @@ Rails.application.configure do
   config.action_mailer.notify_settings = {
     api_key: Settings.notify.api_key,
   }
+  config.action_mailer.default_url_options = { host: Settings.host }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
