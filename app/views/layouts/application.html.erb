@@ -37,9 +37,11 @@
               <li class="govuk-header__navigation-item govuk-header__navigation-item--active">
                 <%= link_to "Home", root_path, class: "govuk-header__link" %>
               </li>
-              <li class="govuk-header__navigation-item">
-                <%= link_to "Dashboard", dashboard_path, class: "govuk-header__link" %>
-              </li>
+              <% if user_signed_in? %>
+                <li class="govuk-header__navigation-item">
+                <%= link_to("Sign out", destroy_user_session_path, method: :delete, class: "govuk-header__link", data: { module: "govuk-button" }) %>
+                </li>
+              <% end %>
             </ul>
           </nav>
         </div>

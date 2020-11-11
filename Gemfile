@@ -17,6 +17,7 @@ gem "foreman"
 gem "puma", "~> 5.0"
 
 # frontend
+gem "govuk-components"
 gem "govuk_design_system_formbuilder"
 gem "webpacker"
 
