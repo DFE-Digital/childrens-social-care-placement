@@ -14,6 +14,14 @@ RSpec.describe AuthorisationContext do
       end
     end
 
+    context "when user has a matchmaker" do
+      let!(:matchmaker) { create(:matchmaker, user: user) }
+
+      it "returns the FosterParent model" do
+        expect(user_context.role_model).to eql(matchmaker)
+      end
+    end
+
     context "when user does not have any linked model" do
       it "returns the User model itself" do
         expect(user_context.role_model).to eql(user)
