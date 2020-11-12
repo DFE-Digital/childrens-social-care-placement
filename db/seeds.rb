@@ -53,7 +53,7 @@ placements = [
   },
 ]
 
-diary_logs = 10.times.map do |i|
+diary_entries = 10.times.map do |i|
   {
     placement_id: 301,
     note: Faker::Lorem.paragraph,
@@ -93,7 +93,7 @@ unless Rails.env.test?
     )
   end
 
-  diary_logs.each do |dl|
+  diary_entries.each do |dl|
     DiaryLog.create!(
       placement_id: dl[:placement_id],
       note: dl[:note],
