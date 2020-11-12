@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_21_130928) do
+ActiveRecord::Schema.define(version: 2020_11_12_094934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,12 +23,12 @@ ActiveRecord::Schema.define(version: 2020_10_21_130928) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "diary_logs", force: :cascade do |t|
+  create_table "diary_entries", force: :cascade do |t|
     t.bigint "placement_id", null: false
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["placement_id"], name: "index_diary_logs_on_placement_id"
+    t.index ["placement_id"], name: "index_diary_entries_on_placement_id"
   end
 
   create_table "foster_parents", force: :cascade do |t|
