@@ -13,6 +13,7 @@ module WizardSteps
   def show
     # byebug
     # current_step loaded via before_action
+    authorize @wizard
   end
 
   def update
@@ -34,8 +35,6 @@ private
 
   def load_wizard
     @wizard = wizard_class.new(wizard_store, params[:id])
-  rescue Wizard::UnknownStep
-    raise_not_found
   end
 
   def load_current_step

@@ -3,9 +3,6 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  get "/dashboards/foster_parent", to: "dashboards#foster_parent"
-  get "/dashboards/matchmaker", to: "dashboards#matchmaker"
-
   namespace :diary do
     resources :steps,
               only: %i[index show update] do
@@ -14,6 +11,9 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  get "/dashboards/foster_parent", to: "dashboards#foster_parent"
+  get "/dashboards/matchmaker", to: "dashboards#matchmaker"
 
   get "/pages/:page", to: "pages#show"
 

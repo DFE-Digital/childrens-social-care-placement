@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   default_form_builder GOVUKDesignSystemFormBuilder::FormBuilder
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
-  rescue_from Pundit::NotAuthorizedError, with: :not_found
+  rescue_from Pundit::NotAuthorizedError, with: :pundit_not_found
 
   before_action :authenticate_user!
   # rubocop:disable Rails/LexicallyScopedActionFilter
@@ -19,5 +19,9 @@ private
 
   def not_found
     render "errors/not_found", status: :not_found
+  end
+
+  def pundit_not_found
+    render "errors/pundit_not_found", status: :not_found
   end
 end

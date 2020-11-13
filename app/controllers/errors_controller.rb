@@ -12,6 +12,14 @@ class ErrorsController < ApplicationController
     end
   end
 
+  def pundit_not_found
+    respond_to do |format|
+      format.html { render status: :pundit_not_found }
+      format.json { render json: { error: "Resource not found" }, status: :not_found }
+      format.all { render status: :not_found, body: nil }
+    end
+  end
+
   def internal_server_error
     respond_to do |format|
       format.html { render status: :internal_server_error }
