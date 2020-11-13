@@ -1,5 +1,17 @@
 ## ChildrensSocialCarePlacement
 
+## ERD
+
+This is the simplified view of the current data model, generated automatically from ActiveRecord.
+
+![Current ERD](erd.svg)
+
+To re-generate and commit new version after schema change:
+
+```bash
+bundle exec erd --attributes=primary_keys,foreign_keys,inheritance --filetype=svg --title=""
+```
+
 ## Prerequisites
 
 - Ruby 2.7.1
