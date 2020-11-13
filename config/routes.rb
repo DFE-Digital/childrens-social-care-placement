@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :foster_parents, only: :show
 
-  namespace :diary_entry do
+  namespace :diary do
     resources :steps,
               only: %i[index show update] do
       collection do

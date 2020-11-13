@@ -1,12 +1,12 @@
-module DiaryEntry
+module Diary
   class StepsController < ApplicationController
     include WizardSteps
-    self.wizard_class = DiaryEntry::Wizard
+    self.wizard_class = Diary::Wizard
 
   private
 
     def step_path(step = params[:id])
-      diary_entry_step_path step
+      diary_step_path step
     end
     helper_method :step_path
 

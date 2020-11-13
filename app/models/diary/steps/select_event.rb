@@ -1,4 +1,4 @@
-module DiaryEntry::Steps
+module Diary::Steps
   class SelectEvent < Wizard::Step
     attribute :event, :string
 
