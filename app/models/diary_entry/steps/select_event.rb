@@ -4,7 +4,7 @@ module DiaryEntry::Steps
 
     EVENT_OPTIONS = { home_life: "home_life", school_life: "school_life", sports: "sports", physical_health: "physical_health", emotional_health: "emotional_health" }.freeze
 
-    validates :event, inclusion: { in: EVENT_OPTIONS.values, message: "Select an option from the list" }
+    validates :event, inclusion: { in: EVENT_OPTIONS.values }
 
     def reviewable_answers
       {
