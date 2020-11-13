@@ -5,6 +5,15 @@ Rails.application.routes.draw do
 
   resources :foster_parents, only: :show
 
+  namespace :diary_entry do
+    resources :steps,
+              only: %i[index show update] do
+      collection do
+        get :completed
+      end
+    end
+  end
+
   get "/pages/:page", to: "pages#show"
 
   get "/404", to: "errors#not_found", via: :all
