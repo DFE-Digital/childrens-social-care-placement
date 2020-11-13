@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :foster_parents, only: :show
+  get "/dashboards/foster_parent", to: "dashboards#foster_parent"
+  get "/dashboards/matchmaker", to: "dashboards#matchmaker"
 
   namespace :diary do
     resources :steps,

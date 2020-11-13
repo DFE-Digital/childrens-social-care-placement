@@ -6,6 +6,6 @@ class AuthorisationContext
   end
 
   def role_model
-    @role_model ||= @user.foster_parent || @user
+    @role_model ||= @user.foster_parent || @user.matchmaker || @user
   end
 end

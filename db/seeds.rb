@@ -25,6 +25,15 @@ foster_parents = [
   }
 end
 
+matchmakers = [
+  {
+    id: 401,
+    email: "p.frog@example.com",
+    first_name: "Paul",
+    last_name: "Frog",
+  },
+]
+
 children = [
   {
     id: 201,
@@ -74,6 +83,19 @@ unless Rails.env.test?
       id: fp[:id],
       first_name: fp[:first_name],
       last_name: fp[:last_name],
+    )
+  end
+
+  matchmakers.each do |m|
+    user = User.create!(
+      email: m[:email],
+      password: "test1234",
+    )
+    Matchmaker.create!(
+      user: user,
+      id: m[:id],
+      first_name: m[:first_name],
+      last_name: m[:last_name],
     )
   end
 
