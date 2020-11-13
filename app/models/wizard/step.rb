@@ -12,6 +12,10 @@ module Wizard
       def contains_personal_details?
         false
       end
+
+      def title
+        key.humanize
+      end
     end
 
     delegate :key, :contains_personal_details?, to: :class
