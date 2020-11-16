@@ -17,6 +17,8 @@ module WizardSteps
   end
 
   def update
+    # byebug
+    authorize @wizard
     @current_step.assign_attributes step_params
 
     if @current_step.save!
@@ -28,7 +30,8 @@ module WizardSteps
   end
 
   def completed
-    # current_step is loaded via before_action
+    # byebug
+    authorize Diary::Wizard
   end
 
 private

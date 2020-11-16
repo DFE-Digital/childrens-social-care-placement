@@ -1,8 +1,15 @@
 module Diary
   class WizardPolicy < ApplicationPolicy
     def show?
-      true
-      # @auth_context.role_model.is_a?(FosterParent)
+      @auth_context.role_model.is_a?(FosterParent)
+    end
+
+    def update?
+      show?
+    end
+
+    def completed?
+      show?
     end
   end
 end

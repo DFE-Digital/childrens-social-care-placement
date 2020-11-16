@@ -50,7 +50,11 @@ en:
   activemodel:
     errors:
       models:
-        diary_entry/steps/select_event:
+        diary/steps/select_event:
           attributes:
             event:
               inclusion: "Select an option from the list"
+        diary/steps/log_entry:
+          attributes:
+            entry:
+              too_short: "An entry must have at least %{count} characters"
