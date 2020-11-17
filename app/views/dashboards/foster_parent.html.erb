@@ -14,9 +14,13 @@
           </h3>
         </div>
         <div class="govuk-panel__body">
-          <button class="govuk-button" data-module="govuk-button">
-            Create a diary entry
-          </button>
+          <%= button_to "Create a diary entry",
+          diary_step_path(id: "select_event"), params: {
+            placement_id: placement.id
+          },
+          method: :get,
+          class: "govuk-button"
+          %>
         </div>
       </div>
     </div>
