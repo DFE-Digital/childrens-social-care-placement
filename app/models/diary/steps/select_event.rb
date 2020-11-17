@@ -8,11 +8,11 @@ module Diary::Steps
     validates :event, inclusion: { in: EVENT_OPTIONS.values }
     validates :placement_id, numericality: { only_integer: true }
 
-    # def reviewable_answers
-    #  {
-    #    "event_options" => event_options.capitalize,
-    #  }
-    # end
+    def reviewable_answers
+      {
+        "event" => event,
+      }
+    end
 
     # def skipped?
     # false
