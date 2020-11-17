@@ -65,6 +65,13 @@ jobs:
         id: sha
         run: echo ::set-output name=short::$(echo "${{ github.sha }}" | cut -c -7)
 
+      - name: Wait for previous runs to complete
+        uses: softprops/turnstyle@v1
+        env:
+          GITHUB_TOKEN: ${{ SECRETS.GITHUB_TOKEN }}
+        with:
+          continue-after-seconds: 180
+
       - name: Push to Docker Hub
         uses: docker/build-push-action@v1
         with:
