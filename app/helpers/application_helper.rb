@@ -13,4 +13,10 @@ module ApplicationHelper
 
     link_to text, path, **options
   end
+
+  def link_to_change_answer(step)
+    link_to(diary_step_path(step.key), { class: "govuk-link" }) do
+      "Change"
+    end
+  end
 end

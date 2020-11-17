@@ -3,7 +3,7 @@ module Diary::Steps
     attribute :event, :string
     attribute :placement_id # avoid typecasting to allow validation to work
 
-    EVENT_OPTIONS = { home_life: "home_life", school_life: "school_life", sports: "sports", physical_health: "physical_health", emotional_health: "emotional_health" }.freeze
+    EVENT_OPTIONS = { home_life: "Home life", school_life: "School life", sports: "Sports", physical_health: "Physical health", emotional_health: "Emotional health" }.freeze
 
     validates :event, inclusion: { in: EVENT_OPTIONS.values }
     validates :placement_id, numericality: { only_integer: true }
