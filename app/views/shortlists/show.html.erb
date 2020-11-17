@@ -28,6 +28,7 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full" id="foster_parent_<%= foster_parent.id %>">
         <h2 class="govuk-heading-m"><%= foster_parent.full_name %></h2>
+        <%= govuk_button_to("Place", placements_path, params: { placement: { foster_parent_id: foster_parent.id, child_id: @child.id } }) %>
       </div>
     </div>
   <% end %>

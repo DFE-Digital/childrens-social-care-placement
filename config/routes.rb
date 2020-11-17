@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get "/dashboards/matchmaker", to: "dashboards#matchmaker"
 
   resources :shortlists, only: :show
+  resources :placements, only: :create
 
   get "/pages/:page", to: "pages#show"
 

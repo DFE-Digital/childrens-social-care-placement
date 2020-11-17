@@ -25,10 +25,13 @@ RSpec.feature "Matchmaker sees available Foster Parents for a Child without a Pl
       end
     end
 
-    xscenario "Matchmaker selects an available Foster Parent from the Shortlist and creates a Placement" do
+    scenario "Matchmaker selects an available Foster Parent from the Shortlist and creates a Placement" do
       within("#foster_parent_#{available_foster_parents.second.id}") do
         click_on "Place"
       end
+
+      expect(page).to have_content("Placement created")
+      expect(page).to have_content(child.full_name)
     end
   end
 
