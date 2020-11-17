@@ -3,3 +3,13 @@
     <h1 class="govuk-heading-xl">Search and shortlist foster families</h1>
   </div>
 </div>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <%= render GovukComponent::StartNowButton.new(
+      text: 'Place a child',
+      href: new_child_path)
+    %>
+  </div>
+</div>
