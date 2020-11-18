@@ -5,6 +5,7 @@ RSpec.describe FosterParent, type: :model do
   it { is_expected.to have_many(:placements).inverse_of(:foster_parent) }
   it { is_expected.to have_many(:children).through(:placements) }
 
-  it { is_expected.to validate_presence_of(:first_name) }
-  it { is_expected.to validate_presence_of(:last_name) }
+  it_behaves_like "name identifiable model" do
+    let(:model_class) { described_class }
+  end
 end

@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   get "/dashboards/foster_parent", to: "dashboards#foster_parent"
   get "/dashboards/matchmaker", to: "dashboards#matchmaker"
 
+  resources :shortlists, only: :show
+  resources :placements, only: :create
+  resources :children, only: %i[new create]
+
   get "/pages/:page", to: "pages#show"
 
   get "/404", to: "errors#not_found", via: :all

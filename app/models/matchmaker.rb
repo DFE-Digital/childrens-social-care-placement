@@ -1,5 +1,5 @@
 class Matchmaker < ApplicationRecord
-  belongs_to :user, optional: false, inverse_of: :matchmaker
+  include NameIdentifiable
 
-  validates :first_name, :last_name, presence: true
+  belongs_to :user, optional: false, inverse_of: :matchmaker
 end
