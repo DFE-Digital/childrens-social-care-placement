@@ -1,6 +1,5 @@
 class Shortlist
-  attr_reader :id
-  attr_reader :child
+  attr_reader :id, :child
 
   def initialize(child:)
     @child = child
