@@ -20,7 +20,6 @@ Rails.application.routes.draw do
 
   resources :shortlists, only: :show
   resources :placements, only: :create
-  resources :children, only: %i[new create]
 
   get "/pages/:page", to: "pages#show"
 
