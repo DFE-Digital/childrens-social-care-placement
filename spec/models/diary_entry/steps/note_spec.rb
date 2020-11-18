@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Diary::Steps::LogEntry do
+RSpec.describe Diary::Steps::Note do
   include_context "wizard step"
   it_behaves_like "a wizard step"
 

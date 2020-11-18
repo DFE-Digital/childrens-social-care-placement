@@ -13,9 +13,5 @@ module Diary::Steps
         "event" => event,
       }
     end
-
-    # def skipped?
-    # false
-    # end
   end
 end

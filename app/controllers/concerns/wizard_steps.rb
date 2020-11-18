@@ -7,6 +7,7 @@ module WizardSteps
   end
 
   def index
+    skip_policy_scope
     redirect_to step_path(wizard_class.first_key)
   end
 

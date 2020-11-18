@@ -2,7 +2,7 @@ module Diary
   class Wizard < ::Wizard::Base
     self.steps = [
       Steps::SelectEvent,
-      Steps::LogEntry,
+      Steps::Note,
       Steps::ReviewAnswers,
     ].freeze
 
