@@ -12,13 +12,11 @@ module WizardSteps
   end
 
   def show
-    # byebug
     # current_step loaded via before_action
     authorize @wizard
   end
 
   def update
-    # byebug
     authorize @wizard
     @current_step.assign_attributes step_params
 
@@ -31,7 +29,6 @@ module WizardSteps
   end
 
   def completed
-    # byebug
     authorize Diary::Wizard
   end
 
