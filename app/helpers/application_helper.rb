@@ -9,9 +9,11 @@ module ApplicationHelper
   end
 
   def back_link(path = :back, text: "Back", **options)
-    options[:class] = "govuk-back-link #{options[:class]}".strip
-
-    link_to text, path, **options
+    render GovukComponent::BackLink.new(
+      text: text,
+      href: path,
+      **options,
+    )
   end
 
   def link_to_change_answer(step)

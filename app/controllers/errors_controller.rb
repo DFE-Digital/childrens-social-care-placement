@@ -14,9 +14,9 @@ class ErrorsController < ApplicationController
 
   def pundit_not_found
     respond_to do |format|
-      format.html { render status: :pundit_not_found }
-      format.json { render json: { error: "Resource not found" }, status: :not_found }
-      format.all { render status: :not_found, body: nil }
+      format.html { render status: :forbidden }
+      format.json { render json: { error: "Forbidden request" }, status: :forbidden }
+      format.all { render status: :forbidden, body: nil }
     end
   end
 

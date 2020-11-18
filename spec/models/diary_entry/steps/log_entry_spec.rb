@@ -9,6 +9,6 @@ RSpec.describe Diary::Steps::LogEntry do
   end
 
   describe "entry" do
-    it { should validate_length_of(:entry).is_at_least(10) }
+    it { is_expected.to validate_length_of(:entry).is_at_least(10) }
   end
 end

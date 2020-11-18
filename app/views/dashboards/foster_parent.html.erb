@@ -14,12 +14,11 @@
           </h3>
         </div>
         <div class="govuk-panel__body">
-          <%= button_to "Create a diary entry",
+          <%= govuk_button_to "Create a diary entry",
           diary_step_path(id: "select_event"), params: {
             placement_id: placement.id
           },
-          method: :get,
-          class: "govuk-button"
+          method: :get
           %>
         </div>
       </div>
