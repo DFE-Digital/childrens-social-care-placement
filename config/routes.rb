@@ -11,6 +11,9 @@ Rails.application.routes.draw do
       end
     end
   end
+  namespace :children_creation do
+    resources :steps, only: %i[show update]
+  end
 
   get "/dashboards/foster_parent", to: "dashboards#foster_parent"
   get "/dashboards/matchmaker", to: "dashboards#matchmaker"

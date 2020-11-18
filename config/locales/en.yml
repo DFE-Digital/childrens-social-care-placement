@@ -71,3 +71,6 @@ en:
       child:
         first_name: "First name"
         last_name: "Last name"
+      children_creation_steps_personal_details:
+        first_name: "First name"
+        last_name: "Last name"

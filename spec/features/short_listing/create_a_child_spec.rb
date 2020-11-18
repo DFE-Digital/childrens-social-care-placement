@@ -9,7 +9,8 @@ RSpec.feature "Matchmaker creates a new Child", type: :feature do
   background do
     sign_in(matchmaker.user)
 
-    visit(new_child_path)
+    visit(dashboards_matchmaker_path)
+    click_on "Place a child"
   end
 
   scenario "Matchmaker fills in the Child's details correctly, confirms creation and lands on the shortlist page" do
