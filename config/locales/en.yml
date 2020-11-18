@@ -40,3 +40,21 @@ en:
               blank: Please provide a valid email address
             password:
               blank: Please provide a password
+  select_events:
+    event_options:
+      home_life: home life
+      school_life: school life
+      sports: sports
+      physical_health: physical health
+      emotional_health: emotional health
+  activemodel:
+    errors:
+      models:
+        diary/steps/select_event:
+          attributes:
+            event:
+              inclusion: "Select an option from the list"
+        diary/steps/log_entry:
+          attributes:
+            entry:
+              too_short: "An entry must have at least %{count} characters"

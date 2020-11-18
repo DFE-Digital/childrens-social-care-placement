@@ -3,6 +3,15 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  namespace :diary do
+    resources :steps,
+              only: %i[index show update] do
+      collection do
+        get :completed
+      end
+    end
+  end
+
   get "/dashboards/foster_parent", to: "dashboards#foster_parent"
   get "/dashboards/matchmaker", to: "dashboards#matchmaker"
 

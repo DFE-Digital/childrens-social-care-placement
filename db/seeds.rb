@@ -116,7 +116,7 @@ unless Rails.env.test?
   end
 
   diary_entries.each do |dl|
-    DiaryLog.create!(
+    DiaryEntry.create!(
       placement_id: dl[:placement_id],
       note: dl[:note],
       created_at: dl[:created_at],

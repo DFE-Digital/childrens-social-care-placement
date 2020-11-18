@@ -1,0 +1,9 @@
+<%= render GovukComponent::SummaryList.new do |component| %>
+  <%= component.slot(
+    :row,
+    key: t("answers.#{step.key}.#{answer.first}"),
+    value: format_answer(answer.last),
+    action: link_to_change_answer(step),
+      )
+    %>
+<% end %>
