@@ -70,8 +70,17 @@ module Wizard
       active_steps.all?(&:valid?)
     end
 
-    def complete!
+    def complete?
       last_step? && valid?
+    end
+
+    def complete!
+      return unless complete?
+
+      do_complete.tap do |result|
+        @store.purge!
+        yield(result) if block_given?
+      end
     end
 
     def invalid_steps
@@ -112,5 +121,7 @@ module Wizard
     def active_steps
       all_steps.reject(&:skipped?)
     end
+
+    def do_complete; end
   end
 end

@@ -6,14 +6,8 @@ module Diary
       Steps::ReviewAnswers,
     ].freeze
 
-    def complete!
-      super.tap do |result|
-        break unless result
-
-        # save data here
-        create_diary_entry
-        @store.purge!
-      end
+    def do_complete
+      create_diary_entry
     end
 
   private

@@ -21,15 +21,18 @@ module WizardSteps
     @current_step.assign_attributes step_params
 
     if @current_step.save!
-      redirect_to next_step_path
-
-      # Needs to occur after redirect because it purges data after submission
-      @wizard.complete!
+      if @wizard.complete?
+        @wizard.complete! do |result|
+          on_complete(result)
+        end
+      else
+        redirect_to(next_step_path)
+      end
     end
   end
 
   def completed
-    authorize Diary::Wizard
+    authorize wizard_class
   end
 
 private
@@ -47,8 +50,6 @@ private
       step_path next_key
     elsif (invalid_step = @wizard.first_invalid_step)
       step_path invalid_step
-    else # all steps valid so completed
-      step_path :completed
     end
   end
 
@@ -60,5 +61,9 @@ private
 
   def step_param_key
     @current_step.class.model_name.param_key
+  end
+
+  def on_complete(_result)
+    redirect_to(action: :completed)
   end
 end

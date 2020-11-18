@@ -9,6 +9,5 @@ module Diary::Steps
         "note" => entry,
       }
     end
-
   end
 end
