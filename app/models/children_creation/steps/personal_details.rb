@@ -7,7 +7,9 @@ module ChildrenCreation
       validates :first_name, :last_name, presence: true
 
       def reviewable_answers
-        {}
+        {
+          "name" => "#{first_name} #{last_name}",
+        }
       end
     end
   end

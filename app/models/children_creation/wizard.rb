@@ -2,6 +2,7 @@ module ChildrenCreation
   class Wizard < ::Wizard::Base
     self.steps = [
       Steps::PersonalDetails,
+      Steps::ReviewAnswers,
     ].freeze
 
   private
