@@ -66,7 +66,7 @@ diary_entries = 10.times.map do |i|
   {
     placement_id: 301,
     event: Faker::Lorem.word,
-    note: Faker::Lorem.paragraph,
+    note: Faker::Lorem.paragraph(number: 2),
     created_at: i.days.ago,
     updated_at: i.days.ago,
   }
