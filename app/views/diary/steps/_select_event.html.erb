@@ -6,4 +6,4 @@
   <%= f.govuk_radio_button :event, options[:emotional_health],  label: { text: t("select_event.event_options.emotional_health") }, link_errors: true %>
 <% end %>
 
-<%= f.text_field :placement_id, pattern: "[0-9]*", inputmode: "numeric", readonly: true, hidden: false, value: params[:placement_id] || f.object.placement_id%>
+<%= f.text_field :placement_id, pattern: "[0-9]*", inputmode: "numeric", readonly: true, hidden: true, value: params[:placement_id] || f.object.placement_id%>
