@@ -65,6 +65,7 @@ placements = [
 diary_entries = 10.times.map do |i|
   {
     placement_id: 301,
+    event: Faker::Lorem.word,
     note: Faker::Lorem.paragraph,
     created_at: i.days.ago,
     updated_at: i.days.ago,
@@ -115,12 +116,13 @@ unless Rails.env.test?
     )
   end
 
-  diary_entries.each do |dl|
+  diary_entries.each do |de|
     DiaryEntry.create!(
-      placement_id: dl[:placement_id],
-      note: dl[:note],
-      created_at: dl[:created_at],
-      updated_at: dl[:updated_at],
+      placement_id: de[:placement_id],
+      note: de[:note],
+      event: de[:event],
+      created_at: de[:created_at],
+      updated_at: de[:updated_at],
     )
   end
 end

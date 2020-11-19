@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :shortlists, only: :show
   resources :placements, only: :create do
     resources :diary_entries,
-              only: :index do
+              only: %i[index show] do
     end
     namespace :diary do
       resources :steps,

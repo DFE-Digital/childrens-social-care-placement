@@ -1,0 +1,24 @@
+<%= render GovukComponent::SummaryList.new do |component| %>%
+  <%= component.slot(
+    :row,
+    key: "Date",
+    value: entry.created_at.strftime("%d/%m/%Y"),
+    action: ''
+  )
+%>
+<%= component.slot(
+    :row,
+    key: "Event",
+    value: entry.event,
+    action: ''
+  )
+%>
+<%= component.slot(
+    :row,
+    key: "Note",
+    value: entry.note.truncate(100,separator: " "),
+    action: link_to("View entry", placement_diary_entry_path(id: entry.id))
+  )
+%>
+<% end %>
+<br><br>

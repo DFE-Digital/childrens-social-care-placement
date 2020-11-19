@@ -1,0 +1,16 @@
+<div class="govuk-width-container">
+
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds-from-desktop">
+
+        <h1 class="govuk-heading-l">Foster logs for <%= @placement.child.full_name %></h1>
+
+          <% @diary_entries.each do |entry| %>
+            <%= render partial: "foster_logs", :locals => { entry: entry } %>
+          <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
