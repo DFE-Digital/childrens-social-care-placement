@@ -7,8 +7,8 @@ module ApplicationHelper
     )
   end
 
-  def link_to_change_answer(step)
-    link_to(diary_step_path(step.key), { class: "govuk-link" }) do
+  def link_to_change_answer(placement_id, step)
+    link_to(placement_diary_step_path(placement_id, step.key), { class: "govuk-link" }) do
       "Change"
     end
   end

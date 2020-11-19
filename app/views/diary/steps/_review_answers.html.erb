@@ -7,7 +7,7 @@
         <h1 class="govuk-heading-l">Review your diary entry</h1>
 
           <% f.object.answers_by_step.each do |step, answers| %>
-            <%= render partial: "diary/steps/review_answers/answer", collection: answers, :locals => { step: step } %>
+            <%= render partial: "diary/steps/review_answers/answer", collection: answers, :locals => { placement_id: params[:placement_id], step: step } %>
           <% end %>
 
       </div>

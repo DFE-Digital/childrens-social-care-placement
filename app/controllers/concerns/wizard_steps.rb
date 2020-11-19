@@ -21,12 +21,12 @@ module WizardSteps
 
     if current_step.save!
       if wizard.complete?
-        wizard.complete! do |result|
-          on_complete(result)
-        end
+        wizard.complete! { |result| on_complete(result) }
       else
         redirect_to(next_step_path)
       end
+    else
+      render :show
     end
   end
 
