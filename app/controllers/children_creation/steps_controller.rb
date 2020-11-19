@@ -9,14 +9,8 @@ module ChildrenCreation
       children_creation_step_path(step)
     end
 
-    helper_method :step_path
-
-    def wizard_store
-      ::Wizard::Store.new session_store
-    end
-
-    def session_store
-      session[:children_creation] ||= {}
+    def wizard_store_key
+      :children_creation
     end
 
     def on_complete(child)

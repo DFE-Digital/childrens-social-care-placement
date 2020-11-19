@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :placements, only: :create do
     namespace :diary do
       resources :steps,
-        only: %i[index show update] do
+                only: %i[index show update] do
         collection do
           get :completed
         end

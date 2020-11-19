@@ -3,7 +3,7 @@ module WizardSteps
 
   included do
     class_attribute :wizard_class
-    helper_method :wizard, :current_step
+    helper_method :wizard, :current_step, :step_path
   end
 
   def index
@@ -37,7 +37,7 @@ module WizardSteps
 private
 
   def wizard
-    @wizard ||= wizard_class.new(wizard_store, params[:id])
+    @wizard ||= wizard_class.new(wizard_store, params[:id], context: wizard_context)
   end
 
   def current_step
@@ -52,6 +52,10 @@ private
     end
   end
 
+  def step_path(step = params[:id])
+    raise(NotImplementedError)
+  end
+
   def step_params
     return {} unless params.key?(step_param_key)
 
@@ -60,6 +64,22 @@ private
 
   def step_param_key
     current_step.class.model_name.param_key
+  end
+
+  def wizard_store
+    ::Wizard::Store.new(session_store)
+  end
+
+  def session_store
+    session[wizard_store_key] ||= {}
+  end
+
+  def wizard_context
+    {}
+  end
+
+  def wizard_store_key
+    raise(NotImplementedError)
   end
 
   def on_complete(_result)

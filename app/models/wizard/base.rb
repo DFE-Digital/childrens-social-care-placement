@@ -30,11 +30,11 @@ module Wizard
     delegate :can_proceed?, to: :find_current_step
     attr_reader :current_key
 
-    def initialize(store, current_key)
-      @store = store
-
+    def initialize(store, current_key, context: {})
       raise(UnknownStep) unless step_keys.include?(current_key)
 
+      @store = store
+      @context = context
       @current_key = current_key
     end
 
