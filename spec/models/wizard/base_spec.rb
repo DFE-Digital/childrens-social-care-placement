@@ -146,18 +146,69 @@ RSpec.describe Wizard::Base do
     end
   end
 
-  describe "complete!" do
-    subject { wizardclass.new wizardstore, "postcode" }
-    before { allow(subject).to receive(:valid?).and_return steps_valid }
+  describe "#complete?" do
+    subject(:complete?) { wizard.complete? }
 
-    context "when valid" do
-      let(:steps_valid) { true }
-      it { is_expected.to have_attributes complete!: true }
+    let(:wizard) { wizardclass.new(wizardstore, step) }
+    let(:backingstore) { { "name" => "My Name", "age" => 13, "postcode" => "MP11PM" } }
+    let(:step) { "postcode" }
+
+    context "when on the last step and all the data is valid" do
+      it { is_expected.to be true }
     end
 
-    context "when invalid" do
-      let(:steps_valid) { false }
-      it { is_expected.to have_attributes complete!: false }
+    context "when on the last step but not all the data are valid" do
+      let(:backingstore) { { "name" => "My Name" } }
+
+      it { is_expected.to be false }
+    end
+
+    context "when not on the last step" do
+      let(:step) { "age" }
+
+      it { is_expected.to be false }
+    end
+  end
+
+  describe "#complete!" do
+    class CompleteTestWizard < TestWizard
+      def do_complete
+        "DO_COMPLETE_RAN"
+      end
+    end
+
+    let(:wizard) { CompleteTestWizard.new(wizardstore, step) }
+    let(:backingstore) { { "name" => "My Name", "age" => 13, "postcode" => "MP11PM" } }
+    let(:step) { "postcode" }
+
+    before do
+      allow(wizardstore).to receive(:purge!)
+    end
+
+    context "when on the last step and all the data is valid" do
+      it "purges the store" do
+        wizard.complete!
+
+        expect(wizardstore).to have_received(:purge!)
+      end
+
+      it "calls the #do_result method and yields the result of its call" do
+        expect { |b| wizard.complete!(&b) }.to yield_with_args("DO_COMPLETE_RAN")
+      end
+    end
+
+    context "when not on the last step (or when the data is invalid)" do
+      let(:step) { "age" }
+
+      it "does not purge the store" do
+        wizard.complete!
+
+        expect(wizardstore).not_to have_received(:purge!)
+      end
+
+      it "calls does not call the #do_result method" do
+        expect { |b| wizard.complete!(&b) }.not_to yield_with_args
+      end
     end
   end
 

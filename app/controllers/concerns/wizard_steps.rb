@@ -3,7 +3,7 @@ module WizardSteps
 
   included do
     class_attribute :wizard_class
-    before_action :load_wizard, :load_current_step, except: %i[index completed]
+    helper_method :wizard, :current_step
   end
 
   def index
@@ -12,53 +12,57 @@ module WizardSteps
   end
 
   def show
-    # current_step loaded via before_action
-    authorize @wizard
+    authorize wizard
   end
 
   def update
-    authorize @wizard
-    @current_step.assign_attributes step_params
+    authorize wizard
+    current_step.assign_attributes step_params
 
-    if @current_step.save!
-      redirect_to next_step_path
-
-      # Needs to occur after redirect because it purges data after submission
-      @wizard.complete!
+    if current_step.save!
+      if wizard.complete?
+        wizard.complete! do |result|
+          on_complete(result)
+        end
+      else
+        redirect_to(next_step_path)
+      end
     end
   end
 
   def completed
-    authorize Diary::Wizard
+    authorize wizard_class
   end
 
 private
 
-  def load_wizard
-    @wizard = wizard_class.new(wizard_store, params[:id])
+  def wizard
+    @wizard ||= wizard_class.new(wizard_store, params[:id])
   end
 
-  def load_current_step
-    @current_step = @wizard.find_current_step
+  def current_step
+    @current_step ||= wizard.find_current_step
   end
 
   def next_step_path
-    if (next_key = @wizard.next_key)
+    if (next_key = wizard.next_key)
       step_path next_key
-    elsif (invalid_step = @wizard.first_invalid_step)
+    elsif (invalid_step = wizard.first_invalid_step)
       step_path invalid_step
-    else # all steps valid so completed
-      step_path :completed
     end
   end
 
   def step_params
     return {} unless params.key?(step_param_key)
 
-    params.require(step_param_key).permit @current_step.attributes.keys
+    params.require(step_param_key).permit current_step.attributes.keys
   end
 
   def step_param_key
-    @current_step.class.model_name.param_key
+    current_step.class.model_name.param_key
+  end
+
+  def on_complete(_result)
+    redirect_to(action: :completed)
   end
 end
