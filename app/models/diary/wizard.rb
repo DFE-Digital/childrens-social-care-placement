@@ -14,7 +14,7 @@ module Diary
 
     def create_diary_entry
       DiaryEntry.create!(
-        placement_id: @store.data["placement_id"],
+        placement_id: @context["placement_id"],
         event: @store.data["event"],
         note: @store.data["entry"],
       )

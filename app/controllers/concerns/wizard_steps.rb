@@ -37,7 +37,7 @@ module WizardSteps
 private
 
   def wizard
-    @wizard ||= wizard_class.new(wizard_store, params[:id])
+    @wizard ||= wizard_class.new(wizard_store, params[:id], context: wizard_context)
   end
 
   def current_step
@@ -72,6 +72,10 @@ private
 
   def session_store
     session[wizard_store_key] ||= {}
+  end
+
+  def wizard_context
+    {}
   end
 
   def wizard_store_key

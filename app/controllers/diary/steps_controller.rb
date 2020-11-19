@@ -13,6 +13,12 @@ module Diary
       :diary
     end
 
+    def wizard_context
+      {
+        "placement_id" => params[:placement_id],
+      }
+    end
+
     def set_page_title
       @page_title = "#{@current_step.title.downcase} step"
     end
