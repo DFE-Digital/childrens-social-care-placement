@@ -3,7 +3,7 @@
     :row,
     key: t("answers.#{step.key}.#{answer.first}"),
     value: format_answer(answer.last),
-    action: link_to_change_answer(step),
+    action: link_to_change_answer(placement_id, step),
       )
     %>
 <% end %>

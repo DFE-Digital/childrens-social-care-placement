@@ -6,7 +6,7 @@ module Diary
   private
 
     def step_path(step = params[:id])
-      diary_step_path step
+      placement_diary_step_path(placement_id: params[:placement_id], id: step)
     end
     helper_method :step_path
 

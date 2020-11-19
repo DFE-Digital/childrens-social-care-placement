@@ -3,14 +3,6 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  namespace :diary do
-    resources :steps,
-              only: %i[index show update] do
-      collection do
-        get :completed
-      end
-    end
-  end
   namespace :children_creation do
     resources :steps, only: %i[show update]
   end
@@ -19,7 +11,16 @@ Rails.application.routes.draw do
   get "/dashboards/matchmaker", to: "dashboards#matchmaker"
 
   resources :shortlists, only: :show
-  resources :placements, only: :create
+  resources :placements, only: :create do
+    namespace :diary do
+      resources :steps,
+        only: %i[index show update] do
+        collection do
+          get :completed
+        end
+      end
+    end
+  end
 
   get "/pages/:page", to: "pages#show"
 

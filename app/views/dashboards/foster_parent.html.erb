@@ -15,9 +15,7 @@
         </div>
         <div class="govuk-panel__body">
           <%= govuk_button_to "Create a diary entry",
-          diary_step_path(id: "select_event"), params: {
-            placement_id: placement.id
-          },
+            placement_diary_step_path(placement_id: placement.id, id: "select_event"),
           method: :get
           %>
         </div>
