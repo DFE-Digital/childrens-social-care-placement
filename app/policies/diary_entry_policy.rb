@@ -1,6 +1,6 @@
 class DiaryEntryPolicy < ApplicationPolicy
   def show?
-    @auth_context.role_model.is_a?(FosterParent) && valid_placement
+    @auth_context.role_model.is_a?(FosterParent) && valid_placement?
   end
 
   class Scope < Scope
@@ -13,7 +13,7 @@ class DiaryEntryPolicy < ApplicationPolicy
 
 private
 
-  def valid_placement
+  def valid_placement?
     @auth_context.role_model.placements.pluck(:id).include? @record.placement_id
   end
 end
