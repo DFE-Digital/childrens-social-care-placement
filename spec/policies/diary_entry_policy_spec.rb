@@ -33,17 +33,10 @@ RSpec.describe DiaryEntryPolicy, type: :policy do
     end
   end
 
-  describe "#policy_scope" do
+  describe "policy_scope" do
     context "foster_parent with placement" do
       it "allows a subset limited by placement" do
         expect(scope.to_a).to eq [record, record1]
-      end
-    end
-
-    context "foster_parent with another placement" do
-      let(:auth_context) { AuthorisationContext.new(another_user) }
-      it "allows a subset limited by another placement" do
-        expect(scope.to_a).to eq [record2]
       end
     end
   end
