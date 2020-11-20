@@ -1,5 +1,4 @@
 require "rails_helper"
-require "pundit/rspec"
 
 RSpec.describe DiaryEntryPolicy, type: :policy do
   subject(:policy) { described_class.new(auth_context, record) }
