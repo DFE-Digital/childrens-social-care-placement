@@ -6,7 +6,6 @@ RSpec.describe Diary::Steps::SelectEvent do
 
   context "attributes" do
     it { is_expected.to respond_to :event }
-    it { is_expected.to respond_to :placement_id }
   end
 
   describe "event_options" do
