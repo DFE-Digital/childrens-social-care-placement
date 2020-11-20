@@ -18,6 +18,10 @@
             placement_diary_step_path(placement_id: placement.id, id: "select_event"),
           method: :get
           %>
+          <%= govuk_button_to "View diary entries",
+            placement_diary_entries_path(placement_id: placement.id),
+          method: :get
+          %>
         </div>
       </div>
     </div>
