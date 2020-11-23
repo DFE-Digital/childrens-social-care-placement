@@ -65,9 +65,22 @@ en:
         blank: "Enter the first name"
       last_name:
         blank: "Enter the last name"
+      date_of_birth:
+        blank: "Enter the date of birth"
 
   helpers:
     label:
       children_creation_steps_personal_details:
         first_name: "First name"
         last_name: "Last name"
+    legend:
+      children_creation_steps_personal_details:
+        date_of_birth: "Date of birth"
+    hint:
+      children_creation_steps_personal_details:
+        date_of_birth: "For example, 31 3 1980"
+
+  answers:
+    personal_details:
+      name: "Name"
+      date_of_birth: "Date of birth"
