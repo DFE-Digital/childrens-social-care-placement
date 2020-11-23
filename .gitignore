@@ -11,6 +11,7 @@
 /log/*
 /tmp/*
 /spec/examples.txt
+coverage/*
 
 # Ignore uploaded files in development
 /storage/*
@@ -29,8 +30,6 @@ yarn-debug.log*
 
 .env
 *.log
-
-/spec/examples.txt
 
 config/settings.local.yml
 config/settings/*.local.yml
