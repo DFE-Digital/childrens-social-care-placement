@@ -39,11 +39,13 @@ children = [
     id: 201,
     first_name: "Fredrick",
     last_name: "Gutmann",
+    date_of_birth: "2010-10-10",
   },
   {
     id: 202,
     first_name: "Yasmin",
     last_name: "Kub",
+    date_of_birth: "2011-11-11",
   },
 ]
 (203..210).each do |id|
@@ -51,6 +53,7 @@ children = [
     id: id,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
+    date_of_birth: Faker::Date.birthday(min_age: 7, max_age: 15),
   }
 end
 
@@ -105,6 +108,7 @@ unless Rails.env.test?
       id: ch[:id],
       first_name: ch[:first_name],
       last_name: ch[:last_name],
+      date_of_birth: ch[:date_of_birth],
     )
   end
 
