@@ -19,6 +19,7 @@ class CreateUsersAndChildren
       foster_parent.children << Child.create_or_find_by!(
         first_name: @row["child_first_name"],
         last_name: @row["child_last_name"],
+        date_of_birth: @row["child_date_of_birth"],
       )
     end
   end

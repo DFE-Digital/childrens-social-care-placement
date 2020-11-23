@@ -11,6 +11,7 @@ module ChildrenCreation
       Child.create!(
         first_name: @store.data["first_name"],
         last_name: @store.data["last_name"],
+        date_of_birth: @store.data["date_of_birth"],
       )
     end
   end
