@@ -25,6 +25,7 @@ RSpec.describe FakeDataRow do
         email: "jo@bloggs.com",
         child_first_name: "tom",
         child_last_name: "mulligan",
+        child_date_of_birth: "2010-11-07",
       }
       allow(subject).to receive(:foster_parent_and_child_hash).and_return(stubbed_hash)
       subject.call { |x| a = x }
@@ -38,7 +39,7 @@ RSpec.describe FakeDataRow do
     end
 
     it "has 5 key-value pairs" do
-      expect(subject.send(:foster_parent_and_child_hash).length).to eq(5)
+      expect(subject.send(:foster_parent_and_child_hash).length).to eq(6)
     end
   end
 end

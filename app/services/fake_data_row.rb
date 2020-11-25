@@ -18,6 +18,7 @@ private
       email: Faker::Internet.email,
       child_first_name: Faker::Name.first_name,
       child_last_name: Faker::Name.last_name,
+      child_date_of_birth: Faker::Date.birthday(min_age: 7, max_age: 15),
     }
   end
 end
