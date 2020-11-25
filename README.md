@@ -96,3 +96,5 @@ As a work around, .cfignore file is updated to include /node_modules/.cache/*
 2. Enter the following:
   `cd /<WORKDIR>`
   `/usr/local/bin/bundle exec rails console`
+
+diff to reinstall db
