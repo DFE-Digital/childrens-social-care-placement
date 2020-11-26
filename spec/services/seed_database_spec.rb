@@ -6,6 +6,7 @@ RSpec.describe SeedDatabase do
 
   describe "#call" do
     it "seeds the database from the SeedData class" do
+      expect(User.count).to eq 0
       subject.call
       expect(User.count).to eq 11
       expect(User.first.email).to eq("r.johnston@example.com")
