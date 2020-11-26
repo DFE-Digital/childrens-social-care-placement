@@ -1,8 +1,8 @@
 class SeedDatabase
   # takes data from seed_data.rb
 
-  def initialize(seed_data)
-    @seed_data = seed_data
+  def initialize
+    @seed_data = SeedData.new
   end
 
   def call
@@ -24,7 +24,7 @@ private
   end
 
   def hash_name(model)
-    hash_name = "@seed_data." + model.to_s.pluralize.underscore
+    hash_name = "@seed_data." + model.name.pluralize.underscore
     instance_eval hash_name
   end
 

@@ -1,8 +1,7 @@
 require "rails_helper"
 
 RSpec.describe SeedDatabase do
-  seed_data = SeedData.new
-  subject { described_class.new(seed_data) }
+  subject { described_class.new }
 
   describe "#call" do
     it "seeds the database from the SeedData class" do
