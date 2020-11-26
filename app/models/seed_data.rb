@@ -1,5 +1,6 @@
 class SeedData
   attr_reader :foster_parents, :matchmakers, :children, :placements, :diary_entries
+  TABLES = %w[users foster_parents matchmakers children placements diary_entries].freeze
   DUAL_SEEDS = [FosterParent, Matchmaker].freeze
   SINGLE_SEEDS = [Child, Placement, DiaryEntry].freeze
 

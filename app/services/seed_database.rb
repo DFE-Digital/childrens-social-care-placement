@@ -18,8 +18,7 @@ class SeedDatabase
 private
 
   def truncate_tables
-    tables = %w[users foster_parents matchmakers children placements diary_entries]
-    tables.each do |table|
+    ::SeedData::TABLES.each do |table|
       ActiveRecord::Base.connection.execute("TRUNCATE #{table}")
     end
   end
