@@ -40,6 +40,11 @@ en:
               blank: "Please provide a valid email address"
             password:
               blank: "Please provide a password"
+        placement_need:
+          attributes:
+            base:
+              options_blank: "Select an option from the list"
+
   select_events:
     event_options:
       home_life: home life
