@@ -37,7 +37,7 @@ RSpec.feature "User can start using the system by signing in and being redirecte
       fill_in "Password", with: user.password
       click_on "Sign in"
 
-      expect(page).to have_content("Search and shortlist foster families")
+      expect(page).to have_content("Child's placements with foster families")
     end
 
     scenario "User is already signed in, clicks Start on the homepage and is redirected to their dashboard page" do
@@ -47,7 +47,7 @@ RSpec.feature "User can start using the system by signing in and being redirecte
 
       click_on "Start"
 
-      expect(page).to have_content("Search and shortlist foster families")
+      expect(page).to have_content("Child's placements with foster families")
     end
   end
 
