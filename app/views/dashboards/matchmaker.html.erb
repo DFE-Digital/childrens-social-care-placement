@@ -1,15 +1,12 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-    <h1 class="govuk-heading-xl">Search and shortlist foster families</h1>
+    <h1 class="govuk-heading-xl">Child's placements with foster families</h1>
   </div>
 </div>
 
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-    <%= render GovukComponent::StartNowButton.new(
-      text: 'Place a child',
-      href: children_creation_step_path(:personal_details))
-    %>
+    <%= govuk_button_to("Find a child's placement",children_creation_step_path(:personal_details), method: :get) %>
   </div>
 </div>
