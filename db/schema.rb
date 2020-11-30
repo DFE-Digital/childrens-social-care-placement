@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2020_11_27_094738) do
     t.index ["user_id"], name: "index_matchmakers_on_user_id"
   end
 
-  create_table "placement_need_profiles", force: :cascade do |t|
+  create_table "placement_needs", force: :cascade do |t|
     t.bigint "child_id"
     t.date "placement_date"
     t.boolean "long_term", default: false, null: false
@@ -64,14 +64,15 @@ ActiveRecord::Schema.define(version: 2020_11_27_094738) do
     t.boolean "remand", default: false, null: false
     t.boolean "specialist_theraputic", default: false, null: false
     t.boolean "parent_and_child", default: false, null: false
-    t.string "addr1"
-    t.string "addr2"
+    t.string "address_line_1"
+    t.string "address_line_2"
     t.string "town"
     t.string "county"
     t.string "postcode"
+    t.integer "location_radius"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["child_id"], name: "index_placement_need_profiles_on_child_id"
+    t.index ["child_id"], name: "index_placement_needs_on_child_id"
   end
 
   create_table "placements", force: :cascade do |t|
