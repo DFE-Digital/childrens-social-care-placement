@@ -7,5 +7,5 @@ class Child < ApplicationRecord
 
   enum gender: { male: 1, female: 2, other: 3 }
 
-  validates :date_of_birth, presence: true
+  validates :date_of_birth, :gender, presence: true
 end

@@ -20,6 +20,7 @@ class CreateUsersAndChildren
         first_name: @row["child_first_name"],
         last_name: @row["child_last_name"],
         date_of_birth: @row["child_date_of_birth"],
+        gender: @row["child_gender"],
       )
     end
   end
