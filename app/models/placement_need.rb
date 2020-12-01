@@ -15,7 +15,7 @@ class PlacementNeed < ApplicationRecord
   validates :placement_date, presence: true
   validate :date_in_future
 
-  validates :postcode, format: { with: /^([A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}|GIR ?0A{2})$/i, multiline: true, message: "Enter a valid postcode" }
+  validates :postcode, format: { with: /^([A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}|GIR ?0A{2})$/i, multiline: true }
 
   def date_in_future
     if placement_date.present? && placement_date < Time.zone.today
