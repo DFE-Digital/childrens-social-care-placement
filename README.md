@@ -97,7 +97,7 @@ As a work around, .cfignore file is updated to include /node_modules/.cache/*
   `cd /<WORKDIR>`
   `/usr/local/bin/bundle exec rails console`
 
-## Rake commands on CloufFoundry
+## Rake commands on CloudFoundry
 
 1. Access rails console as above
 2. Enter the following:
