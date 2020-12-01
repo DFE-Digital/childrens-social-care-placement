@@ -96,3 +96,11 @@ As a work around, .cfignore file is updated to include /node_modules/.cache/*
 2. Enter the following:
   `cd /<WORKDIR>`
   `/usr/local/bin/bundle exec rails console`
+
+## Rake commands on CloufFoundry
+
+1. Access rails console as above
+2. Enter the following:
+  `require 'rake'`
+  `Rails.application.load_tasks`
+  `Rake::Task['task_name'].invoke`
