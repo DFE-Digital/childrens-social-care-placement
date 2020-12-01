@@ -3,3 +3,4 @@
 <%= f.govuk_text_field :first_name %>
 <%= f.govuk_text_field :last_name %>
 <%= f.govuk_date_field :date_of_birth, date_of_birth: true %>
+<%= f.govuk_collection_radio_buttons :gender, Child.genders, :second %>

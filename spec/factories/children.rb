@@ -3,5 +3,6 @@ FactoryBot.define do
     first_name { "Rosie" }
     last_name { "Child" }
     date_of_birth { Date.parse("2010-10-10") }
+    gender { "female" }
   end
 end
