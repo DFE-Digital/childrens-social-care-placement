@@ -1,20 +1,12 @@
 require "rails_helper"
 
 RSpec.describe PlacementNeed, type: :model do
-  let(:placement_need) { build(:placement_need) }
-  let(:emergency) { build(:placement_need, emergency: true) }
+  include_context "sanitize fields", %i[postcode]
 
   it { is_expected.to belong_to(:child).required.inverse_of(:placement_need) }
 
-  describe "options validation" do
-    it "is invalid without any options" do
-      expect(placement_need).to be_invalid
-      expect(placement_need.errors[:base]).to include("Select an option from the list")
-    end
-
-    it "is valid with an option" do
-      expect(emergency).to be_valid
-    end
+  it_behaves_like "boolean options list" do
+    let(:model_class) { described_class }
   end
 
   describe "#placement_date" do
