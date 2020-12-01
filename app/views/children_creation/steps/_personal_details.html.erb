@@ -15,4 +15,4 @@
 
 <%= f.govuk_date_field :date_of_birth, date_of_birth: true %>
 
-<%= f.govuk_collection_radio_buttons :gender, Child.genders, :second %>
+<%= f.govuk_collection_radio_buttons :gender, Child.genders.keys.map { |g| [g, I18n.t(g, scope: "enums.gender")] }, :first, :second %>

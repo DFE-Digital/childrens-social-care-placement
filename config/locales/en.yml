@@ -75,15 +75,18 @@ en:
       gender:
         blank: "Select the gender"
 
+  enums:
+    gender:
+      male: "Male"
+      female: "Female"
+      other: "Other gender"
+
   helpers:
     label:
       children_creation_steps_personal_details:
         first_name: "First name"
         last_name: "Last name"
-        gender_options:
-          "1": "Male"
-          "2": "Female"
-          "3": "Other gender"
+
     legend:
       children_creation_steps_personal_details:
         date_of_birth: "Date of birth"
