@@ -6,6 +6,8 @@ RSpec.describe Child, type: :model do
   it { is_expected.to have_many(:placements).inverse_of(:child) }
   it { is_expected.to have_many(:foster_parents).through(:placements) }
 
+  it { is_expected.to define_enum_for(:gender).with_values(male: 1, female: 2, other: 3) }
+
   it { is_expected.to validate_presence_of(:date_of_birth) }
 
   it_behaves_like "name identifiable model" do
