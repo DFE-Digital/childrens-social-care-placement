@@ -71,17 +71,16 @@ en:
           attributes:
             entry:
               too_short: "An entry must have at least %{count} characters"
-
-  errors:
-    attributes:
-      first_name:
-        blank: "Enter the first name"
-      last_name:
-        blank: "Enter the last name"
-      date_of_birth:
-        blank: "Enter the date of birth"
-      gender:
-        blank: "Select the gender"
+        children_creation/steps/personal_details:
+          attributes:
+            first_name:
+              blank: "Enter the child's first name"
+            last_name:
+              blank: "Enter the child's last name"
+            date_of_birth:
+              blank: "Enter the child's date of birth"
+            gender:
+              blank: "Select the child's gender"
 
   enums:
     gender:
