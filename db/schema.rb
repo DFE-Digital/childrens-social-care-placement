@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_123803) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.date "date_of_birth"
+    t.integer "gender"
   end
 
   create_table "diary_entries", force: :cascade do |t|

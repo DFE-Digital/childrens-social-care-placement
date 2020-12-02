@@ -9,6 +9,7 @@ RSpec.describe CreateUsersAndChildren do
       "child_first_name" => "Tom",
       "child_last_name" => "Mulligan",
       "child_date_of_birth" => "2010-10-10",
+      "child_gender" => "other",
     }
   end
   subject { described_class.new(row) }
