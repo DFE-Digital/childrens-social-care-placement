@@ -42,12 +42,14 @@ class SeedData
         first_name: "Fredrick",
         last_name: "Gutmann",
         date_of_birth: "2010-10-10",
+        gender: "male",
       },
       {
         id: 202,
         first_name: "Yasmin",
         last_name: "Kub",
         date_of_birth: "2011-11-11",
+        gender: "female",
       },
     ]
     (203..210).each do |id|
@@ -56,6 +58,7 @@ class SeedData
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
         date_of_birth: Faker::Date.birthday(min_age: 7, max_age: 15),
+        gender: %i[male female other].sample,
       }
     end
 

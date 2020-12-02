@@ -19,6 +19,7 @@ RSpec.feature "Matchmaker creates a new Child", type: :feature do
     fill_in "Day", with: child_attributes[:date_of_birth].day
     fill_in "Month", with: child_attributes[:date_of_birth].month
     fill_in "Year", with: child_attributes[:date_of_birth].year
+    choose "Other gender"
     click_on "Continue"
 
     expect(page).to have_content("Check this is the child you want to find a foster family for?")
@@ -36,6 +37,7 @@ RSpec.feature "Matchmaker creates a new Child", type: :feature do
     expect(page).to have_content("There is a problem")
     expect(page).to have_content("Enter the first name")
     expect(page).to have_content("Enter the date of birth")
+    expect(page).to have_content("Select the gender")
   end
 
   scenario "Matchmaker fills in the Child's details correctly, decides to change name and lands on the form again" do
@@ -44,6 +46,7 @@ RSpec.feature "Matchmaker creates a new Child", type: :feature do
     fill_in "Day", with: child_attributes[:date_of_birth].day
     fill_in "Month", with: child_attributes[:date_of_birth].month
     fill_in "Year", with: child_attributes[:date_of_birth].year
+    choose "Other gender"
     click_on "Continue"
 
     within find(".govuk-summary-list__row", match: :first) do
@@ -56,5 +59,7 @@ RSpec.feature "Matchmaker creates a new Child", type: :feature do
     expect(page).to have_field("Day", with: child_attributes[:date_of_birth].day)
     expect(page).to have_field("Month", with: child_attributes[:date_of_birth].month)
     expect(page).to have_field("Year", with: child_attributes[:date_of_birth].year)
+    expect(page).to have_field("Year", with: child_attributes[:date_of_birth].year)
+    expect(page).to have_checked_field("Other gender")
   end
 end

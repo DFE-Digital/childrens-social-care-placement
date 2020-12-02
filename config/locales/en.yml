@@ -72,12 +72,21 @@ en:
         blank: "Enter the last name"
       date_of_birth:
         blank: "Enter the date of birth"
+      gender:
+        blank: "Select the gender"
+
+  enums:
+    gender:
+      male: "Male"
+      female: "Female"
+      other: "Other gender"
 
   helpers:
     label:
       children_creation_steps_personal_details:
         first_name: "First name"
         last_name: "Last name"
+
     legend:
       children_creation_steps_personal_details:
         date_of_birth: "Date of birth"
