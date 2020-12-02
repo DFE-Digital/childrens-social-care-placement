@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_114606) do
+ActiveRecord::Schema.define(version: 2020_12_01_123803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,27 @@ ActiveRecord::Schema.define(version: 2020_12_01_114606) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["child_id"], name: "index_placement_needs_on_child_id"
+  end
+
+  create_table "placement_suitabilities", force: :cascade do |t|
+    t.bigint "foster_parent_id"
+    t.boolean "available", default: false, null: false
+    t.boolean "long_term", default: false, null: false
+    t.boolean "short_term", default: false, null: false
+    t.boolean "emergency", default: false, null: false
+    t.boolean "respite", default: false, null: false
+    t.boolean "short_break", default: false, null: false
+    t.boolean "remand", default: false, null: false
+    t.boolean "specialist_theraputic", default: false, null: false
+    t.boolean "parent_and_child", default: false, null: false
+    t.string "address_line_1"
+    t.string "address_line_2"
+    t.string "address_city"
+    t.string "address_county"
+    t.string "address_postcode"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["foster_parent_id"], name: "index_placement_suitabilities_on_foster_parent_id"
   end
 
   create_table "placements", force: :cascade do |t|
