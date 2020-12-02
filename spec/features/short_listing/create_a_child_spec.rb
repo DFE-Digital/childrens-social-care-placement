@@ -31,13 +31,13 @@ RSpec.feature "Matchmaker creates a new Child", type: :feature do
   end
 
   scenario "Matchmaker makes an error while providing the Child's details and stays on the form with errors" do
-    fill_in "Last name", with: child_attributes[:last_name]
     click_on "Continue"
 
     expect(page).to have_content("There is a problem")
-    expect(page).to have_content("Enter the first name")
-    expect(page).to have_content("Enter the date of birth")
-    expect(page).to have_content("Select the gender")
+    expect(page).to have_content("Enter the child's first name")
+    expect(page).to have_content("Enter the child's last name")
+    expect(page).to have_content("Enter the child's date of birth")
+    expect(page).to have_content("Select the child's gender")
   end
 
   scenario "Matchmaker fills in the Child's details correctly, decides to change name and lands on the form again" do
