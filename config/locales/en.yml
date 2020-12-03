@@ -87,6 +87,15 @@ en:
       male: "Male"
       female: "Female"
       other: "Other gender"
+    placement_type:
+      long_term: "Long term"
+      short_term: "Short term"
+      emergency: "Emergency"
+      respite: "Respite"
+      short_break: "Short break"
+      remand: "Remand"
+      specialist_theraputic: "Specialist therapeutic"
+      parent_and_child: "Parent and child"
 
   helpers:
     label:

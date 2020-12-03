@@ -27,7 +27,7 @@ RSpec.feature "Matchmaker creates a new Child", type: :feature do
     click_on "Continue"
 
     expect(page).to have_content("Foster families")
-    expect(page).to have_content("For #{created_child.full_name}")
+    expect(page).to have_content(created_child.full_name)
   end
 
   scenario "Matchmaker makes an error while providing the Child's details and stays on the form with errors" do
