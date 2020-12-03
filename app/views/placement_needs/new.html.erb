@@ -1,0 +1,49 @@
+<div role="navigation">
+  <div class="govuk-width-container">
+    <p>
+      <% content_for(:back_button) do %>
+        <%= back_link %>
+      <% end %>
+    </p>
+  </div>
+</div>
+
+<main class="govuk-main-wrapper no-margin" id="main-content" role="main">
+  <div class="govuk-width-container">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        Add placement details for <%= (@child ||= Child.find params[:child_id]).full_name %>
+    </legend>
+    <span class="govuk-hint" id="person-new-department-id-hint">
+      About the child&#39;s placement
+    </span>
+    <%= form_for @placement_need, url: child_placement_needs_path do |f| %>
+      <%= f.govuk_error_summary %>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="emergency" type="radio" name="placement_need[emergency]" value=true>
+              <label class="govuk-label govuk-radios__label" for="emergency">
+                Emergency
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="long_term" type="radio" name="placement_need[long_term]" value=true>
+              <label class="govuk-label govuk-radios__label" for="long_term">
+                Long Term
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="short_term" type="radio" name="placement_need[short_term]" value=true>
+              <label class="govuk-label govuk-radios__label" for="short_term">
+                Short Term
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <%= f.govuk_submit %>
+    <% end %>
+  </div>
+</main>
+

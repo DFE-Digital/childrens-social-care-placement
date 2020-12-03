@@ -14,7 +14,7 @@ module ChildrenCreation
     end
 
     def on_complete(child)
-      redirect_to(shortlist_path(child.id))
+      redirect_to(new_child_placement_need_path(child.id))
     end
   end
 end

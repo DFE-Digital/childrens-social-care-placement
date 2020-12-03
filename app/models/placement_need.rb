@@ -14,7 +14,7 @@ class PlacementNeed < ApplicationRecord
     parent_and_child
   ]
 
-  validates :placement_date, presence: true
+  validates :placement_date, :criteria, presence: true
   validate :date_in_future
 
   validates :postcode, format: { with: /^([A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}|GIR ?0A{2})$/i, multiline: true }

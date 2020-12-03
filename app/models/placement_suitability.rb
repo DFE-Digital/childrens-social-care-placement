@@ -22,6 +22,12 @@ class PlacementSuitability < ApplicationRecord
   validates :address_county, presence: true, length: { maximum: 128 }
   validates :address_postcode, format: { with: /^([A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}|GIR ?0A{2})$/i, multiline: true }
 
+  def self.search(search)
+    return if search.nil?
+
+    @placement_suitabilities = PlacementSuitability.where(search: true)
+  end
+
 private
 
   def sanitize_input
