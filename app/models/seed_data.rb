@@ -1,8 +1,8 @@
 class SeedData
-  attr_reader :foster_parents, :matchmakers, :children, :placements, :diary_entries
-  TABLES = %w[users foster_parents matchmakers children placements diary_entries].freeze
+  attr_reader :foster_parents, :matchmakers, :children, :placements, :diary_entries, :placement_needs
+  TABLES = %w[users foster_parents matchmakers children placements diary_entries placement_needs].freeze
   DUAL_SEEDS = [FosterParent, Matchmaker].freeze
-  SINGLE_SEEDS = [Child, Placement, DiaryEntry].freeze
+  SINGLE_SEEDS = [Child, Placement, DiaryEntry, PlacementNeed].freeze
 
   def initialize
     @foster_parents = [
@@ -51,8 +51,15 @@ class SeedData
         date_of_birth: "2011-11-11",
         gender: "female",
       },
+      {
+        id: 203,
+        first_name: "Janay",
+        last_name: "Wiegand",
+        date_of_birth: "2010-12-23",
+        gender: "male",
+      },
     ]
-    (203..210).each do |id|
+    (204..210).each do |id|
       @children << {
         id: id,
         first_name: Faker::Name.first_name,
@@ -79,5 +86,16 @@ class SeedData
         updated_at: i.days.ago,
       }
     end
+
+    @placement_needs = [
+      {
+        id: 501,
+        child_id: 203,
+        placement_date: 7.days.from_now,
+        long_term: true,
+        postcode: "NR1 1BD",
+        location_radius: 5,
+      },
+    ]
   end
 end
