@@ -50,6 +50,8 @@ en:
               invalid: "Enter a valid postcode"
             criteria:
               blank: "Select an option from the list"
+            location_radius:
+              not_a_number: "Enter a number between 1 and 50"
         placement_suitability:
           attributes:
             base:

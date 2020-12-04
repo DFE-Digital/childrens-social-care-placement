@@ -26,7 +26,8 @@ private
       :criteria,
       :placement_date,
       :postcode,
-      array: PlacementNeed::OPTIONS
+      :location_radius,
+      array: PlacementNeed::OPTIONS,
     )
   end
 end

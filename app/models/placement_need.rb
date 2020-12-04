@@ -16,11 +16,9 @@ class PlacementNeed < ApplicationRecord
   before_validation :insert_boolean
 
   validates_with AnyBooleanValidator, fields: OPTIONS
-
   validates :placement_date, :criteria, presence: true
-  validates :criteria, presence: true
+  validates :location_radius, numericality: { only_integer: true, greater_than: 0, less_than: 51 }
   validate :date_in_future
-
   validates :postcode, format: { with: /^([A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}|GIR ?0A{2})$/i, multiline: true }
 
 private
@@ -36,6 +34,6 @@ private
   end
 
   def insert_boolean
-    self["#{self.criteria}"] = true if attribute_present?("criteria")
+    self[criteria.to_s] = true if attribute_present?("criteria")
   end
 end

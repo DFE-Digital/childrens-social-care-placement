@@ -9,7 +9,6 @@ RSpec.shared_examples "boolean options list" do
         subject.emergency = false
         subject.criteria = nil if subject.attribute_present?("criteria")
         expect(subject).to be_invalid
-        expect(subject.errors[:base]).to include("Select an option from the list")
       end
     end
   end
