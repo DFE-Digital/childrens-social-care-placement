@@ -1,9 +1,5 @@
 class PlacementNeed < ApplicationRecord
-  belongs_to :child, inverse_of: :placement_need
-
-  before_validation :sanitize_input
-
-  validates_with AnyBooleanValidator, fields: %w[
+  OPTIONS = %w[
     long_term
     short_term
     emergency
@@ -12,11 +8,15 @@ class PlacementNeed < ApplicationRecord
     remand
     specialist_theraputic
     parent_and_child
-  ]
+  ].freeze
 
-  validates :placement_date, presence: true
+  belongs_to :child, inverse_of: :placement_need
+
+  before_validation :sanitize_input
+
+  validates :placement_date, :criteria, presence: true
+  validates :location_radius_miles, numericality: { only_integer: true, greater_than: 0, less_than: 51 }
   validate :date_in_future
-
   validates :postcode, format: { with: /^([A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}|GIR ?0A{2})$/i, multiline: true }
 
 private

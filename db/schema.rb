@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_123803) do
+ActiveRecord::Schema.define(version: 2020_12_03_154533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,22 +57,15 @@ ActiveRecord::Schema.define(version: 2020_12_01_123803) do
   create_table "placement_needs", force: :cascade do |t|
     t.bigint "child_id"
     t.date "placement_date"
-    t.boolean "long_term", default: false, null: false
-    t.boolean "short_term", default: false, null: false
-    t.boolean "emergency", default: false, null: false
-    t.boolean "respite", default: false, null: false
-    t.boolean "short_break", default: false, null: false
-    t.boolean "remand", default: false, null: false
-    t.boolean "specialist_theraputic", default: false, null: false
-    t.boolean "parent_and_child", default: false, null: false
     t.string "address_line_1"
     t.string "address_line_2"
-    t.string "town"
+    t.string "city"
     t.string "county"
     t.string "postcode"
-    t.integer "location_radius"
+    t.integer "location_radius_miles"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "criteria"
     t.index ["child_id"], name: "index_placement_needs_on_child_id"
   end
 

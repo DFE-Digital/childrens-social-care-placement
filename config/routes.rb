@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   get "/dashboards/matchmaker", to: "dashboards#matchmaker"
 
   resources :shortlists, only: :show
+  resources :children do
+    resources :placement_needs, only: %i[new create]
+  end
+
   resources :placements, only: :create do
     resources :diary_entries,
               only: %i[index show] do

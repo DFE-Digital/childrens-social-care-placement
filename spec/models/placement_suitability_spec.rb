@@ -6,7 +6,7 @@ RSpec.describe PlacementSuitability, type: :model do
   it { is_expected.to belong_to(:foster_parent).required.inverse_of(:placement_suitability) }
 
   it_behaves_like "boolean options list" do
-    let(:model_class) { described_class }
+    subject { create(:placement_suitability) }
   end
 
   describe "#available" do
