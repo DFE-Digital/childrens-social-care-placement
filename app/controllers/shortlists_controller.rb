@@ -6,6 +6,18 @@ class ShortlistsController < ApplicationController
 
     authorize @shortlist
 
-    @available_foster_parents = FosterParent.left_outer_joins(:placements).where(placements: { foster_parent_id: nil })
+    @filter_form = Forms::ShortlistFilter.new(filter_params)
+    @available_foster_parents = @filter_form.foster_families
+  end
+
+private
+
+  def filter_params
+    p = params.permit(filter: { placement_types: [] })[:filter]
+    if p.nil? && @placement_need
+      { placement_types: [@placement_need.placement_type] }
+    else
+      p
+    end
   end
 end

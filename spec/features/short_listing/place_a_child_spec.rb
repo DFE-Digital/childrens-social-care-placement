@@ -6,7 +6,8 @@ RSpec.feature "Matchmaker sees available Foster Parents for a Child without a Pl
   let(:child) { create(:child) }
   let(:placement_need) { create(:placement_need, child: child, long_term: true) }
 
-  let!(:available_foster_parents) { create_list(:foster_parent, 2) }
+  let(:placement_suitabilities) { create_list(:placement_suitability, 2, long_term: true) }
+  let!(:available_foster_parents) {  placement_suitabilities.map(&:foster_parent) }
   let!(:unavailable_foster_parent) { create(:placement).foster_parent }
 
   background do

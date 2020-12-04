@@ -26,7 +26,15 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-one-third" style="border: 1px solid #b1b4b6; padding: 20px; margin-top: 10px;">
+    <%= form_for @filter_form, as: :filter, url: shortlist_path(@child), method: :get do |f| %>
+      <%= f.govuk_collection_check_boxes :placement_types,
+        PlacementNeed::PLACEMENT_TYPES.map { |pt| OpenStruct.new(id: pt, name: t(pt, scope: "enums.placement_type"))},
+        :id,
+        :name,
+        legend: { text: "Placement Type" } %>
 
+      <%= f.govuk_submit("Filter") %>
+    <% end %>
   </div>
 
   <div class="govuk-grid-column-two-thirds">
@@ -37,10 +45,11 @@
     <% end %>
 
     <% @available_foster_parents.each do |foster_parent| %>
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full" id="foster_parent_<%= foster_parent.id %>">
+      <div class="govuk-grid-row govuk-!-margin-bottom-8">
+        <div class="govuk-grid-column-full " id="foster_parent_<%= foster_parent.id %>">
           <h2 class="govuk-heading-m"><%= foster_parent.full_name %></h2>
           <%= govuk_button_to("Place", placements_path, params: { placement: { foster_parent_id: foster_parent.id, child_id: @child.id } }) %>
+          <hr class="govuk-section-break govuk-section-break--visible">
         </div>
       </div>
     <% end %>
