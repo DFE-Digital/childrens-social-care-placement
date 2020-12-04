@@ -2,11 +2,12 @@ require "rails_helper"
 
 RSpec.describe PlacementNeed, type: :model do
   include_context "sanitize fields", %i[postcode]
+  subject { create(:placement_need) }
 
   it { is_expected.to belong_to(:child).required.inverse_of(:placement_need) }
 
   it_behaves_like "boolean options list" do
-    let(:model_class) { described_class }
+    subject { create(:placement_need) }
   end
 
   describe "#placement_date" do

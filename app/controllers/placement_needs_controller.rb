@@ -21,6 +21,12 @@ class PlacementNeedsController < ApplicationController
 private
 
   def placement_need_params
-    params.require(:placement_need).permit(:child_id, :emergency, :long_term, :short_term)
+    params.require(:placement_need).permit(
+      :child_id,
+      :criteria,
+      :placement_date,
+      :postcode,
+      array: PlacementNeed::OPTIONS
+    )
   end
 end

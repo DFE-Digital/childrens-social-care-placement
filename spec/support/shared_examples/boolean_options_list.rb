@@ -1,22 +1,15 @@
 RSpec.shared_examples "boolean options list" do
   describe "validation" do
-    subject { model_class.new }
-
-    context "with no options" do
-      it { is_expected.to be_invalid }
-
-      it "returns the correct error message" do
-        subject.valid?
-        expect(subject.errors[:base]).to include("Select an option from the list")
-      end
+    context "with an option" do
+      it { is_expected.to be_valid }
     end
 
-    context "with an option" do
-      subject { model_class.new(emergency: true) }
-
-      it "does not raise the any_boolean_validator error" do
-        subject.valid?
-        expect(subject.errors[:base]).to be_empty
+    context "with no options" do
+      it "is invalid" do
+        subject.emergency = false
+        subject.criteria = nil if subject.attribute_present?("criteria")
+        expect(subject).to be_invalid
+        expect(subject.errors[:base]).to include("Select an option from the list")
       end
     end
   end

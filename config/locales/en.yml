@@ -43,11 +43,13 @@ en:
         placement_need:
           attributes:
             base:
-              options_blank: "Select an option from the list"
+              options_blank: ""
             placement_date:
               blank: "Enter a placement date"
             postcode:
               invalid: "Enter a valid postcode"
+            criteria:
+              blank: "Select an option from the list"
         placement_suitability:
           attributes:
             base:
