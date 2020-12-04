@@ -29,4 +29,24 @@ RSpec.describe PlacementSuitability, type: :model do
     it { is_expected.to_not allow_values("", nil).for :address_postcode }
     it { is_expected.to allow_values("eh3 9eh", "TR1 1XY", "hs13eq").for :address_postcode }
   end
+
+  describe "#placement_types" do
+    subject(:placement_types) { placement_suitability.placement_types }
+
+    context "when no placement type boolean field is set" do
+      let(:placement_suitability) { described_class.new }
+
+      it "returns an empty array" do
+        is_expected.to eql([])
+      end
+    end
+
+    context "when one or more placement type boolean fields are set" do
+      let(:placement_suitability) { described_class.new(short_break: true, remand: true) }
+
+      it "returns the strings as an array" do
+        is_expected.to eql(%w[short_break remand])
+      end
+    end
+  end
 end

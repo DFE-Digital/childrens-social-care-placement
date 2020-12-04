@@ -1,16 +1,7 @@
 class PlacementSuitability < ApplicationRecord
   belongs_to :foster_parent, inverse_of: :placement_suitability
 
-  validates_with AnyBooleanValidator, fields: %w[
-    long_term
-    short_term
-    emergency
-    respite
-    short_break
-    remand
-    specialist_theraputic
-    parent_and_child
-  ]
+  validates_with AnyBooleanValidator, fields: PlacementNeed::PLACEMENT_TYPES
 
   before_validation :sanitize_input
 
@@ -21,6 +12,10 @@ class PlacementSuitability < ApplicationRecord
   validates :address_city, presence: true, length: { maximum: 128 }
   validates :address_county, presence: true, length: { maximum: 128 }
   validates :address_postcode, format: { with: /^([A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}|GIR ?0A{2})$/i, multiline: true }
+
+  def placement_types
+    PlacementNeed::PLACEMENT_TYPES.map { |pt| send(pt) == true ? pt : nil }.compact
+  end
 
 private
 

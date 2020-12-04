@@ -48,7 +48,16 @@
       <div class="govuk-grid-row govuk-!-margin-bottom-8">
         <div class="govuk-grid-column-full " id="foster_parent_<%= foster_parent.id %>">
           <h2 class="govuk-heading-m"><%= foster_parent.full_name %></h2>
+
+          <% if foster_parent.placement_suitability %>
+            <p>
+              <span class="govuk-!-font-weight-bold">Placement type</span>:
+              <%= foster_parent.placement_suitability.placement_types.map { |pt| t(pt, scope: "enums.placement_type") }.join(", ") %>
+            </p>
+          <% end %>
+
           <%= govuk_button_to("Place", placements_path, params: { placement: { foster_parent_id: foster_parent.id, child_id: @child.id } }) %>
+
           <hr class="govuk-section-break govuk-section-break--visible">
         </div>
       </div>
