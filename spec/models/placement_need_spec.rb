@@ -6,10 +6,6 @@ RSpec.describe PlacementNeed, type: :model do
 
   it { is_expected.to belong_to(:child).required.inverse_of(:placement_need) }
 
-  it_behaves_like "boolean options list" do
-    subject { create(:placement_need) }
-  end
-
   describe "#placement_date" do
     it { is_expected.to_not allow_value(nil).for :placement_date }
     it { is_expected.to_not allow_value(Time.zone.yesterday).for :placement_date }
@@ -20,8 +16,8 @@ RSpec.describe PlacementNeed, type: :model do
     it { is_expected.to allow_value("eh3 9eh", "TR1 1XY", "hs13eq").for :postcode }
   end
 
-  describe "#location_radius" do
-    it { is_expected.to_not allow_value("", "words", 0, nil, 51).for :location_radius }
-    it { is_expected.to allow_value(1, 20, 50).for :location_radius }
+  describe "#location_radius_miles" do
+    it { is_expected.to_not allow_value("", "words", 0, nil, 51).for :location_radius_miles }
+    it { is_expected.to allow_value(1, 20, 50).for :location_radius_miles }
   end
 end

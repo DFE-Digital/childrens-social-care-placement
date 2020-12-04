@@ -41,16 +41,13 @@ en:
             password:
               blank: "Please provide a password"
         placement_need:
-          attributes:
-            base:
-              options_blank: ""
             placement_date:
               blank: "Enter a placement date"
             postcode:
               invalid: "Enter a valid postcode"
             criteria:
               blank: "Select an option from the list"
-            location_radius:
+            location_radius_miles:
               not_a_number: "Enter a number between 1 and 50"
         placement_suitability:
           attributes:

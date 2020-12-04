@@ -22,12 +22,10 @@ private
 
   def placement_need_params
     params.require(:placement_need).permit(
-      :child_id,
       :criteria,
       :placement_date,
       :postcode,
-      :location_radius,
-      array: PlacementNeed::OPTIONS,
+      :location_radius_miles,
     )
   end
 end
