@@ -125,9 +125,9 @@ class SeedData
         id: 501,
         child_id: 203,
         placement_date: 7.days.from_now,
-        long_term: true,
+        criteria: "long_term",
         postcode: "NR1 1BD",
-        location_radius: 5,
+        location_radius_miles: 5,
       },
     ]
   end

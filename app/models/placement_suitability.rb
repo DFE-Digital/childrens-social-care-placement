@@ -1,7 +1,7 @@
 class PlacementSuitability < ApplicationRecord
   belongs_to :foster_parent, inverse_of: :placement_suitability
 
-  validates_with AnyBooleanValidator, fields: PlacementNeed::PLACEMENT_TYPES
+  validates_with AnyBooleanValidator, fields: PlacementNeed::OPTIONS
 
   before_validation :sanitize_input
 
@@ -14,7 +14,7 @@ class PlacementSuitability < ApplicationRecord
   validates :address_postcode, format: { with: /^([A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}|GIR ?0A{2})$/i, multiline: true }
 
   def placement_types
-    PlacementNeed::PLACEMENT_TYPES.map { |pt| send(pt) == true ? pt : nil }.compact
+    PlacementNeed::OPTIONS.map { |pt| send(pt) == true ? pt : nil }.compact
   end
 
 private

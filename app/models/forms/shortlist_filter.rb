@@ -35,7 +35,7 @@ module Forms
     end
 
     def sanitised_placement_types
-      @sanitised_placement_types ||= placement_types&.select { |pt| PlacementNeed::PLACEMENT_TYPES.include?(pt) } || []
+      @sanitised_placement_types ||= placement_types&.select { |pt| PlacementNeed::OPTIONS.include?(pt) } || []
     end
   end
 end

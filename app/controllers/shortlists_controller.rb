@@ -15,7 +15,7 @@ private
   def filter_params
     p = params.permit(filter: { placement_types: [] })[:filter]
     if p.nil? && @placement_need
-      { placement_types: [@placement_need.placement_type] }
+      { placement_types: [@placement_need.criteria] }
     else
       p
     end

@@ -15,8 +15,8 @@
   <div class="govuk-grid-column-two-thirds">
     <span class="govuk-!-display-block">Placement needs</span>
     <ul class="govuk-list govuk-list--bullet">
-      <li><%= t(@placement_need.placement_type, scope: "enums.placement_type") %></li>
-      <li><%= @placement_need.location_radius %> miles from <%= @placement_need.postcode %></li>
+      <li><%= t(@placement_need.criteria, scope: "enums.placement_type") %></li>
+      <li><%= @placement_need.location_radius_miles %> miles from <%= @placement_need.postcode %></li>
       <li>By <%= @placement_need.placement_date.to_formatted_s(:govuk) %></li>
     </ul>
   </div>
@@ -28,7 +28,7 @@
   <div class="govuk-grid-column-one-third" style="border: 1px solid #b1b4b6; padding: 20px; margin-top: 10px;">
     <%= form_for @filter_form, as: :filter, url: shortlist_path(@child), method: :get do |f| %>
       <%= f.govuk_collection_check_boxes :placement_types,
-        PlacementNeed::PLACEMENT_TYPES.map { |pt| OpenStruct.new(id: pt, name: t(pt, scope: "enums.placement_type"))},
+        PlacementNeed::OPTIONS.map { |pt| OpenStruct.new(id: pt, name: t(pt, scope: "enums.placement_type"))},
         :id,
         :name,
         legend: { text: "Placement Type" } %>
