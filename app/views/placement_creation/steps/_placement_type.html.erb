@@ -1,5 +1,5 @@
 <%= f.govuk_radio_buttons_fieldset(:criteria, legend: {
-    text: "What type of placement does #{Child.find(params[:child_id]).full_name} need?"
+    text: "What type of placement does #{full_name(params[:child_id])} need?"
     }) do %>
 
     <% PlacementNeed::OPTIONS.each do |option| %>

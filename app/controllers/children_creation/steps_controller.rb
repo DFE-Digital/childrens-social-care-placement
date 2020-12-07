@@ -14,7 +14,10 @@ module ChildrenCreation
     end
 
     def on_complete(child)
-      redirect_to(new_child_placement_need_path(child.id))
+      redirect_to(child_placement_creation_step_path(
+                    child_id: child.id,
+                    id: PlacementCreation::Wizard.first_key,
+                  ))
     end
   end
 end

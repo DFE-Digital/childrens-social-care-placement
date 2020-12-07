@@ -19,8 +19,8 @@ module PlacementCreation
       }
     end
 
-    def on_complete(child)
-      redirect_to(shortlist_path(child.id))
+    def on_complete(placement)
+      redirect_to(shortlist_path(placement.child_id))
     end
   end
 end

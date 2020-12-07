@@ -1,3 +1,3 @@
 <%= f.govuk_date_field :placement_date,
-      legend: { text: "When does #{Child.find(params[:child_id]).full_name} need a new foster home?"},
+      legend: { text: "When does #{full_name(params[:child_id])} need a new foster home?"},
       hint: { text: "For example, 31 3 2014"} %>

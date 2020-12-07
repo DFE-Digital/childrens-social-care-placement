@@ -1,4 +1,4 @@
-<%= f.govuk_fieldset legend: { text: "What is the placement area?"} do %>
+<%= f.govuk_fieldset legend: { text: "What is the placement area for #{full_name(params[:child_id]) }?"} do %>
   <%= f.govuk_text_field :postcode,
     width: 20,
     label: { text: "Postcode" },
