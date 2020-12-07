@@ -85,6 +85,12 @@ en:
               blank: "Enter the child's date of birth"
             gender:
               blank: "Select the child's gender"
+        placement_creation/steps/placement_date:
+          attributes:
+            placement_date:
+              blank: "Enter a placement date"
+            criteria:
+              blank: "Select an option from the list"
 
   enums:
     gender:

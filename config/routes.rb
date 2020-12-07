@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   resources :shortlists, only: :show
   resources :children do
     resources :placement_needs, only: %i[new create]
+
+    namespace :placement_creation do
+      resources :steps, only: %i[show update]
+    end
   end
 
   resources :placements, only: :create do
