@@ -1,7 +1,7 @@
 module PlacementCreation
   module Steps
     class PlacementType < ::Wizard::Step
-      attribute :criteria, :date
+      attribute :criteria, :string
 
       validates :criteria, presence: true
 

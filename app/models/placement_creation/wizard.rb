@@ -11,8 +11,9 @@ module PlacementCreation
 
     def do_complete
       PlacementNeed.create!(
+        child_id: @context["child_id"],
         placement_date: @store.data["placement_date"],
-        placement_type: @store.data["criteria"],
+        criteria: @store.data["criteria"],
         postcode: @store.data["postcode"],
         location_radius_miles: @store.data["location_radius_miles"],
       )
