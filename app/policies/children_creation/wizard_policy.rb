@@ -7,9 +7,5 @@ module ChildrenCreation
     def update?
       show?
     end
-
-    def completed?
-      show?
-    end
   end
 end

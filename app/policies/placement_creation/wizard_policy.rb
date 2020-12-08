@@ -7,9 +7,5 @@ module PlacementCreation
     def update?
       show?
     end
-
-    def completed?
-      show?
-    end
   end
 end
