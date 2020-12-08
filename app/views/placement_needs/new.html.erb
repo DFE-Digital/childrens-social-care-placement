@@ -22,7 +22,9 @@
     <% PlacementNeed::OPTIONS.each do |option| %>
       <%= f.govuk_radio_button :criteria, option,  label: { text: option.titleize } %>
     <% end%>
+  <% end %>
 
+  <%= f.govuk_fieldset legend: { text: "What is the placement area for #{Child.find(params[:child_id]).full_name}?"} do %>
     <%= f.govuk_text_field :postcode,
       width: 20,
       label: { text: "Postcode" },
@@ -35,7 +37,6 @@
       min: 1,
       max: 50
     %>
-
   <% end%>
   <%= f.govuk_submit %>
 <% end %>
