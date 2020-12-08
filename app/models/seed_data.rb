@@ -1,8 +1,8 @@
 class SeedData
-  attr_reader :foster_parents, :matchmakers, :children, :placements, :diary_entries
-  TABLES = %w[users foster_parents matchmakers children placements diary_entries].freeze
+  attr_reader :foster_parents, :matchmakers, :children, :placements, :diary_entries, :placement_needs, :placement_suitabilities
+  TABLES = %w[users foster_parents matchmakers children placements diary_entries placement_needs placement_suitabilities].freeze
   DUAL_SEEDS = [FosterParent, Matchmaker].freeze
-  SINGLE_SEEDS = [Child, Placement, DiaryEntry].freeze
+  SINGLE_SEEDS = [Child, Placement, DiaryEntry, PlacementNeed, PlacementSuitability].freeze
 
   def initialize
     @foster_parents = [
@@ -19,6 +19,29 @@ class SeedData
         last_name: "Casper",
       },
     ]
+    @placement_suitabilities = [
+      {
+        id: 101,
+        foster_parent_id: 101,
+        long_term: true,
+        short_term: true,
+        address_line_1: "49 Horns Ln",
+        address_city: "Norwich",
+        address_county: "Norfolk",
+        address_postcode: "NR1 3ER",
+      },
+      {
+        id: 102,
+        foster_parent_id: 102,
+        long_term: true,
+        short_term: true,
+        emergency: true,
+        address_line_1: "102 Union St",
+        address_city: "Norwich",
+        address_county: "Norfolk",
+        address_postcode: "NR2 2TG",
+      },
+    ]
     (103..110).each do |id|
       @foster_parents << {
         id: id,
@@ -26,7 +49,17 @@ class SeedData
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
       }
+      @placement_suitabilities << {
+        id: id,
+        foster_parent_id: id,
+        long_term: true,
+        address_line_1: Faker::Address.street_address,
+        address_city: "Norwich",
+        address_county: "Norfolk",
+        address_postcode: "NR#{id - 100} 1GA",
+      }
     end
+
     @matchmakers = [
       {
         id: 401,
@@ -51,8 +84,15 @@ class SeedData
         date_of_birth: "2011-11-11",
         gender: "female",
       },
+      {
+        id: 203,
+        first_name: "Janay",
+        last_name: "Wiegand",
+        date_of_birth: "2010-12-23",
+        gender: "male",
+      },
     ]
-    (203..210).each do |id|
+    (204..210).each do |id|
       @children << {
         id: id,
         first_name: Faker::Name.first_name,
@@ -79,5 +119,16 @@ class SeedData
         updated_at: i.days.ago,
       }
     end
+
+    @placement_needs = [
+      {
+        id: 501,
+        child_id: 203,
+        placement_date: 7.days.from_now,
+        criteria: "long_term",
+        postcode: "NR1 1BD",
+        location_radius_miles: 5,
+      },
+    ]
   end
 end

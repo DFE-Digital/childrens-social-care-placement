@@ -1,35 +1,66 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-xl">Foster families</h1>
-    <h2 class="govuk-heading-m">For <%= @child.full_name %></h2>
   </div>
 </div>
 
-<% if @placed %>
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-      <p><%= @child.full_name %> is currently placed.</p>
-    </div>
-  </div>
-<% elsif @available_foster_parents.empty? %>
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-      <p>There are currently no available foster families.</p>
-    </div>
-  </div>
-<% else %>
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-      <p><%= @available_foster_parents.count %> available families found:</p>
-    </div>
+<div class="govuk-grid-row  govuk-!-margin-bottom-8">
+  <div class="govuk-grid-column-one-third">
+    <span class="govuk-!-display-block">For</span>
+    <p class="govuk-body-l govuk-!-margin-bottom-0"><%= @child.full_name %></p>
+    <span class="govuk-body-m"><%= @child.age %> years old <%= t(@child.gender, scope: "enums.gender").downcase %></span>
   </div>
 
-  <% @available_foster_parents.each do |foster_parent| %>
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full" id="foster_parent_<%= foster_parent.id %>">
-        <h2 class="govuk-heading-m"><%= foster_parent.full_name %></h2>
-        <%= govuk_button_to("Place", placements_path, params: { placement: { foster_parent_id: foster_parent.id, child_id: @child.id } }) %>
-      </div>
-    </div>
+  <% if @placement_need %>
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-!-display-block">Placement needs</span>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><%= t(@placement_need.criteria, scope: "enums.placement_type") %></li>
+      <li><%= @placement_need.location_radius_miles %> miles from <%= @placement_need.postcode %></li>
+      <li>By <%= @placement_need.placement_date.to_formatted_s(:govuk) %></li>
+    </ul>
+  </div>
   <% end %>
-<% end %>
+</div>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third" style="border: 1px solid #b1b4b6; padding: 20px; margin-top: 10px;">
+    <%= form_for @filter_form, as: :filter, url: shortlist_path(@child), method: :get do |f| %>
+      <%= f.govuk_collection_check_boxes :placement_types,
+        PlacementNeed::OPTIONS.map { |pt| OpenStruct.new(id: pt, name: t(pt, scope: "enums.placement_type"))},
+        :id,
+        :name,
+        legend: { text: "Placement Type" } %>
+
+      <%= f.govuk_submit("Filter") %>
+    <% end %>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <% if @available_foster_parents.empty? %>
+      <p>There are currently no available foster families.</p>
+    <% else %>
+      <p><%= @available_foster_parents.count %> available families found.</p>
+    <% end %>
+
+    <% @available_foster_parents.each do |foster_parent| %>
+      <div class="govuk-grid-row govuk-!-margin-bottom-8">
+        <div class="govuk-grid-column-full " id="foster_parent_<%= foster_parent.id %>">
+          <h2 class="govuk-heading-m"><%= foster_parent.full_name %></h2>
+
+          <% if foster_parent.placement_suitability %>
+            <p>
+              <span class="govuk-!-font-weight-bold">Placement type</span>:
+              <%= foster_parent.placement_suitability.placement_types.map { |pt| t(pt, scope: "enums.placement_type") }.join(", ") %>
+            </p>
+          <% end %>
+
+          <%= govuk_button_to("Place", placements_path, params: { placement: { foster_parent_id: foster_parent.id, child_id: @child.id } }) %>
+
+          <hr class="govuk-section-break govuk-section-break--visible">
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
