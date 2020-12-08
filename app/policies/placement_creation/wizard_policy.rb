@@ -1,4 +1,4 @@
-module ChildrenCreation
+module PlacementCreation
   class WizardPolicy < ApplicationPolicy
     def show?
       @auth_context.role_model.is_a?(Matchmaker)

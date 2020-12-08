@@ -1,0 +1,14 @@
+<%= f.govuk_fieldset legend: { text: "What is the placement area for #{full_name(params[:child_id]) }?"} do %>
+  <%= f.govuk_text_field :postcode,
+    width: 20,
+    label: { text: "Postcode" },
+    hint: { text: "For example, PE1 4DB" }
+  %>
+
+  <%= f.govuk_number_field :location_radius_miles,
+    width: 5,
+    label: { text: "Search Radius (miles)" },
+    min: 1,
+    max: 50
+  %>
+<% end %>
