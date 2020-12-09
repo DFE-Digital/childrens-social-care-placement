@@ -27,6 +27,10 @@ gem "canonical-rails"
 # fake data
 gem "faker", "~> 2.14"
 
+# Faraday for api calls
+gem "faraday", "~> 1.1"
+gem "faraday-http-cache", "~> 2.2"
+
 group :development, :test do
   # debug
   gem "byebug", platforms: %i[mri mingw x64_mingw]
