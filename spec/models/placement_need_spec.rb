@@ -5,6 +5,7 @@ RSpec.describe PlacementNeed, type: :model do
   subject { create(:placement_need) }
 
   it { is_expected.to belong_to(:child).required.inverse_of(:placement_need) }
+  it { is_expected.to have_one(:shortlist).inverse_of(:placement_need) }
 
   describe "#placement_date" do
     it { is_expected.to_not allow_value(nil).for :placement_date }

@@ -11,6 +11,7 @@ class PlacementNeed < ApplicationRecord
   ].freeze
 
   belongs_to :child, inverse_of: :placement_need
+  has_one :shortlist, inverse_of: :placement_need, required: false
 
   before_validation :sanitize_input
 

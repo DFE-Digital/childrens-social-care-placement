@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_03_154533) do
+ActiveRecord::Schema.define(version: 2020_12_10_124835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,23 @@ ActiveRecord::Schema.define(version: 2020_12_03_154533) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["child_id"], name: "index_placements_on_child_id"
     t.index ["foster_parent_id"], name: "index_placements_on_foster_parent_id"
+  end
+
+  create_table "shortlisted_foster_parents", force: :cascade do |t|
+    t.bigint "shortlist_id", null: false
+    t.bigint "foster_parent_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["foster_parent_id"], name: "index_shortlisted_foster_parents_on_foster_parent_id"
+    t.index ["shortlist_id"], name: "index_shortlisted_foster_parents_on_shortlist_id"
+  end
+
+  create_table "shortlists", force: :cascade do |t|
+    t.bigint "placement_need_id", null: false
+    t.string "placement_types"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["placement_need_id"], name: "index_shortlists_on_placement_need_id"
   end
 
   create_table "users", force: :cascade do |t|
