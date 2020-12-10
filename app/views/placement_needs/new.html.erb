@@ -12,17 +12,19 @@
   <%= f.govuk_error_summary %>
 
   <%= f.govuk_date_field :placement_date,
-      legend: { text: "When does #{Child.find(params[:child_id]).full_name} need a new foster home?"},
+      legend: { text: "When does #{full_name(params[:child_id])} need a new foster home?"},
       hint: { text: "For example, 31 3 2014"} %>
 
   <%= f.govuk_radio_buttons_fieldset(:criteria, legend: {
-    text: "What type of placement does #{Child.find(params[:child_id]).full_name} need?"
+    text: "What type of placement does #{full_name(params[:child_id])} need?"
     }) do %>
 
     <% PlacementNeed::OPTIONS.each do |option| %>
       <%= f.govuk_radio_button :criteria, option,  label: { text: option.titleize } %>
     <% end%>
+  <% end %>
 
+  <%= f.govuk_fieldset legend: { text: "What is the placement area for #{full_name(params[:child_id])}?"} do %>
     <%= f.govuk_text_field :postcode,
       width: 20,
       label: { text: "Postcode" },
@@ -35,7 +37,6 @@
       min: 1,
       max: 50
     %>
-
   <% end%>
   <%= f.govuk_submit %>
 <% end %>
