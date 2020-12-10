@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get "/dashboards/foster_parent", to: "dashboards#foster_parent"
   get "/dashboards/matchmaker", to: "dashboards#matchmaker"
+  get "/postcode-api-error", to: "pages#postcode_api_error", as: :postcode_api_error
 
   resources :shortlists, only: :show
   resources :children do

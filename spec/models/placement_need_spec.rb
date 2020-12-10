@@ -13,7 +13,7 @@ RSpec.describe PlacementNeed, type: :model do
 
   describe "#postcode" do
     it { is_expected.to_not allow_value("", "gibberish", nil).for :postcode }
-    it { is_expected.to allow_value("eh3 9eh", "TR1 1XY", "hs13eq").for :postcode }
+    it { is_expected.to allow_value("eh3 9eh", "TR1  1uf", "hs12ad").for :postcode }
   end
 
   describe "#location_radius_miles" do

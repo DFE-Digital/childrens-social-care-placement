@@ -30,6 +30,7 @@ gem "faker", "~> 2.14"
 # Faraday for api calls
 gem "faraday", "~> 1.1"
 gem "faraday-http-cache", "~> 2.2"
+gem "faraday_middleware", "~> 1.0"
 
 group :development, :test do
   # debug
