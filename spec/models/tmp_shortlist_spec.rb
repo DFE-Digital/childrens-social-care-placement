@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Shortlist, type: :model do
+RSpec.describe TmpShortlist, type: :model do
   subject(:model) { described_class.new(child: child) }
 
   let(:child) { build_stubbed(:child) }

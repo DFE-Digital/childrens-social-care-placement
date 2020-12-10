@@ -1,4 +1,4 @@
-class Shortlist
+class TmpShortlist
   attr_reader :id, :child
 
   def initialize(child:)
