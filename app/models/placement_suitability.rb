@@ -24,6 +24,6 @@ private
     self.address_line_2 = address_line_2.to_s.strip.presence if address_line_2
     self.address_city = address_city.to_s.strip.presence if address_city
     self.address_county = address_county.to_s.strip.presence if address_county
-    self.address_postcode = address_postcode.to_s.strip.presence if address_postcode
+    self.address_postcode = address_postcode.gsub(" ", "").presence if address_postcode
   end
 end

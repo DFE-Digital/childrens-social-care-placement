@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://postcodes.io/postcodes//validate
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.1.0
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      date:
+      - Thu, 10 Dec 2020 11:43:29 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '41'
+      connection:
+      - keep-alive
+      set-cookie:
+      - __cfduid=d5a91ba329e78a1892b0227e649a8eb561607600609; expires=Sat, 09-Jan-21
+        11:43:29 GMT; path=/; domain=.postcodes.io; HttpOnly; SameSite=Lax
+      x-gnu:
+      - Michael J Blanchard
+      access-control-allow-origin:
+      - "*"
+      etag:
+      - W/"29-T14TWaKfjMuMFPoRgcsDj2g1ORs"
+      cf-cache-status:
+      - HIT
+      age:
+      - '67689'
+      cf-request-id:
+      - 06ee0fb0d100004257faad8000000001
+      report-to:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report?s=CN0BdgeupfttyGpE3z0uQO6TsLpp7y1nUXw5YEXzY1xMwwcwW1xyzKAb667FFSpWIdECeVrlDxuU4tpET7Yyk3%2FCvlKuI52EO24vBa6Kgceq4%2FKAYP9%2Fz7g%3D"}],"group":"cf-nel","max_age":604800}'
+      nel:
+      - '{"report_to":"cf-nel","max_age":604800}'
+      vary:
+      - Accept-Encoding
+      server:
+      - cloudflare
+      cf-ray:
+      - 5ff6b56148f54257-LHR
+    body:
+      encoding: UTF-8
+      string: '{"status":404,"error":"Invalid postcode"}'
+  recorded_at: Thu, 10 Dec 2020 11:43:29 GMT
+recorded_with: VCR 6.0.0

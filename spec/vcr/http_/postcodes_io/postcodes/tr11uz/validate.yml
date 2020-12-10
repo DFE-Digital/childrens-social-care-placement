@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://postcodes.io/postcodes/tr11uz/validate
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.1.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Thu, 10 Dec 2020 11:43:29 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '28'
+      connection:
+      - keep-alive
+      set-cookie:
+      - __cfduid=dc34955139da654de4fc43209ae8923301607600609; expires=Sat, 09-Jan-21
+        11:43:29 GMT; path=/; domain=.postcodes.io; HttpOnly; SameSite=Lax
+      x-gnu:
+      - Michael J Blanchard
+      access-control-allow-origin:
+      - "*"
+      etag:
+      - W/"1c-sATL+LXeOWfLLqQwV2reomyUCpI"
+      cf-cache-status:
+      - MISS
+      accept-ranges:
+      - bytes
+      cf-request-id:
+      - 06ee0fb0450000068a6a075000000001
+      report-to:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report?s=8Tk2MQryaWP5kBrlqoPVCDlKblOiq8OOcsnvwTHLuKbZVJkKYyUECcbG%2B6Ngm9uHsZxYIrW%2F2pu0F4o0O7LCUkoWCkdc%2F4L4zFy4SnlOz0PJ8pHl57mcDUo%3D"}],"group":"cf-nel","max_age":604800}'
+      nel:
+      - '{"report_to":"cf-nel","max_age":604800}'
+      vary:
+      - Accept-Encoding
+      server:
+      - cloudflare
+      cf-ray:
+      - 5ff6b56068c5068a-LHR
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"result":true}'
+  recorded_at: Thu, 10 Dec 2020 11:43:29 GMT
+recorded_with: VCR 6.0.0

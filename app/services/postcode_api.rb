@@ -11,12 +11,17 @@ class PostcodeApi
   end
 
   def postcode_valid?
+    format_postcode
     response = faraday.get("http://postcodes.io/postcodes/#{@postcode}/validate")
     # connection error caught in application controller
     response.body["result"]
   end
 
 private
+
+  def format_postcode
+    @postcode = @postcode.downcase.gsub(" ", "") if @postcode
+  end
 
   def faraday
     Faraday.new do |f|

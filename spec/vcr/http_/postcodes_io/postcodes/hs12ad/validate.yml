@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://postcodes.io/postcodes/hs12ad/validate
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.1.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Thu, 10 Dec 2020 11:43:29 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '28'
+      connection:
+      - keep-alive
+      set-cookie:
+      - __cfduid=ddb907dabf3f5dcb17ad95a7da4a0c0cf1607600609; expires=Sat, 09-Jan-21
+        11:43:29 GMT; path=/; domain=.postcodes.io; HttpOnly; SameSite=Lax
+      x-gnu:
+      - Michael J Blanchard
+      access-control-allow-origin:
+      - "*"
+      etag:
+      - W/"1c-sATL+LXeOWfLLqQwV2reomyUCpI"
+      cf-cache-status:
+      - HIT
+      age:
+      - '66599'
+      accept-ranges:
+      - bytes
+      cf-request-id:
+      - 06ee0fb23500000796d8895000000001
+      report-to:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report?s=w1sp4dZsdDGlZYeAQKVgMaZ0UafU%2BJSSYRMUN8BmesAFR5SudbabhVgiEuM5SG5wTofVNgWrbsQ5kqi8lKOonuAn3wscwAxaBCZYOzqoISwMaebm7bc7D4A%3D"}],"group":"cf-nel","max_age":604800}'
+      nel:
+      - '{"report_to":"cf-nel","max_age":604800}'
+      vary:
+      - Accept-Encoding
+      server:
+      - cloudflare
+      cf-ray:
+      - 5ff6b5638f180796-LHR
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"result":true}'
+  recorded_at: Thu, 10 Dec 2020 11:43:29 GMT
+recorded_with: VCR 6.0.0
