@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe PlacementNeed, type: :model do
-  include_context "sanitize fields", %i[postcode]
+  include_context "sanitize postcodes", %i[postcode]
   subject { create(:placement_need) }
 
   it { is_expected.to belong_to(:child).required.inverse_of(:placement_need) }

@@ -17,7 +17,7 @@ class PlacementNeed < ApplicationRecord
   validates :placement_date, :criteria, presence: true
   validates :location_radius_miles, numericality: { only_integer: true, greater_than: 0, less_than: 51 }
   validate :date_in_future
-  validates :postcode, postcode: true
+  validates :postcode, format: { with: /^([A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}|GIR ?0A{2})$/i, multiline: true }, postcode: true
 
 private
 
@@ -28,6 +28,6 @@ private
   end
 
   def sanitize_input
-    self.postcode = postcode.gsub(" ", "").presence if postcode
+    self.postcode = postcode.upcase.gsub(" ", "").presence if postcode
   end
 end

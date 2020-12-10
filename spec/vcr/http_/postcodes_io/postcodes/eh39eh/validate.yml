@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://postcodes.io/postcodes/eh39eh/validate
+    uri: http://postcodes.io/postcodes/EH39EH/validate
     body:
       encoding: US-ASCII
       string: ''
@@ -15,7 +15,7 @@ http_interactions:
       message: OK
     headers:
       date:
-      - Thu, 10 Dec 2020 11:43:29 GMT
+      - Thu, 10 Dec 2020 13:25:42 GMT
       content-type:
       - application/json; charset=utf-8
       content-length:
@@ -23,8 +23,8 @@ http_interactions:
       connection:
       - keep-alive
       set-cookie:
-      - __cfduid=d62773f6bfb8688adc9b325fc3ee410ab1607600609; expires=Sat, 09-Jan-21
-        11:43:29 GMT; path=/; domain=.postcodes.io; HttpOnly; SameSite=Lax
+      - __cfduid=d78a0c0bab4f829a815b2503a57a941be1607606742; expires=Sat, 09-Jan-21
+        13:25:42 GMT; path=/; domain=.postcodes.io; HttpOnly; SameSite=Lax
       x-gnu:
       - Michael J Blanchard
       access-control-allow-origin:
@@ -34,13 +34,13 @@ http_interactions:
       cf-cache-status:
       - HIT
       age:
-      - '66884'
+      - '7863'
       accept-ranges:
       - bytes
       cf-request-id:
-      - 06ee0fb1bc0000dc3be738d000000001
+      - 06ee6d450f00002d2833369000000001
       report-to:
-      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report?s=HlDpiTdGBdmxOS64RQZIq3dgSDAmhLdK%2Fe29A8F3ks8DOmRFqYjoRDVBYD8%2B3TXNGPLvIHNDOjDjDH9LdQmUbbqWTIugnVrewghvshXQwPLP3mjwCL%2BDZq0%3D"}],"group":"cf-nel","max_age":604800}'
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report?s=7zx8Sz7VJQnrbd9NoV3WzeIIyC16%2F7FNYxM92pvgSe075lFOSkJcq9893S6hUxJaYC2Otm9OJj9xT7E1Huxr%2F9koa80WfqP1lnRRXOLrYOxnEzgeFLHt3Wc%3D"}],"group":"cf-nel","max_age":604800}'
       nel:
       - '{"report_to":"cf-nel","max_age":604800}'
       vary:
@@ -48,9 +48,9 @@ http_interactions:
       server:
       - cloudflare
       cf-ray:
-      - 5ff6b562cddedc3b-LHR
+      - 5ff74b1b48e82d28-LHR
     body:
       encoding: UTF-8
       string: '{"status":200,"result":true}'
-  recorded_at: Thu, 10 Dec 2020 11:43:29 GMT
+  recorded_at: Thu, 10 Dec 2020 13:25:42 GMT
 recorded_with: VCR 6.0.0

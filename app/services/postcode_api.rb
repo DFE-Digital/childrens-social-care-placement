@@ -20,7 +20,7 @@ class PostcodeApi
 private
 
   def format_postcode
-    @postcode = @postcode.downcase.gsub(" ", "") if @postcode
+    @postcode = @postcode.upcase.gsub(" ", "") if @postcode
   end
 
   def faraday

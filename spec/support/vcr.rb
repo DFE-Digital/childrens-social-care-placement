@@ -7,7 +7,7 @@ VCR.configure do |config|
   end
 
   config.around_http_request(->(req) { req.method == :get }) do |request|
-    VCR.use_cassette(request.uri.downcase, &request)
+    VCR.use_cassette(request.uri, &request)
   end
 
   Rails.application.credentials.config.each do |k, v|

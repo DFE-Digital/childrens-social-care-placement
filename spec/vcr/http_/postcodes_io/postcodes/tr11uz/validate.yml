@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://postcodes.io/postcodes/tr11uz/validate
+    uri: http://postcodes.io/postcodes/TR11UZ/validate
     body:
       encoding: US-ASCII
       string: ''
@@ -15,7 +15,7 @@ http_interactions:
       message: OK
     headers:
       date:
-      - Thu, 10 Dec 2020 11:43:29 GMT
+      - Thu, 10 Dec 2020 13:25:35 GMT
       content-type:
       - application/json; charset=utf-8
       content-length:
@@ -23,8 +23,8 @@ http_interactions:
       connection:
       - keep-alive
       set-cookie:
-      - __cfduid=dc34955139da654de4fc43209ae8923301607600609; expires=Sat, 09-Jan-21
-        11:43:29 GMT; path=/; domain=.postcodes.io; HttpOnly; SameSite=Lax
+      - __cfduid=d1d176aca745221998b69f4b94ee7a9451607606735; expires=Sat, 09-Jan-21
+        13:25:35 GMT; path=/; domain=.postcodes.io; HttpOnly; SameSite=Lax
       x-gnu:
       - Michael J Blanchard
       access-control-allow-origin:
@@ -32,13 +32,15 @@ http_interactions:
       etag:
       - W/"1c-sATL+LXeOWfLLqQwV2reomyUCpI"
       cf-cache-status:
-      - MISS
+      - HIT
+      age:
+      - '73016'
       accept-ranges:
       - bytes
       cf-request-id:
-      - 06ee0fb0450000068a6a075000000001
+      - 06ee6d2b7700002c5e10933000000001
       report-to:
-      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report?s=8Tk2MQryaWP5kBrlqoPVCDlKblOiq8OOcsnvwTHLuKbZVJkKYyUECcbG%2B6Ngm9uHsZxYIrW%2F2pu0F4o0O7LCUkoWCkdc%2F4L4zFy4SnlOz0PJ8pHl57mcDUo%3D"}],"group":"cf-nel","max_age":604800}'
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report?s=x7JuEt4aRtv3Byxww2%2Ft9gxMjpNMzb6%2Fg457sLoLdzda9N4Zv6bUb6kysf6A%2BRdcBtAmviWgmXpWdpJShl1gvhpgaznO9%2FN3kTk791NZmGjbmWclTTnfG0w%3D"}],"group":"cf-nel","max_age":604800}'
       nel:
       - '{"report_to":"cf-nel","max_age":604800}'
       vary:
@@ -46,9 +48,9 @@ http_interactions:
       server:
       - cloudflare
       cf-ray:
-      - 5ff6b56068c5068a-LHR
+      - 5ff74af25ecb2c5e-LHR
     body:
       encoding: UTF-8
       string: '{"status":200,"result":true}'
-  recorded_at: Thu, 10 Dec 2020 11:43:29 GMT
+  recorded_at: Thu, 10 Dec 2020 13:25:35 GMT
 recorded_with: VCR 6.0.0
