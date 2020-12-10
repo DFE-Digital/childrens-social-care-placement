@@ -9,10 +9,8 @@ RSpec.describe DiaryEntryPolicy, type: :policy do
   let(:foster_parent) { create(:foster_parent, user: user) }
   let(:another_foster_parent) { create(:foster_parent, user: another_user) }
 
-  let(:child) { create(:child) }
-
-  let(:placement) { create(:placement, foster_parent: foster_parent, child: child) }
-  let(:another_placement) { create(:placement, foster_parent: another_foster_parent, child: child) }
+  let(:placement) { create(:placement, foster_parent: foster_parent) }
+  let(:another_placement) { create(:placement, foster_parent: another_foster_parent) }
 
   let(:auth_context) { AuthorisationContext.new(user) }
 

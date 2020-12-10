@@ -2,8 +2,7 @@ require "rails_helper"
 
 RSpec.feature "FosterParent creates a diary entry", type: :feature do
   let(:foster_parent) { create(:foster_parent) }
-  let(:child) { create(:child) }
-  let!(:placement) { create(:placement, foster_parent: foster_parent, child: child) }
+  let!(:placement) { create(:placement, foster_parent: foster_parent) }
 
   before do
     sign_in(foster_parent.user)

@@ -12,6 +12,7 @@ class PlacementNeed < ApplicationRecord
 
   belongs_to :child, inverse_of: :placement_need
   has_one :shortlist, inverse_of: :placement_need, required: false
+  has_one :placement, inverse_of: :placement_need, required: false
 
   before_validation :sanitize_input
 

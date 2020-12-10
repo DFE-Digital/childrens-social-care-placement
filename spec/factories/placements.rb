@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :placement do
     foster_parent
-    child
+    placement_need
   end
 end
