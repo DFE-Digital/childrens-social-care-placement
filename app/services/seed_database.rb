@@ -35,7 +35,7 @@ private
       model.create(
         hash.merge({ user_id: user.id })
             .except(:email),
-      ) # TODO: need to bang ! this when postcodes valid
+      ) # TODO: need to bang ! this when postcodes valid, enable rubocop Rails/SaveBang
     end
   end
 
