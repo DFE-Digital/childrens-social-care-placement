@@ -4,8 +4,7 @@ RSpec.describe ChildPolicy do
   subject(:policy) { described_class.new(auth_context, record) }
 
   let(:auth_context) { AuthorisationContext.new(user) }
-  let(:record) { Shortlist.new(child: child) }
-  let(:child) { build_stubbed(:child) }
+  let(:record) { build_stubbed(:child) }
 
   context "for matchmaker" do
     let(:user) { create(:matchmaker).user }

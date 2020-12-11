@@ -2,8 +2,9 @@ require "rails_helper"
 
 RSpec.feature "FosterParent views diary entries", type: :feature do
   let(:foster_parent) { create(:foster_parent) }
-  let(:child) { create(:child) }
-  let!(:placement) { create(:placement, foster_parent: foster_parent, child: child) }
+  let(:placement_need) { create(:placement_need) }
+  let(:child) { placement_need.child }
+  let!(:placement) { create(:placement, foster_parent: foster_parent, placement_need: placement_need) }
   let!(:diary_entries) { create_list(:diary_entry, 3, placement: placement) }
 
   before do
