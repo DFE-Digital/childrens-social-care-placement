@@ -1,8 +1,6 @@
 class SeedDatabase
-  # takes data from seed_data.rb
-
-  def initialize
-    @seed_data = SeedData.new
+  def initialize(seed_data)
+    @seed_data = seed_data
   end
 
   def call
@@ -34,16 +32,16 @@ private
         email: hash[:email],
         password: "test1234",
       )
-      model.create!(
+      model.create(
         hash.merge({ user_id: user.id })
             .except(:email),
-      )
+      ) # TODO: need to bang ! this when postcodes valid
     end
   end
 
   def single_seed(model, hash_array)
     hash_array.each do |hash|
-      model.create! hash
+      model.create hash # TODO: need to bang ! this when postcodes valid
     end
   end
 end
