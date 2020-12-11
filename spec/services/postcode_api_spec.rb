@@ -10,7 +10,7 @@ RSpec.describe PostcodeApi do
       end
     end
 
-    context "with a non existant postcode" do
+    context "with a non existent postcode" do
       subject { described_class.new("GIBBERISH") }
       it "returns false" do
         expect(subject.postcode_valid?).to be false
