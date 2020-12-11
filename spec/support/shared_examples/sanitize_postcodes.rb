@@ -4,10 +4,10 @@ RSpec.shared_examples "sanitize postcodes" do |fields|
       setter = "#{field}="
       subject.send(setter, "   input  ")
       subject.valid?
-      expect(subject.send(field)).to eq("INPUT")
+      expect(subject.send(field)).to eq("input")
       subject.send(setter, "   ")
       subject.valid?
-      expect(subject.send(field)).to be_nil
+      expect(subject.send(field)).to eq("")
     end
   end
 end
