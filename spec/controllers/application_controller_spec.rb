@@ -14,7 +14,7 @@ RSpec.describe ApplicationController, type: :controller do
       .with(:postcode_api_error)
     }
 
-    it "redirects to custom error page with exccption message" do
+    it "redirects to custom error page with exception message" do
       get :index
       expect(response).to redirect_to postcode_api_error_path(e: "connection failure")
     end
