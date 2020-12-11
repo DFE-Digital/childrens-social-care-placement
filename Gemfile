@@ -32,6 +32,9 @@ gem "faraday", "~> 1.1"
 gem "faraday-http-cache", "~> 2.2"
 gem "faraday_middleware", "~> 1.0"
 
+# postcode parsing
+gem "uk_postcode", "~> 2.1", ">= 2.1.6"
+
 group :development, :test do
   # debug
   gem "byebug", platforms: %i[mri mingw x64_mingw]

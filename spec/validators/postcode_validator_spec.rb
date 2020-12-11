@@ -26,7 +26,7 @@ RSpec.describe PostcodeValidator do
     end
 
     context "with existing postcode" do
-      let(:instance) { PostcodeTestModel.new postcode: "TR1 1uf" }
+      let(:instance) { PostcodeTestModel.new postcode: "TR1 1uz" }
       it { is_expected.to be_empty }
     end
   end

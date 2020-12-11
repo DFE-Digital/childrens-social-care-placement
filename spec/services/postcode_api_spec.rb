@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe PostcodeApi do
-  subject { described_class.new("TR1 1uf") }
+  subject { described_class.new("TR1 1uz") }
 
   describe "#postcode_valid?" do
     context "with an existing postcode" do

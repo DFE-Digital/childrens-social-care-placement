@@ -27,8 +27,8 @@ RSpec.describe PlacementSuitability, type: :model do
     it { is_expected.to_not allow_values("", nil, "a" * 129).for :address_county }
     it { is_expected.to allow_value("Up North").for :address_county }
 
-    it { is_expected.to_not allow_values("", nil).for :address_postcode }
-    it { is_expected.to allow_values("eh3 9eh", "TR1 1uz", "hs13eq").for :address_postcode }
+    it { is_expected.to_not allow_values("", "gibberish", nil).for :address_postcode }
+    it { is_expected.to allow_values("eh3 9eh", "TR11uz").for :address_postcode }
   end
 
   describe "#placement_types" do

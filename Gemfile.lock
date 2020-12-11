@@ -332,6 +332,7 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
+    uk_postcode (2.1.6)
     unicode-display_width (1.7.0)
     vcr (6.0.0)
     view_component (2.18.2)
@@ -394,6 +395,7 @@ DEPENDENCIES
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
+  uk_postcode (~> 2.1, >= 2.1.6)
   vcr
   web-console (>= 3.3.0)
   webdrivers (~> 4.4)
