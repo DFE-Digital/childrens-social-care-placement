@@ -41,7 +41,7 @@ class TestSeedData < SeedData
       {
         id: 301,
         foster_parent_id: 101,
-        child_id: 201,
+        placement_need_id: 501,
       },
     ]
     @diary_entries = 10.times.map do |i|
