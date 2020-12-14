@@ -5,4 +5,9 @@ class PagesController < ApplicationController
   def show
     render template: "pages/#{params[:page]}"
   end
+
+  def postcode_api_error
+    e = params[:e]
+    render template: "pages/postcode_api_error", locals: { e: e }
+  end
 end

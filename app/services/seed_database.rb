@@ -1,8 +1,6 @@
 class SeedDatabase
-  # takes data from seed_data.rb
-
-  def initialize
-    @seed_data = SeedData.new
+  def initialize(seed_data)
+    @seed_data = seed_data
   end
 
   def call
@@ -43,7 +41,7 @@ private
 
   def single_seed(model, hash_array)
     hash_array.each do |hash|
-      model.create! hash
+      model.create hash
     end
   end
 end

@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://postcodes.io/postcodes/EH39EH/validate
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.1.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 11 Dec 2020 12:13:08 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '28'
+      connection:
+      - keep-alive
+      set-cookie:
+      - __cfduid=d39f2d25c0097f2c0083dd932df7e954c1607688788; expires=Sun, 10-Jan-21
+        12:13:08 GMT; path=/; domain=.postcodes.io; HttpOnly; SameSite=Lax
+      x-gnu:
+      - Michael J Blanchard
+      access-control-allow-origin:
+      - "*"
+      etag:
+      - W/"1c-sATL+LXeOWfLLqQwV2reomyUCpI"
+      cf-cache-status:
+      - HIT
+      age:
+      - '12838'
+      accept-ranges:
+      - bytes
+      cf-request-id:
+      - 06f35132a70000e658c9340000000001
+      report-to:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report?s=PUeE9sXapefoHLtVbKj6bVHSuOLrZkBncCAHmiO3Uaf%2FKNv3UvpKLHwrcxOR3XkCJuGmUGWpJFy29MXsJgpebl80rJxhOmZn%2F%2FErmGmE996yINfr4ajnijU%3D"}],"group":"cf-nel","max_age":604800}'
+      nel:
+      - '{"report_to":"cf-nel","max_age":604800}'
+      vary:
+      - Accept-Encoding
+      server:
+      - cloudflare
+      cf-ray:
+      - 5fff1e310a02e658-LHR
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"result":true}'
+  recorded_at: Fri, 11 Dec 2020 12:13:08 GMT
+recorded_with: VCR 6.0.0

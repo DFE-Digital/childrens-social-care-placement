@@ -27,6 +27,14 @@ gem "canonical-rails"
 # fake data
 gem "faker", "~> 2.14"
 
+# Faraday for api calls
+gem "faraday", "~> 1.1"
+gem "faraday-http-cache", "~> 2.2"
+gem "faraday_middleware", "~> 1.0"
+
+# postcode parsing
+gem "uk_postcode", "~> 2.1", ">= 2.1.6"
+
 group :development, :test do
   # debug
   gem "byebug", platforms: %i[mri mingw x64_mingw]
@@ -62,5 +70,6 @@ group :test do
   gem "pundit-matchers", "~> 1.6"
   gem "shoulda-matchers", "~> 4.0"
   gem "simplecov", require: false
+  gem "vcr"
   gem "webdrivers", "~> 4.4"
 end

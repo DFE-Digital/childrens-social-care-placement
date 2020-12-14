@@ -1,7 +1,8 @@
 require "rails_helper"
 
 RSpec.describe PlacementSuitability, type: :model do
-  include_context "sanitize fields", %i[address_line_1 address_line_2 address_city address_county address_postcode]
+  include_context "sanitize fields", %i[address_line_1 address_line_2 address_city address_county]
+  include_context "sanitize postcodes", %i[address_postcode]
 
   it { is_expected.to belong_to(:foster_parent).required.inverse_of(:placement_suitability) }
 
@@ -26,8 +27,8 @@ RSpec.describe PlacementSuitability, type: :model do
     it { is_expected.to_not allow_values("", nil, "a" * 129).for :address_county }
     it { is_expected.to allow_value("Up North").for :address_county }
 
-    it { is_expected.to_not allow_values("", nil).for :address_postcode }
-    it { is_expected.to allow_values("eh3 9eh", "TR1 1XY", "hs13eq").for :address_postcode }
+    it { is_expected.to_not allow_values("", "gibberish", nil).for :address_postcode }
+    it { is_expected.to allow_values("eh3 9eh", "TR11uz").for :address_postcode }
   end
 
   describe "#placement_types" do
