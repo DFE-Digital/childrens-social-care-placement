@@ -9,9 +9,12 @@ class PlacementNeedsController < ApplicationController
     @placement_need = PlacementNeed.new(
       placement_need_params.merge(child_id: params[:child_id]),
     )
-    authorize @placement_need
+    @shortlist = Shortlist.new(placement_need: @placement_need, placement_types: @placement_need.criteria)
 
-    if @placement_need.save
+    authorize @placement_need
+    authorize @shortlist
+
+    if @placement_need.save && @shortlist.save
       redirect_to shortlist_path(params[:child_id])
     else
       render "new"
