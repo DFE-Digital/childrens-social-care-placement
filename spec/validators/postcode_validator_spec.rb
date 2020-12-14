@@ -21,7 +21,7 @@ RSpec.describe PostcodeValidator do
     end
 
     context "with non existent postcode" do
-      let(:instance) { PostcodeTestModel.new postcode: "123 rtf" }
+      let(:instance) { PostcodeTestModel.new postcode: "TR1 1UG" }
       it { is_expected.to include error: :invalid }
     end
 

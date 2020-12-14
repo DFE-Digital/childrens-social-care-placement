@@ -20,7 +20,7 @@ class PlacementNeed < ApplicationRecord
   validates :location_radius_miles, numericality: { only_integer: true, greater_than: 0, less_than: 51 }
   validate :date_in_future
   validate :check_parsed_postcode
-  validates :postcode, postcode: true
+  validates :postcode, postcode: true, if: :check_parsed_postcode
 
 private
 
@@ -35,10 +35,10 @@ private
   end
 
   def check_parsed_postcode
-    return unless postcode
-
-    unless UKPostcode.parse(postcode).full_valid?
+    unless postcode && UKPostcode.parse(postcode).full_valid?
       errors.add(:postcode, :invalid)
+      return false
     end
+    true
   end
 end
