@@ -32,16 +32,16 @@ private
         email: hash[:email],
         password: "test1234",
       )
-      model.create(
+      model.create!(
         hash.merge({ user_id: user.id })
             .except(:email),
-      ) # TODO: need to bang ! this when postcodes valid, enable rubocop Rails/SaveBang
+      )
     end
   end
 
   def single_seed(model, hash_array)
     hash_array.each do |hash|
-      model.create hash # TODO: need to bang ! this when postcodes valid
+      model.create hash # TODO: need to bang ! this when postcodes valid, check rubocop Save/Bang
     end
   end
 end
