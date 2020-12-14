@@ -9,6 +9,6 @@ class PlacementsController < ApplicationController
 private
 
   def placement_params
-    params.require(:placement).permit(:foster_parent_id, :child_id)
+    params.require(:placement).permit(:foster_parent_id, :placement_need_id)
   end
 end

@@ -1,10 +1,10 @@
 require "rails_helper"
 
-RSpec.describe ShortlistPolicy do
+RSpec.describe TmpShortlistPolicy do
   subject(:policy) { described_class.new(auth_context, record) }
 
   let(:auth_context) { AuthorisationContext.new(user) }
-  let(:record) { Shortlist.new(child: child) }
+  let(:record) { TmpShortlist.new(child: child) }
   let(:child) { build_stubbed(:child) }
 
   context "for matchmaker" do
