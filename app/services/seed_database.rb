@@ -41,7 +41,7 @@ private
 
   def single_seed(model, hash_array)
     hash_array.each do |hash|
-      model.create hash # TODO: need to bang ! this when postcodes valid, check rubocop Save/Bang
+      model.create hash
     end
   end
 end
