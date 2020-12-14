@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   default_form_builder GOVUKDesignSystemFormBuilder::FormBuilder
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   rescue_from Pundit::NotAuthorizedError, with: :pundit_not_found
+  rescue_from Faraday::Error, with: :postcode_api_error
 
   before_action :authenticate_user!
   # rubocop:disable Rails/LexicallyScopedActionFilter
@@ -12,6 +13,11 @@ class ApplicationController < ActionController::Base
 # rubocop:enable Rails/LexicallyScopedActionFilter
 
 private
+
+  def postcode_api_error
+    logger.error "POSTCODES.IO HAS AN ISSUE"
+    redirect_to postcode_api_error_path(e: $ERROR_INFO)
+  end
 
   def pundit_user
     AuthorisationContext.new(current_user)

@@ -14,12 +14,13 @@ class PlacementNeed < ApplicationRecord
   has_one :shortlist, inverse_of: :placement_need, required: false
   has_one :placement, inverse_of: :placement_need, required: false
 
-  before_validation :sanitize_input
+  before_validation :sanitize_postcode
 
   validates :placement_date, :criteria, presence: true
   validates :location_radius_miles, numericality: { only_integer: true, greater_than: 0, less_than: 51 }
   validate :date_in_future
-  validates :postcode, format: { with: /^([A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}|GIR ?0A{2})$/i, multiline: true }
+  validate :check_parsed_postcode
+  validates :postcode, postcode: true
 
 private
 
@@ -29,7 +30,15 @@ private
     end
   end
 
-  def sanitize_input
-    self.postcode = postcode.to_s.strip.presence if postcode
+  def sanitize_postcode
+    self.postcode = UKPostcode.parse(postcode.gsub(" ", "")).presence if postcode
+  end
+
+  def check_parsed_postcode
+    return unless postcode
+
+    unless UKPostcode.parse(postcode).full_valid?
+      errors.add(:postcode, :invalid)
+    end
   end
 end
