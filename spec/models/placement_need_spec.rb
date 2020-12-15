@@ -8,7 +8,7 @@ RSpec.describe PlacementNeed, type: :model do
   it { is_expected.to have_one(:shortlist).inverse_of(:placement_need) }
 
   describe "#postcode" do
-    it_behaves_like "valid_postcode"
+    it_behaves_like "valid_postcode", :postcode
   end
 
   describe "#placement_date" do
