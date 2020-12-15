@@ -20,6 +20,7 @@ RSpec.describe PlacementNeed, type: :model do
     context "when nil value" do
       it "only calls check_parsed_postcode validation" do
         subject.postcode = nil
+        expect(subject).to receive(:check_parsed_postcode).twice
         expect_any_instance_of(PostcodeApi).to_not receive(:postcode_valid?)
         subject.valid?
       end
