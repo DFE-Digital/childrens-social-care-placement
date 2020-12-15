@@ -123,6 +123,10 @@ class SeedData
 
     @shortlists = [
       {
+        id: 202,
+        placement_need_id: 202,
+      },
+      {
         id: 203,
         placement_need_id: 203,
       },
