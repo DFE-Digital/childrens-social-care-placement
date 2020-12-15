@@ -4,7 +4,7 @@ RSpec.shared_examples "valid_postcode" do
     it { is_expected.to allow_value("Eh3 9eH", "TR11uz").for :postcode }
 
     context "when nil value" do
-      it "only calls check_parsed_postcode validation" do
+      it "does not call postcode.io api" do
         subject.postcode = nil
         expect_any_instance_of(PostcodeApi).to_not receive(:postcode_valid?)
         subject.valid?
@@ -12,7 +12,7 @@ RSpec.shared_examples "valid_postcode" do
     end
 
     context "when correctly formatted but non existent" do
-      it "calls postcode validator" do
+      it "calls postcode.io api" do
         subject.postcode = "tr1 1ug"
         expect_any_instance_of(PostcodeApi).to receive(:postcode_valid?).once
         subject.valid?
