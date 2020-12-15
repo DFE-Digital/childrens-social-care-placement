@@ -54,7 +54,7 @@ en:
           attributes:
             base:
               options_blank: "Select an option from the list"
-            postcode:
+            address_postcode:
               invalid: "Enter a valid postcode"
 
   select_events:

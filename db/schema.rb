@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_15_095226) do
+ActiveRecord::Schema.define(version: 2020_12_15_121855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2020_12_15_095226) do
     t.string "address_line_2"
     t.string "address_city"
     t.string "address_county"
-    t.string "postcode"
+    t.string "address_postcode"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["foster_parent_id"], name: "index_placement_suitabilities_on_foster_parent_id"
