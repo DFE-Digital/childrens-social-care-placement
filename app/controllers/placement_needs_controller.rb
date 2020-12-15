@@ -15,7 +15,7 @@ class PlacementNeedsController < ApplicationController
     authorize @shortlist
 
     if @placement_need.save && @shortlist.save
-      redirect_to shortlist_path(params[:child_id])
+      redirect_to shortlist_path(@shortlist)
     else
       render "new"
     end

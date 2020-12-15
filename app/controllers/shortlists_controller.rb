@@ -1,8 +1,8 @@
 class ShortlistsController < ApplicationController
   def show
-    @child = Child.find(params[:id])
-    @placement_need = @child.placement_need
-    @shortlist = TmpShortlist.new(child: @child)
+    @shortlist = Shortlist.find(params[:id])
+    @placement_need = @shortlist.placement_need
+    @child = @placement_need.child
 
     authorize @shortlist
 
