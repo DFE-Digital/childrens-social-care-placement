@@ -19,7 +19,6 @@ class PlacementNeed < ApplicationRecord
   validates :placement_date, :criteria, presence: true
   validates :location_radius_miles, numericality: { only_integer: true, greater_than: 0, less_than: 51 }
   validate :date_in_future
-  validate :check_parsed_postcode
   validates :postcode, postcode: true
 
 private
@@ -32,13 +31,5 @@ private
 
   def sanitize_postcode
     self.postcode = UKPostcode.parse(postcode.gsub(" ", "")).presence if postcode
-  end
-
-  def check_parsed_postcode
-    return unless postcode
-
-    unless UKPostcode.parse(postcode).full_valid?
-      errors.add(:postcode, :invalid)
-    end
   end
 end
