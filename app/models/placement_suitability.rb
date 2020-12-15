@@ -11,8 +11,7 @@ class PlacementSuitability < ApplicationRecord
   validates :address_line_2, length: { maximum: 1024 }
   validates :address_city, presence: true, length: { maximum: 128 }
   validates :address_county, presence: true, length: { maximum: 128 }
-  validate :check_parsed_postcode
-  validates :address_postcode, postcode: true
+  validates :postcode, postcode: true
 
   def placement_types
     PlacementNeed::OPTIONS.map { |pt| send(pt) == true ? pt : nil }.compact
@@ -28,14 +27,6 @@ private
   end
 
   def sanitize_postcode
-    self.address_postcode = UKPostcode.parse(address_postcode.gsub(" ", "")).presence if address_postcode
-  end
-
-  def check_parsed_postcode
-    return unless address_postcode
-
-    unless UKPostcode.parse(address_postcode).full_valid?
-      errors.add(:address_postcode, :invalid)
-    end
+    self.postcode = UKPostcode.parse(postcode.gsub(" ", "")).presence if postcode
   end
 end

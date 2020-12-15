@@ -28,7 +28,7 @@ class SeedData
         address_line_1: "49 Horns Ln",
         address_city: "Norwich",
         address_county: "Norfolk",
-        address_postcode: "NR1 3ER",
+        postcode: "NR1 3ER",
       },
       {
         id: 102,
@@ -39,7 +39,7 @@ class SeedData
         address_line_1: "102 Union St",
         address_city: "Norwich",
         address_county: "Norfolk",
-        address_postcode: "NR2 2TG",
+        postcode: "NR2 2TG",
       },
     ]
     (103..110).each do |id|
@@ -56,7 +56,7 @@ class SeedData
         address_line_1: Faker::Address.street_address,
         address_city: "Norwich",
         address_county: "Norfolk",
-        address_postcode: "NR#{id - 100} 1GA",
+        postcode: "NR#{id - 100} 1GA",
       }
     end
 

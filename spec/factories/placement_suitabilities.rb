@@ -4,7 +4,7 @@ FactoryBot.define do
     address_line_2 { "Acacia ave" }
     address_city { "Manchester" }
     address_county { "greater Manchester" }
-    address_postcode { "TR1 1UZ" }
+    postcode { "TR1 1UZ" }
     available { true }
     emergency { true }
     foster_parent

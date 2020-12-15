@@ -25,7 +25,7 @@ class TestSeedData < SeedData
         address_line_1: "49 Horns Ln",
         address_city: "Norwich",
         address_county: "Norfolk",
-        address_postcode: "NR1 3ER",
+        postcode: "NR1 3ER",
       },
     ]
     @children = [
