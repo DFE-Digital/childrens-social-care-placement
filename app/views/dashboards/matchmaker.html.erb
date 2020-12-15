@@ -10,3 +10,19 @@
     <%= govuk_button_to("Find a child's placement",children_creation_step_path(:personal_details), method: :get) %>
   </div>
 </div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h2>Open shortlists</h2>
+
+    <% if @shortlists.present? %>
+      <ul class="govuk-list">
+        <% @shortlists.each do |shortlist| %>
+          <li><%= govuk_link_to(shortlist.placement_need.child.full_name, shortlist_path(shortlist)) %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>You have no open shortlists.</p>
+    <% end %>
+  </div>
+</div>

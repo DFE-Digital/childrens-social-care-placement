@@ -5,6 +5,7 @@ RSpec.feature "Matchmaker sees available Foster Parents for a Child without a Pl
 
   let(:child) { create(:child) }
   let(:placement_need) { create(:placement_need, child: child, criteria: "long_term") }
+  let(:shortlist) { create(:shortlist, placement_need: placement_need) }
 
   let(:placement_suitabilities) { create_list(:placement_suitability, 2, long_term: true) }
   let!(:available_foster_parents) {  placement_suitabilities.map(&:foster_parent) }
@@ -13,7 +14,7 @@ RSpec.feature "Matchmaker sees available Foster Parents for a Child without a Pl
   background do
     sign_in(matchmaker.user)
 
-    visit(shortlist_path(placement_need.child.id))
+    visit(shortlist_path(shortlist.id))
   end
 
   context "When there are available Foster Parents" do

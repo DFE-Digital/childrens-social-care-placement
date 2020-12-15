@@ -1,8 +1,8 @@
 class SeedData
-  attr_reader :foster_parents, :matchmakers, :children, :placements, :diary_entries, :placement_needs, :placement_suitabilities
-  TABLES = %w[users foster_parents matchmakers children placements diary_entries placement_needs placement_suitabilities].freeze
+  attr_reader :foster_parents, :matchmakers, :children, :placements, :diary_entries, :placement_needs, :placement_suitabilities, :shortlists
+  TABLES = %w[users foster_parents matchmakers children placements diary_entries placement_needs placement_suitabilities shortlists].freeze
   DUAL_SEEDS = [FosterParent, Matchmaker].freeze
-  SINGLE_SEEDS = [Child, PlacementNeed, Placement, DiaryEntry, PlacementSuitability].freeze
+  SINGLE_SEEDS = [Child, PlacementNeed, Placement, DiaryEntry, PlacementSuitability, Shortlist].freeze
 
   def initialize
     @foster_parents = [
@@ -118,6 +118,17 @@ class SeedData
         criteria: "long_term",
         postcode: "NR1 1BD",
         location_radius_miles: 5,
+      },
+    ]
+
+    @shortlists = [
+      {
+        id: 202,
+        placement_need_id: 202,
+      },
+      {
+        id: 203,
+        placement_need_id: 203,
       },
     ]
 

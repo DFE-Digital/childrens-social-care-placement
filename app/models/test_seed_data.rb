@@ -63,5 +63,11 @@ class TestSeedData < SeedData
         location_radius_miles: 5,
       },
     ]
+    @shortlists = [
+      {
+        id: 501,
+        placement_need_id: 501,
+      },
+    ]
   end
 end
