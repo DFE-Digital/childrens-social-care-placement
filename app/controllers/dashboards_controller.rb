@@ -8,6 +8,9 @@ class DashboardsController < ApplicationController
   def matchmaker
     authorize :dashboard
 
-    @shortlists = Shortlist.joins(:placement_need).left_outer_joins(placement_need: :placement).where(placements: { id: nil })
+    @shortlists = policy_scope(Shortlist)
+      .joins(:placement_need)
+      .left_outer_joins(placement_need: :placement)
+      .where(placements: { id: nil })
   end
 end
