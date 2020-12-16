@@ -3,7 +3,7 @@ module Forms
     include ActiveModel::Model
     include ActiveModel::Attributes
 
-    attr_accessor :placement_types
+    attr_accessor :placement_types, :search_radius
 
     def foster_families
       FosterParent

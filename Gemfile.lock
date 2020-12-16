@@ -151,6 +151,7 @@ GEM
       faraday (~> 1.0)
     ffi (1.11.3)
     foreman (0.87.2)
+    geocoder (1.6.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     govuk-components (0.5.0)
@@ -377,6 +378,7 @@ DEPENDENCIES
   faraday-http-cache (~> 2.2)
   faraday_middleware (~> 1.0)
   foreman
+  geocoder (~> 1.6, >= 1.6.4)
   govuk-components
   govuk_design_system_formbuilder
   listen (>= 3.0.5, < 3.3)
