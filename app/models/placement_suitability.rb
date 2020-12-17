@@ -1,9 +1,12 @@
 class PlacementSuitability < ApplicationRecord
+  include Geocodeable
+
   belongs_to :foster_parent, inverse_of: :placement_suitability
 
   validates_with AnyBooleanValidator, fields: PlacementNeed::OPTIONS
 
   before_validation :sanitize_input, :sanitize_postcode
+  after_validation :geocode
 
   validates :available, inclusion: [true, false]
 
@@ -15,6 +18,10 @@ class PlacementSuitability < ApplicationRecord
 
   def placement_types
     PlacementNeed::OPTIONS.map { |pt| send(pt) == true ? pt : nil }.compact
+  end
+
+  def address
+    "#{address_line_1}, #{address_line_2}, #{address_city}, #{address_county},#{address_postcode},United Kingdom"
   end
 
 private

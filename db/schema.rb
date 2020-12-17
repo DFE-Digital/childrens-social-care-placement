@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_15_121855) do
+ActiveRecord::Schema.define(version: 2020_12_16_124201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 2020_12_15_121855) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "criteria"
+    t.decimal "longitude"
+    t.decimal "latitude"
     t.index ["child_id"], name: "index_placement_needs_on_child_id"
   end
 
@@ -87,6 +89,8 @@ ActiveRecord::Schema.define(version: 2020_12_15_121855) do
     t.string "address_postcode"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "longitude"
+    t.decimal "latitude"
     t.index ["foster_parent_id"], name: "index_placement_suitabilities_on_foster_parent_id"
   end
 

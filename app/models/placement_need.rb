@@ -1,4 +1,6 @@
 class PlacementNeed < ApplicationRecord
+  include Geocodeable
+
   OPTIONS = %w[
     long_term
     short_term
@@ -15,15 +17,11 @@ class PlacementNeed < ApplicationRecord
   has_one :placement, inverse_of: :placement_need, required: false
 
   before_validation :sanitize_postcode
-  after_validation :geocode
 
   validates :placement_date, :criteria, presence: true
   validates :location_radius_miles, numericality: { only_integer: true, greater_than: 0, less_than: 51 }
   validate :date_in_future
   validates :postcode, postcode: true
-
-  # geocoding
-  geocoded_by :address, if: ->(obj) { obj.address.present? and obj.address_changed? }
 
   def address
     "#{postcode},United Kingdom"
