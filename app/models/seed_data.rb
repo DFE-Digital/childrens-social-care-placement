@@ -125,10 +125,12 @@ class SeedData
       {
         id: 202,
         placement_need_id: 202,
+        placement_types: "long_term",
       },
       {
         id: 203,
         placement_need_id: 203,
+        placement_types: "long_term",
       },
     ]
 
