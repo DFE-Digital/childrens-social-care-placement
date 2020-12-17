@@ -6,7 +6,6 @@ class PlacementSuitability < ApplicationRecord
   validates_with AnyBooleanValidator, fields: PlacementNeed::OPTIONS
 
   before_validation :sanitize_input, :sanitize_postcode
-  after_validation :geocode
 
   validates :available, inclusion: [true, false]
 
