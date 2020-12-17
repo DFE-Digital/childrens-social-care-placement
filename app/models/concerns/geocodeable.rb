@@ -1,5 +1,6 @@
 module Geocodeable
   extend ActiveSupport::Concern
+  # geocoder expects coordinates as [lat, long]
 
   included do
     after_validation :geocode

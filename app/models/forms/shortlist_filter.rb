@@ -3,7 +3,7 @@ module Forms
     include ActiveModel::Model
     include ActiveModel::Attributes
 
-    attr_accessor :placement_types, :search_radius
+    attr_accessor :placement_types, :search_radius, :latitude, :longitude
 
     def foster_families
       FosterParent
@@ -25,6 +25,7 @@ module Forms
 
       relation
         .joins(:placement_suitability)
+        .merge(PlacementSuitability.near([latitude, longitude], search_radius))
         .merge(placement_types_condition)
     end
 
