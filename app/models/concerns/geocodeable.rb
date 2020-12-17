@@ -3,7 +3,7 @@ module Geocodeable
   # geocoder expects coordinates as [lat, long]
 
   included do
-    after_validation :geocode
-    geocoded_by :address, if: ->(obj) { obj.address.present? and obj.address_changed? }
+    geocoded_by :address
+    after_validation :geocode, if: ->(obj) { obj.address.present? }
   end
 end

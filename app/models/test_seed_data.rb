@@ -7,6 +7,12 @@ class TestSeedData < SeedData
         first_name: "Rodger",
         last_name: "Johnston",
       },
+      {
+        id: 102,
+        email: "lucy82@example.com",
+        first_name: "Lucy",
+        last_name: "Casper",
+      },
     ]
     @matchmakers = [
       {
@@ -22,10 +28,21 @@ class TestSeedData < SeedData
         foster_parent_id: 101,
         long_term: true,
         short_term: true,
-        address_line_1: "49 Horns Ln",
+        address_line_1: "1 Prince of Wales Road",
         address_city: "Norwich",
         address_county: "Norfolk",
-        address_postcode: "NR1 3ER",
+        address_postcode: "NR1 1AR",
+      },
+      {
+        id: 102,
+        foster_parent_id: 102,
+        long_term: true,
+        short_term: true,
+        emergency: true,
+        address_line_1: "1 Church st",
+        address_city: "Bawburgh",
+        address_county: "Norwich",
+        address_postcode: "NR2 2TG",
       },
     ]
     @children = [
