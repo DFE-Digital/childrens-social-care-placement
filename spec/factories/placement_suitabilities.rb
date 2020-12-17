@@ -10,7 +10,7 @@ FactoryBot.define do
     emergency { true }
     foster_parent
 
-    trait :ten_miles_distant do
+    trait :one_mile_distant do
       address_line_1 { "1" }
       address_line_2 { "Church St" }
       address_city { "Bawburgh" }
@@ -18,6 +18,6 @@ FactoryBot.define do
       address_postcode { "NR2 2TG" }
     end
 
-    factory :distant_suitability, traits: [:ten_miles_distant]
+    factory :distant_suitability, traits: [:one_mile_distant]
   end
 end
