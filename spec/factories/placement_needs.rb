@@ -3,7 +3,7 @@ FactoryBot.define do
     child
 
     placement_date { Time.zone.today }
-    postcode { "TR1 1UZ" }
+    postcode { "NR1 1BD" }
     location_radius_miles { 5 }
     criteria { "emergency" }
   end
