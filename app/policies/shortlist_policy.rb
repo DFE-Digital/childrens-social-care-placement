@@ -1,5 +1,9 @@
 class ShortlistPolicy < ApplicationPolicy
-  def show?
+  def edit?
+    create?
+  end
+
+  def update?
     create?
   end
 

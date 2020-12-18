@@ -9,13 +9,13 @@ RSpec.describe ShortlistPolicy do
   context "for matchmaker" do
     let(:user) { create(:matchmaker).user }
 
-    it { is_expected.to permit_actions(%i[create show]) }
+    it { is_expected.to permit_actions(%i[create edit update]) }
   end
 
   context "for other types of users" do
     let(:user) { FactoryBot.build_stubbed(:user) }
 
-    it { is_expected.to forbid_actions(%i[create show]) }
+    it { is_expected.to forbid_actions(%i[create edit update]) }
   end
 
   describe described_class::Scope do
