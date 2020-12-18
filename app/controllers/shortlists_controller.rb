@@ -13,9 +13,19 @@ class ShortlistsController < ApplicationController
 private
 
   def filter_params
-    p = params.permit(filter: { placement_types: [] })[:filter]
+    p = params.permit(filter: {
+      search_radius: "",
+      latitude: "",
+      longitude: "",
+      placement_types: [],
+    })[:filter]
     if p.nil? && @placement_need
-      { placement_types: [@placement_need.criteria] }
+      {
+        placement_types: [@placement_need.criteria],
+        search_radius: @placement_need.location_radius_miles,
+        latitude: @placement_need.latitude,
+        longitude: @placement_need.longitude,
+      }
     else
       p
     end

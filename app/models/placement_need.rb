@@ -1,4 +1,6 @@
 class PlacementNeed < ApplicationRecord
+  include Geocodeable
+
   OPTIONS = %w[
     long_term
     short_term
@@ -20,6 +22,10 @@ class PlacementNeed < ApplicationRecord
   validates :location_radius_miles, numericality: { only_integer: true, greater_than: 0, less_than: 51 }
   validate :date_in_future
   validates :postcode, postcode: true
+
+  def address
+    "#{postcode},United Kingdom"
+  end
 
 private
 

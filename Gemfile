@@ -33,6 +33,7 @@ gem "faraday-http-cache", "~> 2.2"
 gem "faraday_middleware", "~> 1.0"
 
 # postcode parsing
+gem "geocoder", "~> 1.6", ">= 1.6.4"
 gem "uk_postcode", "~> 2.1", ">= 2.1.6"
 
 group :development, :test do
