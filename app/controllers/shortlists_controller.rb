@@ -1,18 +1,19 @@
 class ShortlistsController < ApplicationController
-  helper_method :shortlist, :placement_need, :child
+  helper_method :shortlist, :placement_need, :child, :filter_form
 
   def edit
     authorize shortlist
 
-    placement_types = shortlist.placement_types.split(",")
-    @filter_form = Forms::ShortlistFilter.new(placement_types: placement_types)
-    @available_foster_parents = ShortlistFosterParentQuery.new(placement_types: placement_types).call
+    @available_foster_parents = ShortlistFosterParentQuery.new(placement_types: filter_form.placement_types).call
   end
 
   # This may not be the best solution, but we are using the :update route to persist the Shortlist
   # attributes. It then redirects back to the :edit page to be a refreshable page.
   def update
     authorize shortlist
+
+    filter_form.assign_attributes(filter_params)
+    filter_form.save!
 
     redirect_to action: :edit
   end
@@ -29,6 +30,10 @@ private
 
   def child
     @child ||= placement_need.child
+  end
+
+  def filter_form
+    @filter_form ||= Forms::ShortlistFilter.new(shortlist)
   end
 
   def filter_params
