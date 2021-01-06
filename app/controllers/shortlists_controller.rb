@@ -1,35 +1,47 @@
 class ShortlistsController < ApplicationController
-  def show
-    @shortlist = Shortlist.find(params[:id])
-    @placement_need = @shortlist.placement_need
-    @child = @placement_need.child
+  helper_method :shortlist, :placement_need, :child, :filter_form
 
-    authorize @shortlist
+  def edit
+    authorize shortlist
 
-    @filter_form = Forms::ShortlistFilter.new(filter_params)
+    @available_foster_parents = ShortlistFosterParentQuery.new(
+      placement_types: filter_form.placement_types,
+      search_radius: filter_form.search_radius,
+      latitude: filter_form.latitude,
+      longitude: filter_form.longitude,
+    ).call
+  end
 
-    ps = filter_params.to_h.symbolize_keys.tap { |p| p[:placement_types].reject!(&:blank?) }
-    @available_foster_parents = ShortlistFosterParentQuery.new(**ps).call
+  # This may not be the best solution, but we are using the :update route to persist the Shortlist
+  # attributes. It then redirects back to the :edit page to be a refreshable page.
+  def update
+    authorize shortlist
+
+    filter_form.assign_attributes(filter_params)
+    filter_form.save!
+
+    redirect_to action: :edit
   end
 
 private
 
+  def shortlist
+    @shortlist ||= Shortlist.find(params[:id])
+  end
+
+  def placement_need
+    @placement_need ||= shortlist.placement_need
+  end
+
+  def child
+    @child ||= placement_need.child
+  end
+
+  def filter_form
+    @filter_form ||= Forms::ShortlistFilter.new(shortlist)
+  end
+
   def filter_params
-    p = params.permit(filter: {
-      search_radius: "",
-      latitude: "",
-      longitude: "",
-      placement_types: [],
-    })[:filter]
-    if p.nil? && @placement_need
-      {
-        placement_types: [@placement_need.criteria],
-        search_radius: @placement_need.location_radius_miles,
-        latitude: @placement_need.latitude,
-        longitude: @placement_need.longitude,
-      }
-    else
-      p
-    end
+    params.permit(filter: { placement_types: [] })[:filter]
   end
 end

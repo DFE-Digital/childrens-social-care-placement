@@ -18,7 +18,7 @@
     <% if @shortlists.present? %>
       <ul class="govuk-list">
         <% @shortlists.each do |shortlist| %>
-          <li><%= govuk_link_to(shortlist.placement_need.child.full_name, shortlist_path(shortlist)) %></li>
+          <li><%= govuk_link_to(shortlist.placement_need.child.full_name, edit_shortlist_path(shortlist)) %></li>
         <% end %>
       </ul>
     <% else %>

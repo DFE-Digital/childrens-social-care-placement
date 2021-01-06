@@ -14,7 +14,7 @@ RSpec.feature "Matchmaker sees available Foster Parents for a Child without a Pl
   background do
     sign_in(matchmaker.user)
 
-    visit(shortlist_path(shortlist.id))
+    visit(edit_shortlist_path(shortlist.id))
   end
 
   context "When there are available Foster Parents" do
