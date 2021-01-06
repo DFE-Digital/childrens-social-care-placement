@@ -53,10 +53,10 @@ class SeedData
         id: id,
         foster_parent_id: id,
         long_term: true,
-        address_line_1: Faker::Address.street_address,
+        address_line_1: "#{id} Horns Ln",
         address_city: "Norwich",
         address_county: "Norfolk",
-        address_postcode: "NR#{id - 100} 1GA",
+        address_postcode: "NR1 3ER",
       }
     end
 
@@ -125,10 +125,12 @@ class SeedData
       {
         id: 202,
         placement_need_id: 202,
+        placement_types: "long_term",
       },
       {
         id: 203,
         placement_need_id: 203,
+        placement_types: "long_term",
       },
     ]
 

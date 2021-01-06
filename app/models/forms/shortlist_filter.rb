@@ -5,38 +5,17 @@ module Forms
 
     attr_accessor :placement_types, :search_radius, :latitude, :longitude
 
-    def foster_families
-      FosterParent
-        .includes(:placement_suitability)
-        .yield_self(&method(:placements_part))
-        .yield_self(&method(:placement_suitability_part))
+    def initialize(shortlist)
+      @shortlist = shortlist
+
+      @placement_types = @shortlist.placement_types&.split(",") || []
+      @search_radius = @shortlist.placement_need.location_radius_miles
+      @latitude = @shortlist.placement_need.latitude
+      @longitude = @shortlist.placement_need.longitude
     end
 
-  private
-
-    def placements_part(relation)
-      relation
-        .left_outer_joins(:placements)
-        .where(placements: { foster_parent_id: nil })
-    end
-
-    def placement_suitability_part(relation)
-      return relation if sanitised_placement_types.empty?
-
-      relation
-        .joins(:placement_suitability)
-        .merge(PlacementSuitability.near([latitude, longitude], search_radius))
-        .merge(placement_types_condition)
-    end
-
-    def placement_types_condition
-      sanitised_placement_types.inject(PlacementSuitability.none) do |condition, placement_type|
-        condition.or(PlacementSuitability.where(placement_type => true))
-      end
-    end
-
-    def sanitised_placement_types
-      @sanitised_placement_types ||= placement_types&.select { |pt| PlacementNeed::OPTIONS.include?(pt) } || []
+    def save!
+      @shortlist.update(placement_types: @placement_types.reject(&:blank?).join(","))
     end
   end
 end

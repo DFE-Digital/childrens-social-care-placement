@@ -1,58 +1,36 @@
 require "rails_helper"
 
 RSpec.describe Forms::ShortlistFilter do
-  subject(:filter) { described_class.new(params) }
+  subject(:filter) { described_class.new(shortlist) }
 
-  describe "#foster_families" do
-    subject(:foster_families) { filter.foster_families }
-    let!(:placement_need) { create(:placement_need) }
+  let(:shortlist) { create(:shortlist, placement_types: "respite,remand") }
 
-    let!(:available_short_term_fp) { create(:placement_suitability, short_term: true).foster_parent }
-    let!(:available_emergency) { create(:placement_suitability, emergency: true).foster_parent }
-    let!(:available_remand) { create(:placement_suitability, short_break: true, remand: true).foster_parent }
-    let!(:unavailable_fp) do
-      create(:placement_suitability, remand: true).foster_parent.tap { |fp| create(:placement, foster_parent: fp) }
+  describe "#initialize" do
+    it "extracts and assigns placement_types attribute as an array from the Shortlist#placement_types field" do
+      expect(filter.placement_types).to eql(%w[respite remand])
     end
 
-    context "when placement_types attributes is set" do
-      context "for foster parents within search radius" do
-        let(:params) do
-          {
-            "search_radius" => placement_need.location_radius_miles,
-            "latitude" => placement_need.latitude,
-            "longitude" => placement_need.longitude,
-            "placement_types" => %w[remand short_term],
-          }
-        end
-
-        it "returns only parents who match any of the placement_types" do
-          is_expected.to contain_exactly(available_remand, available_short_term_fp)
-        end
-      end
-
-      context "altered search radius" do
-        let(:params) do
-          {
-            "search_radius" => "0.1",
-            "latitude" => placement_need.latitude,
-            "longitude" => placement_need.longitude,
-            "placement_types" => %w[remand short_term],
-          }
-        end
-        let!(:available_remand) { create(:distant_suitability, remand: true).foster_parent }
-
-        it "returns only foster parents within search radius" do
-          is_expected.to contain_exactly(available_short_term_fp)
-        end
-      end
+    it "assigns search_radius from the placement_need object" do
+      expect(filter.search_radius).to eql(shortlist.placement_need.location_radius_miles)
     end
 
-    context "when placement_types attribute is empty" do
-      let(:params) { {} }
+    it "assigns latitude from the placement_need object" do
+      expect(filter.latitude).to eql(shortlist.placement_need.latitude)
+    end
 
-      it "returns all available foster parents" do
-        is_expected.to contain_exactly(available_short_term_fp, available_emergency, available_remand)
-      end
+    it "assigns longitude from the placement_need object" do
+      expect(filter.longitude).to eql(shortlist.placement_need.longitude)
+    end
+  end
+
+  describe "#save!" do
+    before do
+      filter.assign_attributes(placement_types: %w[emergency short_term])
+      filter.save!
+    end
+
+    it "stores the placement_types attribute into the Shortlist#placement_types string field" do
+      expect(shortlist.reload.placement_types).to eql("emergency,short_term")
     end
   end
 end

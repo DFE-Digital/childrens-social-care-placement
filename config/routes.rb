@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get "/dashboards/matchmaker", to: "dashboards#matchmaker"
   get "/postcode_api_error", to: "pages#postcode_api_error"
 
-  resources :shortlists, only: :show
+  resources :shortlists, only: %i[edit update]
   resources :children do
     resources :placement_needs, only: %i[new create]
   end

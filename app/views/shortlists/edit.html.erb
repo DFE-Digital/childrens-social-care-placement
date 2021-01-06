@@ -7,17 +7,17 @@
 <div class="govuk-grid-row  govuk-!-margin-bottom-8">
   <div class="govuk-grid-column-one-third">
     <span class="govuk-!-display-block">For</span>
-    <p class="govuk-body-l govuk-!-margin-bottom-0"><%= @child.full_name %></p>
-    <span class="govuk-body-m"><%= @child.age %> years old <%= t(@child.gender, scope: "enums.gender").downcase %></span>
+    <p class="govuk-body-l govuk-!-margin-bottom-0"><%= child.full_name %></p>
+    <span class="govuk-body-m"><%= child.age %> years old <%= t(child.gender, scope: "enums.gender").downcase %></span>
   </div>
 
-  <% if @placement_need %>
+  <% if placement_need %>
   <div class="govuk-grid-column-two-thirds">
     <span class="govuk-!-display-block">Placement needs</span>
     <ul class="govuk-list govuk-list--bullet">
-      <li><%= t(@placement_need.criteria, scope: "enums.placement_type") %></li>
-      <li><%= @placement_need.location_radius_miles %> miles from <%= @placement_need.postcode %></li>
-      <li>By <%= @placement_need.placement_date.to_formatted_s(:govuk) %></li>
+      <li><%= t(placement_need.criteria, scope: "enums.placement_type") %></li>
+      <li><%= placement_need.location_radius_miles %> miles from <%= placement_need.postcode %></li>
+      <li>By <%= placement_need.placement_date.to_formatted_s(:govuk) %></li>
     </ul>
   </div>
   <% end %>
@@ -26,7 +26,7 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-one-third" style="border: 1px solid #b1b4b6; padding: 20px; margin-top: 10px;">
-    <%= form_for @filter_form, as: :filter, url: shortlist_path(@child), method: :get do |f| %>
+    <%= form_for filter_form, as: :filter, url: shortlist_path(shortlist), method: :put do |f| %>
       <%= f.govuk_collection_check_boxes :placement_types,
         PlacementNeed::OPTIONS.map { |pt| OpenStruct.new(id: pt, name: t(pt, scope: "enums.placement_type"))},
         :id,
@@ -56,7 +56,7 @@
             </p>
           <% end %>
 
-          <%= govuk_button_to("Place", placements_path, params: { placement: { foster_parent_id: foster_parent.id, placement_need_id: @placement_need.id } }) %>
+          <%= govuk_button_to("Place", placements_path, params: { placement: { foster_parent_id: foster_parent.id, placement_need_id: placement_need.id } }) %>
 
           <hr class="govuk-section-break govuk-section-break--visible">
         </div>

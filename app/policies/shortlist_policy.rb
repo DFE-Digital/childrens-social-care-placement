@@ -1,10 +1,14 @@
 class ShortlistPolicy < ApplicationPolicy
-  def show?
+  def create?
+    @auth_context.role_model.is_a?(Matchmaker)
+  end
+
+  def edit?
     create?
   end
 
-  def create?
-    @auth_context.role_model.is_a?(Matchmaker)
+  def update?
+    create?
   end
 
   class Scope < Scope
