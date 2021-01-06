@@ -56,7 +56,7 @@ class SeedData
         address_line_1: Faker::Address.street_address,
         address_city: "Norwich",
         address_county: "Norfolk",
-        address_postcode: "NR#{id - 100} 1GA",
+        address_postcode: "NR1 3ER",
       }
     end
 

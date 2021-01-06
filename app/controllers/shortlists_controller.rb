@@ -7,7 +7,9 @@ class ShortlistsController < ApplicationController
     authorize @shortlist
 
     @filter_form = Forms::ShortlistFilter.new(filter_params)
-    @available_foster_parents = @filter_form.foster_families
+
+    ps = filter_params.to_h.symbolize_keys.tap { |p| p[:placement_types].reject!(&:blank?) }
+    @available_foster_parents = ShortlistFosterParentQuery.new(**ps).call
   end
 
 private
