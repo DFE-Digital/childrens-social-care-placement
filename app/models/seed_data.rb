@@ -1,8 +1,8 @@
 class SeedData
-  attr_reader :foster_parents, :matchmakers, :children, :placements, :diary_entries, :placement_needs, :placement_suitabilities, :shortlists
-  TABLES = %w[users foster_parents matchmakers children placements diary_entries placement_needs placement_suitabilities shortlists].freeze
+  attr_reader :foster_parents, :matchmakers, :children, :placements, :diary_entries, :placement_needs, :placement_suitabilities, :shortlists, :shortlisted_foster_parents
+  TABLES = %w[users foster_parents matchmakers children placements diary_entries placement_needs placement_suitabilities shortlists shortlisted_foster_parents].freeze
   DUAL_SEEDS = [FosterParent, Matchmaker].freeze
-  SINGLE_SEEDS = [Child, PlacementNeed, Placement, DiaryEntry, PlacementSuitability, Shortlist].freeze
+  SINGLE_SEEDS = [Child, PlacementNeed, Placement, DiaryEntry, PlacementSuitability, Shortlist, ShortlistedFosterParent].freeze
 
   def initialize
     @foster_parents = [
@@ -139,6 +139,13 @@ class SeedData
         id: 301,
         foster_parent_id: 102,
         placement_need_id: 202,
+      },
+    ]
+
+    @shortlisted_foster_parents = [
+      {
+        foster_parent_id: 103,
+        shortlist_id: 203,
       },
     ]
 
