@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "/postcode_api_error", to: "pages#postcode_api_error"
 
   resources :shortlists, only: %i[edit update]
+  resources :shortlisted_foster_parents, only: :create
   resources :children do
     resources :placement_needs, only: %i[new create]
   end
