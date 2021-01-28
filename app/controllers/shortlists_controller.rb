@@ -4,12 +4,13 @@ class ShortlistsController < ApplicationController
   def edit
     authorize shortlist
 
+    @shortlisted_foster_parents = shortlist.foster_parents
     @available_foster_parents = ShortlistFosterParentQuery.new(
       placement_types: filter_form.placement_types,
       search_radius: filter_form.search_radius,
       latitude: filter_form.latitude,
       longitude: filter_form.longitude,
-    ).call
+    ).call - @shortlisted_foster_parents
   end
 
   # This may not be the best solution, but we are using the :update route to persist the Shortlist

@@ -1,15 +1,15 @@
 require "rails_helper"
 
-RSpec.feature "Matchmaker sees available Foster Parents for a Child without a Placement and can place them", type: :feature do
+RSpec.feature "Matchmaker sees shortlisted Foster Parents for a Child and can place them", type: :feature do
   let(:matchmaker) { create(:matchmaker) }
 
   let(:child) { create(:child) }
   let(:placement_need) { create(:placement_need, child: child, criteria: "long_term") }
   let(:shortlist) { create(:shortlist, placement_need: placement_need) }
 
-  let(:placement_suitabilities) { create_list(:placement_suitability, 2, long_term: true) }
-  let!(:available_foster_parents) {  placement_suitabilities.map(&:foster_parent) }
-  let!(:unavailable_foster_parent) { create(:placement).foster_parent }
+  let!(:shortlisted_foster_parent) do
+    create(:foster_parent).tap { |fp| shortlist.foster_parents << fp }
+  end
 
   background do
     sign_in(matchmaker.user)
@@ -17,19 +17,18 @@ RSpec.feature "Matchmaker sees available Foster Parents for a Child without a Pl
     visit(edit_shortlist_path(shortlist.id))
   end
 
-  context "When there are available Foster Parents" do
+  context "When there are shortlisted Foster Parents" do
     scenario "Matchmaker looks at Shortlist for a Child which is not currently placed and sees available Foster Parents" do
       expect(page).to have_content("Foster families")
       expect(page).to have_content(child.full_name)
-      expect(page).to have_content("2 available families found")
 
-      available_foster_parents.each do |fp|
-        expect(page).to have_content(fp.full_name)
+      within("#shortlisted_foster_parents") do
+        expect(page).to have_content(shortlisted_foster_parent.full_name)
       end
     end
 
-    scenario "Matchmaker selects an available Foster Parent from the Shortlist and creates a Placement" do
-      within("#foster_parent_#{available_foster_parents.second.id}") do
+    scenario "Matchmaker selects a shortlisted Foster Parent from and creates a Placement" do
+      within("#foster_parent_#{shortlisted_foster_parent.id}") do
         click_on "Place"
       end
 
@@ -38,12 +37,12 @@ RSpec.feature "Matchmaker sees available Foster Parents for a Child without a Pl
     end
   end
 
-  context "When there are no available Foster Parents" do
-    let!(:available_foster_parents) { [] }
+  context "When there are no shortlisted Foster Parents" do
+    let!(:shortlisted_foster_parent) { nil }
 
     scenario "Matchmaker sees that there are no available Foster Parents" do
       expect(page).to have_content("Foster families")
-      expect(page).to have_content("There are currently no available foster families.")
+      expect(page).to have_content("No foster parents have been shortlisted.")
     end
   end
 end
