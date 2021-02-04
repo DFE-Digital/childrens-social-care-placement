@@ -33,8 +33,8 @@ resource "cloudfoundry_route" "dev_route" {
   hostname = "childrens-social-care-placement-develop"
 }
 
-resource "cloudfoundry_app" "childrens-social-care-placement-develop" {
-  name = "childrens-social-care-placement-develop"
+resource "cloudfoundry_app" "childrens-social-care-placement-dev" {
+  name = "childrens-social-care-placement-dev"
   space = data.cloudfoundry_space.placement-alpha-development.id
   docker_image = var.csc_docker_repo
   service_binding {
