@@ -18,7 +18,7 @@ data "cloudfoundry_service" "postgres" {
 }
 
 resource "cloudfoundry_service_instance" "postgres" {
-  name = "development-db"
+  name = "fa-development-db"
   space = data.cloudfoundry_space.placement-alpha-development.id
   service_plan = data.cloudfoundry_service.postgres.service_plans["medium-11"]
 }
@@ -30,11 +30,11 @@ data "cloudfoundry_domain" "dev" {
 resource "cloudfoundry_route" "dev_route" {
   domain = data.cloudfoundry_domain.dev.id
   space = data.cloudfoundry_space.placement-alpha-development.id
-  hostname = "childrens-social-care-placement-dev"
+  hostname = "childrens-social-care-placement-develop"
 }
 
-resource "cloudfoundry_app" "childrens-social-care-placement-dev" {
-  name = "childrens-social-care-placement-dev"
+resource "cloudfoundry_app" "childrens-social-care-placement-develop" {
+  name = "childrens-social-care-placement-develop"
   space = data.cloudfoundry_space.placement-alpha-development.id
   docker_image = var.csc_docker_repo
   service_binding {
