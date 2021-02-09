@@ -9,7 +9,7 @@ gem "devise"
 gem "mail-notify"
 gem "pg", ">= 0.18", "< 2.0"
 gem "pundit"
-gem "rails", "~> 6.0.3"
+gem "rails", "~> 6.1.1"
 
 # runtime
 gem "bootsnap", ">= 1.1.0", require: false
