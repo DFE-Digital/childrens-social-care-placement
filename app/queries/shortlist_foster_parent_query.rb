@@ -13,6 +13,7 @@ class ShortlistFosterParentQuery
       .yield_self(&method(:placements_part))
       .yield_self(&method(:placement_types_part))
       .yield_self(&method(:location_part))
+      .select("foster_parents.*")
   end
 
 private
