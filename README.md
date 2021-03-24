@@ -14,10 +14,10 @@ bundle exec erd --attributes=primary_keys,foreign_keys,inheritance --filetype=sv
 
 ## Prerequisites
 
-- Ruby 2.7.1
+- Ruby 2.7.2
 - PostgreSQL
-- NodeJS 14.0.x
-- Yarn 1.12.x
+- NodeJS 14.5.x
+- Yarn 1.22.x
 
 ## Setting up the app in development
 
@@ -29,7 +29,7 @@ bundle exec erd --attributes=primary_keys,foreign_keys,inheritance --filetype=sv
 
 ## Whats included in this boilerplate?
 
-- Rails 6.0 with Webpacker
+- Rails 6.1 with Webpacker
 - [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend)
 - RSpec
 - Dotenv (managing environment variables)

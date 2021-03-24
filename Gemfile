@@ -9,7 +9,7 @@ gem "devise"
 gem "mail-notify"
 gem "pg", ">= 0.18", "< 2.0"
 gem "pundit"
-gem "rails", "~> 6.1.2"
+gem "rails", "~> 6.1.3"
 
 # runtime
 gem "bootsnap", ">= 1.1.0", require: false
@@ -54,8 +54,8 @@ end
 
 group :development do
   # debug
-  gem "listen", ">= 3.0.5", "< 3.3"
-  gem "web-console", ">= 3.3.0"
+  gem "listen", "~> 3.5.0"
+  gem "web-console", "~> 4.1.0"
 
   # runtime
   gem "spring"
