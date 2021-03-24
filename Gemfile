@@ -54,8 +54,8 @@ end
 
 group :development do
   # debug
-  gem "listen", ">= 3.0.5", "< 3.3"
-  gem "web-console", ">= 3.3.0"
+  gem "listen", "~> 3.5.0"
+  gem "web-console", "~> 4.1.0"
 
   # runtime
   gem "spring"
