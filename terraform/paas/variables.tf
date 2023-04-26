@@ -1,3 +1,9 @@
-variable user {}
-variable password {}
-variable csc_docker_repo {}
+variable user {
+  sensitive = true
+}
+variable password {
+  sensitive = true
+}
+variable csc_docker_repo {
+  sensitive = true
+}
