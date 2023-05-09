@@ -11,5 +11,4 @@ terraform {
     region = "eu-west-2"
     key = "store/terraform.tfstate"
   }
-
 }
