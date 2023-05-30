@@ -1,4 +1,4 @@
-<%= render GovukComponent::SummaryList.new do |component| %>
+<%= govuk_summary_list  do |component| %>
   <%= component.slot(
     :row,
     key: t("answers.#{step.key}.#{answer.first}"),

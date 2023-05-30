@@ -1,4 +1,4 @@
-<%= render GovukComponent::SummaryList.new do |component| %>%
+<%= govuk_summary_list  do |component| %>%
   <%= component.slot(
     :row,
     key: "Date",
@@ -22,7 +22,7 @@
 %>
 <% end %>
 
-<%= render GovukComponent::BackLink.new(
+<%= govuk_back_link(
   text: "Return to logs",
   href: placement_diary_entries_path
   )

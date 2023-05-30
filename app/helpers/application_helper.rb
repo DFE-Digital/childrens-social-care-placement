@@ -1,6 +1,6 @@
 module ApplicationHelper
   def back_link(path = :back, text: "Back", **options)
-    render GovukComponent::BackLink.new(
+    govuk_back_link(
       text: text,
       href: path,
       **options,
