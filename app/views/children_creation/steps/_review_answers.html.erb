@@ -3,7 +3,7 @@
 <%= govuk_summary_list  do |component| %>
   <% f.object.answers_by_step.each do |step, answers| %>
     <% answers.each do |answer| %>
-      <% component.with_row do row|
+      <% component.with_row do |row|
            row.key: t("answers.#{step.key}.#{answer.first}"),
            row.value: format_answer(answer.last),
            row.action: govuk_link_to("Change", children_creation_step_path(step.key)),
