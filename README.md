@@ -35,11 +35,13 @@ bundle exec erd --attributes=primary_keys,foreign_keys,inheritance --filetype=sv
 - Dotenv (managing environment variables)
 
 ## Running specs, linter(without auto correct) and annotate models and serializers
+
 ```
 bundle exec rake
 ```
 
 ## Running specs
+
 ```
 bundle exec rspec
 ```
@@ -80,29 +82,29 @@ The app should be available at https://childrens-social-care-placement.london.cl
 
 As per the `config/settings.yml` file, there are few variables which need to be set in each environment:
 
-* `SETTINGS__HOST`: The actual full url of the app to be prepended to url routes.
-* `SETTINGS__NOTIFY__API_KEY`: API key to allow sending via Gov.uk Notify
-* `SETTINGS__NOTIFY__VIEW_TEMPLATE_ID`: Template ID from Gov.uk Notify which supports using Rails templates
+- `SETTINGS__HOST`: The actual full url of the app to be prepended to url routes.
+- `SETTINGS__NOTIFY__API_KEY`: API key to allow sending via Gov.uk Notify
+- `SETTINGS__NOTIFY__VIEW_TEMPLATE_ID`: Template ID from Gov.uk Notify which supports using Rails templates
 
 ## github workflow
 
 There is an open issue referenced here: https://www.pivotaltracker.com/n/projects/2196383/stories/173541786
-As a work around, .cfignore file is updated to include /node_modules/.cache/*
+As a work around, .cfignore file is updated to include /node_modules/.cache/\*
 
 ## rails console on CloudFoundry
 
 1. SSH into the app as a Space Developer
-  `cf ssh <APP_NAME>`
+   `cf ssh <APP_NAME>`
 2. Enter the following:
-  `cd /<WORKDIR>`
-  `/usr/local/bin/bundle exec rails console`
+   `cd /<WORKDIR>`
+   `/usr/local/bin/bundle exec rails console`
 
 ## Rake commands on CloudFoundry
 
 1. Access rails console as above
 2. Enter the following:
-  `require 'rake'`
-  `Rails.application.load_tasks`
-  `Rake::Task['task_name'].invoke`
+   `require 'rake'`
+   `Rails.application.load_tasks`
+   `Rake::Task['task_name'].invoke`
 
-  just a change
+just a another change
