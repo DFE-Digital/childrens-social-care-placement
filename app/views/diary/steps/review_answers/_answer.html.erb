@@ -1,9 +1,15 @@
-<%= render GovukComponent::SummaryList.new do |component| %>
-  <%= component.slot(
+<%= govuk_summary_list  do |component| %>
+  <%= component.with_row do |row|
+    row.with_key { t("answers.#{step.key}.#{answer.first}") }
+    row.with_value { format_answer(answer.last) }
+    row.with_action(text: "Change", href: placement_diary_step_path(placement_id, step.key))
+  end %>
+<% end %>
+
+  <%#= component.slot(
     :row,
     key: t("answers.#{step.key}.#{answer.first}"),
     value: format_answer(answer.last),
     action: link_to_change_answer(placement_id, step),
       )
-  %>
-<% end %>
+ end %>
