@@ -1,19 +1,34 @@
 <%= govuk_summary_list  do |component| %>
-  <%= component.slot(
+  <%= component.with_row do |row| 
+    row.with_key { "Date" }
+    row.with_value { @entry.created_at.strftime("%d/%m/%Y") }
+    row.with_action
+  end %>
+  <%#= component.slot(
     :row,
     key: "Date",
     value: @entry.created_at.strftime("%d/%m/%Y"),
     action: ''
   )
 %>
-<%= component.slot(
+<%= component.with_row do |row| 
+    row.with_key { "Event" }
+    row.with_value { @entry.event }
+    row.with_action
+  end %>
+<%#= component.slot(
     :row,
     key: "Event",
     value: @entry.event,
     action: ''
   )
 %>
-<%= component.slot(
+  <%= component.with_row do |row| 
+    row.with_key { "Note" }
+    row.with_value { @entry.note }
+    row.with_action
+  end %>
+<%#= component.slot(
     :row,
     key: "Note",
     value: @entry.note,
