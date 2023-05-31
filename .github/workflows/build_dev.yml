@@ -104,6 +104,7 @@ jobs:
         run: |
           cd terraform/paas && pwd
           terraform apply -auto-approve plan
+          rm plan
         env:
           TF_VAR_user: "${{ secrets.CF_USERNAME }}"
           TF_VAR_password: "${{ secrets.CF_PASSWORD }}"
