@@ -51,12 +51,12 @@ jobs:
       - run: bundle exec rake
 
   deploy:
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     needs: test
     env:
       DOCKER_REPO: dfedigital/placement-alpha-development
       DOCKER_IMAGE: placement-alpha-development
-    if: github.ref == 'refs/heads/master'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
